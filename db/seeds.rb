@@ -16,10 +16,10 @@ ApplicationRecord.transaction do
 
   puts "Creating users..."
   User.create!(
-    email: 'demo@user.io', 
-    password: 'passwordA1',
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
+    email: 'michael@jordan.com', 
+    password: 'Jordan23',
+    first_name: 'Michael',
+    last_name: 'Jordan'
 
   )
 

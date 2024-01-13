@@ -21,11 +21,9 @@ const Navigation = () => {
     }
 
     return (
-        <ul>
-            <li>
-                <NavLink to="/">Home</NavLink>
-                {sessionLinks}
-            </li>
+        <ul className='nav-bar'>
+            <NavLink to="/">Home</NavLink>
+            {sessionLinks}
         </ul>
     );
 }

@@ -30,6 +30,11 @@ const LoginForm = () => {
             });
     };
 
+    const handleDemoLogin = (e) => {
+        e.preventDefault();
+        return dispatch(sessionActions.login({ email: 'michael@jordan.com', password: 'Jordan23' }))
+    }
+
     return (
         <>
             <h1>Log In</h1>
@@ -56,6 +61,7 @@ const LoginForm = () => {
                     />
                 </label>
                 <button type="submit">Log In</button>
+                <button onClick={handleDemoLogin}>Demo User</button>
             </form>
         </>
     );
