@@ -25,10 +25,9 @@ function SignupForm() {
                 .catch(async (res) => {
                     let data;
                     try {
-                        // .clone() essentially allows you to read the response body twice
                         data = await res.clone().json();
                     } catch {
-                        data = await res.text(); // Will hit this case if, e.g., server is down
+                        data = await res.text();
                     }
                     if (data?.errors) setErrors(data.errors);
                     else if (data) setErrors([data]);
@@ -44,31 +43,57 @@ function SignupForm() {
     }
 
     return (
-        <>
-            <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
+        <div className="signup-container">
+            <div className="signup-header">
+                <img src="./favicon.ico" alt="Sike Logo" className="logo"/>
+                <h1>Now let&apos;s make you a Sike Member.</h1>
+                <p>Signing up as <span className="email">putrealemailhere@test.com</span> <a href="#" className="edit-link">Edit</a></p>
+            </div>
+            <form className="signup-form" onSubmit={handleSubmit}>
+                <div>
                     {console.log(errors)}
                     {errors.map((error) => <li key={error}>{error}</li>)}
-                </ul>
-                <label>
-                    First Name
+                </div>
+                <div className="form-name">
                     <input
                         type="text"
+                        placeholder="First Name"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         required
                     />
-                </label>
-                <label>
-                    Last Name
                     <input
                         type="text"
+                        placeholder="Last Name"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         required
                     />
-                </label>
+                </div>
+                <div className="form-password">
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <span className="form-text">Minimum of 8 characters</span>
+                    <span className="form-text">Uppercase, lowercase letters, and one number</span>
+                    <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="button-container">
+                    <button type="submit" className="submit-btn">Create Account</button>
+                </div>
+                <div className="button-container">
+                    <button className="submit-btn" onClick={handleDemoLogin}>Demo User</button>
+                </div>
                 <label>
                     Email
                     <input
@@ -78,28 +103,8 @@ function SignupForm() {
                         required
                     />
                 </label>
-                <label>
-                    Password
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Confirm Password
-                    <input
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Sign Up</button>
-                <button onClick={handleDemoLogin}>Demo User</button>
             </form>
-        </>
+        </div>
     );
 }
 

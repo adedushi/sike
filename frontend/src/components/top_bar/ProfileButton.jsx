@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import './TopBar.css';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -31,19 +32,19 @@ function ProfileButton({ user }) {
         dispatch(sessionActions.logout());
     };
 
-    const user_icon = () => {
-        return (
-            <div style={{ color: "pink", fontSize: "20px" }}>
-                <i className="fa-regular fa-user"></i>
-            </div>
-        );
-    };
+    // const user_icon = () => {
+    //     return (
+    //         <div style={{ color: "black", fontSize: "10px" }}>
+    //             <i className="fa-regular fa-user"></i>
+    //         </div>
+    //     );
+    // };
 
 
     return (
         <>
             <button onClick={toggleMenu}>
-                {user_icon()}
+                <i className={`fa-solid fa-${user.firstName[0].toLowerCase()}`}></i>
             </button>
             {showMenu && (
                 <ul className="profile-dropdown" ref={dropdownRef}>
