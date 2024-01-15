@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './LoginForm.css';
+import { Layout } from '../../App';
+import { formType, resetFormState } from '../../store/form';
 
 const LoginForm = () => {
-    const { load, email } = useSelector(state => state.form)
+    const { email } = useSelector(state => state.form)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    // const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
@@ -36,35 +37,48 @@ const LoginForm = () => {
         return dispatch(sessionActions.login({ email: 'michael@jordan.com', password: 'Jordan23' }))
     }
 
+    const handleEditClick = () => {
+        dispatch(formType('EMAIL_ENTRY'));
+    };
+
+    const handleLogoClick = () => {
+        dispatch(resetFormState());
+    };
+
     return (
-        <>
-            <h1>Log In</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map(error => <li key={error}>{error}</li>)}
-                </ul>
-                <label>
-                    Email
-                    <input
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Password
+        <div className="login-container">
+            <div className="login-header">
+                <Link component={Layout} to='/' onClick={handleLogoClick}>
+                    <img src="./favicon.ico" alt="Sike Logo" className="logo" />
+                </Link>
+                <h1>What&apos;s your password?</h1>
+                <p><span className="email">{email}</span> 
+                    <Link to="/session" className="edit-link" onClick={handleEditClick}>Edit</Link>
+                </p>
+            </div>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <div>
+                    {console.log(errors)}
+                    {errors.map((error) => <li key={error}>{error}</li>)}
+                </div>
+                <div className="form-password">
                     <input
                         type="password"
+                        placeholder="Password"
+                        autoComplete="new-password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                </label>
-                <button type="submit">Log In</button>
-                <button onClick={handleDemoLogin}>Demo User</button>
+                </div>
+                <div className="button-container">
+                    <button type="submit" className="submit-btn">Sign In</button>
+                </div>
+                <div className="button-container">
+                    <button className="submit-btn" onClick={handleDemoLogin}>Demo User</button>
+                </div>
             </form>
-        </>
+        </div>
     );
 }
 

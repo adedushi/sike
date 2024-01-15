@@ -23,6 +23,11 @@ const EmailEntry = () => {
         dispatch(formType((exists ? 'LOGIN' : 'SIGNUP')))
     };
 
+    const handleDemoLogin = (e) => {
+        e.preventDefault();
+        return dispatch(sessionActions.login({ email: 'michael@jordan.com', password: 'Jordan23' }))
+    }
+
     return (
         <>
         <div className="form-container">
@@ -40,6 +45,9 @@ const EmailEntry = () => {
                     />
                     <div className="button-container">
                         <button type="submit" className="continue-btn">Continue</button>
+                    </div>
+                    <div className="button-container">
+                        <button className="submit-btn" onClick={handleDemoLogin}>Demo User</button>
                     </div>
             </form>
         </div>

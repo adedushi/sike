@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    letter-spacing: .3px;
+}
+
+.login-container {
+    width: 400px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.login-header .logo {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.login-header .logo {
+    display: block;
+    margin-bottom: 1rem;
+    height: 60px;
+}
+
+.login-header h1 {
+    font-size: 1.75rem;
+    margin-bottom: .5rem;
+    font-weight: 400;
+}
+
+.login-header p {
+    font-size: .875rem;
+    margin-bottom: 1rem;
+}
+
+.edit-link {
+    color: rgb(117, 117, 117);
+    text-decoration: underline solid rgb(117, 117, 117);
+    margin-left: 5px;
+    font-size: .875rem;
+}
+
+.login-form .form-name {
+    margin-bottom: 1rem;
+
+}
+
+.login-form .form-name {
+    display: flex;
+    gap: 10px;
+}
+
+.login-form .form-name input,
+.login-form .form-password input,
+.login-form .form-password select {
+    letter-spacing: .3px;
+    width: calc(100% - 20px);
+    height: 34px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.login-form .form-text {
+    display: block;
+    font-size: .75rem;
+    color: #777;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}
+
+.button-container {
+    text-align: right;
+}
+
+.submit-btn {
+    width: 40%;
+    padding: 12px;
+    background-color: #111;
+    color: white;
+    margin-top: .7rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    letter-spacing: .5px;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+}

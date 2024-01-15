@@ -6,14 +6,14 @@ import { Navigate } from 'react-router-dom';
 
 const Session = () => {
     const sessionUser = useSelector(state => state.session.user);
-    const { load, email } = useSelector(state => state.form)
+    const { load } = useSelector(state => state.form)
     if (sessionUser) return <Navigate to="/" replace={true} />;
     
     return (
         <div>
             {load === 'EMAIL_ENTRY' && <EmailEntry />}
-            {load === 'LOGIN' && <LoginForm email={email}/>}
-            {load === 'SIGNUP' && <SignupForm email={email}/>}
+            {load === 'LOGIN' && <LoginForm />}
+            {load === 'SIGNUP' && <SignupForm />}
         </div>
     );
 }

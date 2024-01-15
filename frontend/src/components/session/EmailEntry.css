@@ -9,7 +9,7 @@ body {
 }
 
 .form-container {
-    max-width: 400px;
+    width: 460px;
     margin: 0 auto;
     background: #fff;
     padding: 2rem;
@@ -47,8 +47,8 @@ body {
     text-align: right;
 }
 
-.email-form .continue-btn {
-    width: 40%;
+.email-form .continue-btn, .email-form .submit-btn {
+    width: 25%;
     padding: 12px;
     background-color: #111;
     color: white;
@@ -60,6 +60,6 @@ body {
     letter-spacing: .5px;
 }
 
-.email-form .continue-btn:hover {
+.email-form .continue-btn:hover, .email-form .submit-btn:hover {
     background-color: #333;
 }

@@ -10,7 +10,7 @@ import { Layout } from '../../App';
 function SignupForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const { load, email } = useSelector(state => state.form)
+    const { email } = useSelector(state => state.form)
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -60,8 +60,7 @@ function SignupForm() {
                     <img src="./favicon.ico" alt="Sike Logo" className="logo" />
                 </Link>
                 <h1>Now let&apos;s make you a Sike Member.</h1>
-                <p>Signing up as 
-                    <span className="email">{email}</span> 
+                <p>Signing up as <span className="email">{email}</span> 
                     <Link to="/session" className="edit-link" onClick={handleEditClick}>Edit</Link>
                 </p>
             </div>
