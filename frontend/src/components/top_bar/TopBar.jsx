@@ -17,9 +17,9 @@ const TopBar = () => {
     } else {
         sessionLinks = (
             <>
-                <Link to="/signup" className="top-link">Join Us</Link>
+                <Link to="session" className="top-link">Join Us</Link>
                 <span className="divider">|</span>
-                <Link to="/login" className="top-link">Sign In</Link>
+                <Link to="session" className="top-link">Sign In</Link>
             </>
         );
     }

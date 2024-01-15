@@ -48,7 +48,6 @@ function ProfileButton({ user }) {
             </button>
             {showMenu && (
                 <ul className="profile-dropdown" ref={dropdownRef}>
-                    {console.log(user)}
                     <li>{user.firstName} {user.lastName}</li>
                     <li>{user.email}</li>
                     <li>

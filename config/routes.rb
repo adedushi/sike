@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   
   namespace :api, defaults: {format: :json} do
       resources :users, only: [:create]
+      resources :users, only: [] do
+        collection do
+          get 'check_email', to: 'users#check_email'
+        end
+      end
       resource :session, only: [:create, :show, :destroy]
   end
   

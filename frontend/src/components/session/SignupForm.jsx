@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import './SignupForm.css';
+import { formType } from '../../store/form';
 
 
 function SignupForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [email, setEmail] = useState("");
+    const { load, email } = useSelector(state => state.form)
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -42,12 +43,17 @@ function SignupForm() {
         return dispatch(sessionActions.login({ email: 'michael@jordan.com', password: 'Jordan23' }))
     }
 
+    const handleEditClick = () => {
+        dispatch(formType('EMAIL_ENTRY'));
+    };
+
+
     return (
         <div className="signup-container">
             <div className="signup-header">
                 <img src="./favicon.ico" alt="Sike Logo" className="logo"/>
                 <h1>Now let&apos;s make you a Sike Member.</h1>
-                <p>Signing up as <span className="email">putrealemailhere@test.com</span> <a href="#" className="edit-link">Edit</a></p>
+                <p>Signing up as <span className="email">{email}</span> <Link to="/session" className="edit-link" onClick={handleEditClick}>Edit</Link></p>
             </div>
             <form className="signup-form" onSubmit={handleSubmit}>
                 <div>
@@ -74,6 +80,7 @@ function SignupForm() {
                     <input
                         type="password"
                         placeholder="Password"
+                        autoComplete="new-password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
@@ -83,6 +90,7 @@ function SignupForm() {
                     <input
                         type="password"
                         placeholder="Confirm Password"
+                        autoComplete="new-password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
@@ -94,15 +102,6 @@ function SignupForm() {
                 <div className="button-container">
                     <button className="submit-btn" onClick={handleDemoLogin}>Demo User</button>
                 </div>
-                <label>
-                    Email
-                    <input
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </label>
             </form>
         </div>
     );

@@ -14,10 +14,16 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def check_email
+        email = params[:email].downcase
+        exists = User.exists?(email: email)
+        render json: { exists: exists }
+    end
+
 
     private
 
     def user_params
-        params.require(:user).permit(:email, :password, :first_name, :last_name)
+        params.require(:user).permit(:email.downcase, :password, :first_name, :last_name)
     end
 end

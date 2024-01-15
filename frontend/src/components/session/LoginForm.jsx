@@ -5,9 +5,10 @@ import { Navigate } from 'react-router-dom';
 import './LoginForm.css';
 
 const LoginForm = () => {
+    const { load, email } = useSelector(state => state.form)
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const [email, setEmail] = useState("");
+    // const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 

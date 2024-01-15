@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
-import LoginForm from './components/session/LoginForm';
-import SignupForm from './components/session/SignupForm';
 import TopBar from './components/top_bar';
 import * as sessionActions from './store/session';
+import Session from './components/session/Session';
+import SignupForm from './components/session/SignupForm';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -33,12 +33,14 @@ const router = createBrowserRouter([
         element: <h1>Welcome to Sike!</h1>
       },
       {
-        path: 'login',
-        element: <LoginForm />
-      },
-      {
-        path: 'signup',
-        element: <SignupForm />
+        path: 'session',
+        element: <Session />
+        // children: [
+        //   {
+        //     path: 'JoinUs',
+        //     element: <SignupForm />
+        //   }
+        // ]
       }
     ]
   }
