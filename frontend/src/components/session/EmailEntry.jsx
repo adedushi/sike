@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { formType, storeEmail } from '../../store/form';
+import './EmailEntry.css'
+import { Link } from 'react-router-dom';
+import { Layout } from '../../App';
 
 const EmailEntry = () => {
     const dispatch = useDispatch();
@@ -22,15 +25,24 @@ const EmailEntry = () => {
 
     return (
         <>
-        <form onSubmit={submitEmail}>
-            <input
-                type="email"
-                value={localEmail}
-                onChange={(e) => setLocalEmail(e.target.value)}
-                required
-            />
-            <button type="submit">Continue</button>
-        </form>
+        <div className="form-container">
+            <header className="form-header">
+                    <Link component={Layout} to='/'><img src="./favicon.ico" alt="Sike Logo" className="logo" /></Link>
+                    <h1>Enter your email to join us or sign in.</h1>
+            </header>
+            <form className="email-form" onSubmit={submitEmail}>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={localEmail}
+                        onChange={(e) => setLocalEmail(e.target.value)}
+                        required
+                    />
+                    <div className="button-container">
+                        <button type="submit" className="continue-btn">Continue</button>
+                    </div>
+            </form>
+        </div>
         </>
     );
 }

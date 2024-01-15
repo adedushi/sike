@@ -4,9 +4,8 @@ import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import TopBar from './components/top_bar';
 import * as sessionActions from './store/session';
 import Session from './components/session/Session';
-import SignupForm from './components/session/SignupForm';
 
-function Layout() {
+export const Layout = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 

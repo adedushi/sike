@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './TopBar.css';
+import { Layout } from '../../App';
 
 const TopBar = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -28,7 +29,7 @@ const TopBar = () => {
     <div className="top-bar">
         <div className="container">
             <div className="top-left">
-                <Link to="/">Home</Link>
+                <Link component={Layout} to="/">Home</Link>
             </div>
             <div className="top-right">
                 {sessionLinks}

@@ -18,7 +18,7 @@ body {
     margin-bottom: 1rem; 
 }
 
-.signup-header > .logo {
+.signup-header .logo {
     display: block;
     margin-bottom: 1rem;
     height: 60px;
@@ -41,8 +41,7 @@ body {
     margin-left: 5px;
     font-size: .875rem;
 }
-    
-.signup-form .form-password,
+
 .signup-form .form-name {
     margin-bottom: 1rem;
     
@@ -82,7 +81,7 @@ body {
     padding: 12px;
     background-color: #111;
     color: white;
-    border: 1px solid;
+    margin-top: .7rem;
     border-radius: 20px;
     font-size: 1rem;
     cursor: pointer;

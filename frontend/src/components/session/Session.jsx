@@ -1,13 +1,13 @@
-import { useEffect } from 'react';
 import EmailEntry from './EmailEntry';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-import { useDispatch, useSelector } from 'react-redux';
-import { resetFormState } from '../../store/form';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 const Session = () => {
-    
+    const sessionUser = useSelector(state => state.session.user);
     const { load, email } = useSelector(state => state.form)
+    if (sessionUser) return <Navigate to="/" replace={true} />;
     
     return (
         <div>
