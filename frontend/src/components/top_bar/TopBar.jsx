@@ -27,9 +27,8 @@ const TopBar = () => {
 
     return (
     <div className="top-bar">
-        <div className="container">
+        <div className="session-container">
             <div className="top-left">
-                <Link component={Layout} to="/">Home</Link>
             </div>
             <div className="top-right">
                 {sessionLinks}

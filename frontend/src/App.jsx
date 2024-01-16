@@ -4,6 +4,7 @@ import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import TopBar from './components/top_bar';
 import * as sessionActions from './store/session';
 import Session from './components/session/Session';
+import NavBar from './components/nav_bar';
 
 export const Layout = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const Layout = () => {
 
   return (
     <>
-      <TopBar />
+      <NavBar />
       {isLoaded && <Outlet />}
     </>
   );

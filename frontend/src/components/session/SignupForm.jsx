@@ -52,6 +52,9 @@ function SignupForm() {
         dispatch(resetFormState());
     };
 
+    const displayErrors = (errors) => {
+        return Array.isArray(errors[0]) ? (errors[0].map((error) => <li key={error} className="form-text-red">{error}</li>)) : ""
+    }
 
     return (
         <div className="signup-container">
@@ -67,7 +70,7 @@ function SignupForm() {
             <form className="signup-form" onSubmit={handleSubmit}>
                 <div>
                     {console.log(errors)}
-                    {errors.map((error) => <li key={error}>{error}</li>)}
+                    {displayErrors(errors)}
                 </div>
                 <div className="form-name">
                     <input

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { formType, storeEmail } from '../../store/form';
+import * as sessionActions from '../../store/session';
 import './EmailEntry.css'
 import { Link } from 'react-router-dom';
 import { Layout } from '../../App';
