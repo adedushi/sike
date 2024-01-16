@@ -10,7 +10,7 @@ const NavBar = () => {
         <div className="navbar">
             <div className="navbar-section left">
                 <Link component={Layout} to='/'>
-                    <img src="./favicon.ico" alt="Sike Logo" className="navbar-logo" />
+                    <img src="../public/favicon.ico" alt="Sike Logo" className="navbar-logo" />
                 </Link>
             </div>
 
@@ -22,11 +22,11 @@ const NavBar = () => {
             </nav>
             <div className="navbar-section right">
                 <div className="search-container">
-                    <button className="search-btn"> <img src="./search.svg"/></button>
+                    <button className="search-btn"> <img src="../public/search.svg"/></button>
                     <input type="text" placeholder="Search"/>
                 </div>
-                <a href="#" className="favorite-icon"><img src="./favorite.svg"/></a>
-                <a href="#" className="cart-icon"><img src="./cart.svg" /></a> 
+                <Link to="#" className="favorite-icon"><img src="../public/favorite.svg" /></Link>
+                <a href="#" className="cart-icon"><img src="../public/cart.svg" /></a> 
                 {/* <span className="quantity" data-var="jewel">1</span> */}
             </div>
         </div>

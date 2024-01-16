@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './TopBar.css';
+import { resetFormState } from '../../store/form';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -29,7 +30,9 @@ function ProfileButton({ user }) {
 
     const logout = (e) => {
         e.preventDefault();
+        dispatch(resetFormState());
         dispatch(sessionActions.logout());
+        
     };
 
     // const user_icon = () => {
