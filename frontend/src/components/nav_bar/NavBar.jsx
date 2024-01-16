@@ -28,7 +28,6 @@ const NavBar = () => {
                 <a href="#" className="favorite-icon"><img src="./favorite.svg"/></a>
                 <a href="#" className="cart-icon"><img src="./cart.svg" /></a> 
                 {/* <span className="quantity" data-var="jewel">1</span> */}
-
             </div>
         </div>
 

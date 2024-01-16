@@ -5,6 +5,7 @@ import TopBar from './components/top_bar';
 import * as sessionActions from './store/session';
 import Session from './components/session/Session';
 import NavBar from './components/nav_bar';
+import ProductDisplay from './components/product_display/ProductDisplay';
 
 export const Layout = () => {
   const dispatch = useDispatch();
@@ -35,12 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'session',
         element: <Session />
-        // children: [
-        //   {
-        //     path: 'JoinUs',
-        //     element: <SignupForm />
-        //   }
-        // ]
+      },
+      {
+        path: '/products/:productId',
+        element: <ProductDisplay />
       }
     ]
   }

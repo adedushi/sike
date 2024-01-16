@@ -13,6 +13,7 @@ Rails.application.routes.draw do
           get 'check_email', to: 'users#check_email'
         end
       end
+      resources :products, only: [:show]
       resource :session, only: [:create, :show, :destroy]
   end
   

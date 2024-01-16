@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './TopBar.css';
-import { Layout } from '../../App';
 
 const TopBar = () => {
     const sessionUser = useSelector(state => state.session.user);

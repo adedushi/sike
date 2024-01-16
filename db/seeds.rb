@@ -10,9 +10,11 @@ ApplicationRecord.transaction do
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
   User.destroy_all
+  Product.destroy_all
 
   puts "Resetting primary keys..."
   ApplicationRecord.connection.reset_pk_sequence!('users')
+  ApplicationRecord.connection.reset_pk_sequence!('products')
 
   puts "Creating users..."
   User.create!(
@@ -31,6 +33,19 @@ ApplicationRecord.transaction do
       last_name: Faker::Name.last_name
     }) 
   end
+
+  puts "Creating products..."
+  Product.create!(
+    name: "Nike Air Force 1 '07",
+    subtitle: "Men's Shoes",
+    description: "The radiance lives on in the Nike Air Force 1 ’07, the b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.",
+    list_price: 115.00,
+    sale_price: nil,
+    article_number: "CW2288-111",
+    division: "Men",
+    category: "Shoes",
+    sub_category: "Lifestyle"
+  )
 
   puts "Done!"
 end
