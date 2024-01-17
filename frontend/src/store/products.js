@@ -27,9 +27,9 @@ export const fetchProduct = (productId) => async dispatch => {
     }
 }
 
-export const fetchProducts = () => async dispatch => {
-    // const filterParams = new URLSearchParams(filters);
-    const response = await csrfFetch(`/api/products`);
+export const fetchProducts = (filters) => async dispatch => {
+    const filterParams = new URLSearchParams(filters);
+    const response = await csrfFetch(`/api/products?${filterParams}`);
     console.log(response);
     if (response.ok) {
         const data = await response.json();

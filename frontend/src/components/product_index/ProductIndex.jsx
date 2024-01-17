@@ -1,14 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../../store/products";
+import { useSearchParams } from "react-router-dom"
 
 const ProductIndex = () => {
     const dispatch = useDispatch();
+    const [division, setDivision] = useSearchParams();
+    division.get("division")
     const products = useSelector((state) => Object.values(state.products))
 
     useEffect(() => {
-        dispatch(fetchProducts())
-    },[dispatch])
+        dispatch(fetchProducts(division))
+    },[dispatch, division])
 
 
     console.log(products);
