@@ -14,9 +14,12 @@ export const retrieveProduct = (productId) => async dispatch => {
     if (res.ok) {
         const product = await res.json();
         dispatch(populateProduct(product))
-    } else {
-        return true
     }
+    //  else {
+    //     const error = await res.json();
+    //     throw error;
+    // }
+
 }
 
 const productReducer = (state = {}, action) => {
