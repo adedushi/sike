@@ -1,6 +1,6 @@
 import { csrfFetch } from "./csrf";
 
-const POPULATE = 'produce/POPULATE';
+const POPULATE = 'product/POPULATE';
 
 const populateProduct = (product) => {
     return {
@@ -14,13 +14,15 @@ export const retrieveProduct = (productId) => async dispatch => {
     if (res.ok) {
         const product = await res.json();
         dispatch(populateProduct(product))
+    } else {
+        return true
     }
 }
 
 const productReducer = (state = {}, action) => {
     switch (action.type) {
         case POPULATE:
-            return {...action.product}
+            return {[action.product.id]: {...action.product}}
         default:
             return state;
     }

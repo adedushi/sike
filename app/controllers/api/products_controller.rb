@@ -4,7 +4,7 @@ class Api::ProductsController < ApplicationController
         if @product
             render 'api/products/show'
         else
-            render json: { product: nil}
+            render json: { errors: ['Product Not Found'] }, status: 404
         end
     end
 end
