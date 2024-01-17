@@ -1,31 +1,50 @@
 import { csrfFetch } from "./csrf";
 
-const POPULATE = 'product/POPULATE';
+const GET_PRODUCT = 'products/GET_PRODUCT';
+const GET_PRODUCTS = 'products/GET_PRODUCTS'
 
-const populateProduct = (product) => {
+const getProduct = (product) => {
     return {
-        type: POPULATE,
-        product: product
+        type: GET_PRODUCT,
+        product
     };
 };
 
-export const retrieveProduct = (productId) => async dispatch => {
-    const res = await csrfFetch(`/api/products/${productId}`)
-    if (res.ok) {
-        const product = await res.json();
-        dispatch(populateProduct(product))
-    }
-    //  else {
-    //     const error = await res.json();
-    //     throw error;
-    // }
+const getProducts = (products) => {
+    return {
+        type: GET_PRODUCTS,
+        products
+    };
+};
 
+
+export const fetchProduct = (productId) => async dispatch => {
+    const response = await csrfFetch(`/api/products/${productId}`)
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getProduct(data))
+        return response
+    }
 }
+
+export const fetchProducts = () => async dispatch => {
+    // const filterParams = new URLSearchParams(filters);
+    const response = await csrfFetch(`/api/products`);
+    console.log(response);
+    if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        dispatch(getProducts(data.products));
+        return response;
+    }
+};
 
 const productReducer = (state = {}, action) => {
     switch (action.type) {
-        case POPULATE:
+        case GET_PRODUCT:
             return {[action.product.id]: {...action.product}}
+        case GET_PRODUCTS:
+            return action.products
         default:
             return state;
     }

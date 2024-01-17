@@ -6,6 +6,8 @@ import * as sessionActions from './store/session';
 import Session from './components/session/Session';
 import NavBar from './components/nav_bar';
 import ProductDisplay from './components/product_display/ProductDisplay';
+import ProductIndex from './components/product_index';
+
 
 export const Layout = () => {
   const dispatch = useDispatch();
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: '/products/:productId',
         element: <ProductDisplay />
+      },
+      {
+        path: '/products/',
+        element: <ProductIndex />
       }
     ]
   }

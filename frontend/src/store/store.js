@@ -7,7 +7,7 @@ import productReducer from './products';
 const rootReducer = combineReducers({
     session: sessionReducer,
     form: formReducer,
-    product: productReducer
+    products: productReducer
 });
 
 let enhancer;

@@ -7,4 +7,11 @@ class Api::ProductsController < ApplicationController
             render json: { errors: ['Product Not Found'] }, status: 404
         end
     end
+
+    def index
+        @products = Product.all
+        
+        render 'api/products/index'
+    end
+
 end

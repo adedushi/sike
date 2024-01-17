@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { retrieveProduct } from "../../store/products"
+import { fetchProduct } from "../../store/products"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -9,13 +9,13 @@ const ProductDisplay = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        dispatch(retrieveProduct(productId)).catch((err) => {
+        dispatch(fetchProduct(productId)).catch((err) => {
             setError(err);
         });
     }, [productId, dispatch]);
 
     const selectProduct = (productId) => (state) => {
-        return state.product[productId]
+        return state.products[productId]
     }
 
     let product = useSelector(selectProduct(productId))
@@ -31,9 +31,9 @@ const ProductDisplay = () => {
     return (
         <>
             <h1>{product.name}</h1>
-            <h1>{product.category}</h1>
-            <h1>{product.description}</h1>
+            <h1>{product.subtitle}</h1>
             <h1>{product.listPrice}</h1>
+            <h1>{product.description}</h1>
         </>
     );
 }
