@@ -58,7 +58,6 @@ const LoginForm = () => {
             </div>
             <form className="login-form" onSubmit={handleSubmit}>
                 <div>
-                    {console.log(errors)}
                     {errors.map((error) => <li key={error}>{error}</li>)}
                 </div>
                 <div className="form-password">

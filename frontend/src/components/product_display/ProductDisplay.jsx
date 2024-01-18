@@ -20,7 +20,7 @@ const ProductDisplay = () => {
 
     let product = useSelector(selectProduct(productId))
 
-    if (error) {
+    if (error) {  
         return <div>Error: {error.status} {error.statusText}</div>;
     }
 

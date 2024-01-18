@@ -1,21 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../../store/products";
 import { useSearchParams } from "react-router-dom"
 
 const ProductIndex = () => {
     const dispatch = useDispatch();
-    const [division, setDivision] = useSearchParams();
+    const [division] = useSearchParams();
     division.get("division")
     const products = useSelector((state) => Object.values(state.products))
 
     useEffect(() => {
         dispatch(fetchProducts(division))
     },[dispatch, division])
-
-
-    console.log(products);
-    console.log(Array.isArray(products));
 
     // if (error) {
     //     return <div>Error: {error.status} {error.statusText}</div>;

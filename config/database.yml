@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: sike_production
-  username: sike
-  password: <%= ENV["SIKE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

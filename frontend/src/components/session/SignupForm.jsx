@@ -69,7 +69,6 @@ function SignupForm() {
             </div>
             <form className="signup-form" onSubmit={handleSubmit}>
                 <div>
-                    {console.log(errors)}
                     {displayErrors(errors)}
                 </div>
                 <div className="form-name">
