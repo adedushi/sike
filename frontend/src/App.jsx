@@ -6,6 +6,7 @@ import Session from './components/session/Session';
 import NavBar from './components/nav_bar';
 import ProductDisplay from './components/product_display/ProductDisplay';
 import ProductIndex from './components/product_index';
+import CampaignDisplay from './components/campaign_display';
 
 
 export const Layout = () => {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1>Welcome to Sike!</h1>
+        element: <CampaignDisplay />
       },
       {
         path: 'session',
