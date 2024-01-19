@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-ApplicationRecord.transaction do 
+require "open-uri"
+
+# ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
   User.destroy_all
@@ -35,7 +37,7 @@ ApplicationRecord.transaction do
   end
 
   puts "Creating products..."
-  Product.create!(
+  air_force = Product.create!(
     name: "Nike Air Force 1 '07",
     subtitle: "Men's Shoes",
     description: "The radiance lives on in the Nike Air Force 1 ’07, the b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.",
@@ -46,7 +48,10 @@ ApplicationRecord.transaction do
     category: "Shoes",
     sub_category: "Lifestyle"
   )
-
+  air_force.photos.attach(
+    io: URI.open("https://sike-seeds.s3.amazonaws.com/air-jordan-1-retro-high-og-mens-shoes-JHpxkn.jpeg"), 
+    filename: "jordan1.jpeg"
+    )
   Product.create!(
     name: "Nike Sportswear Everything Wovens",
     subtitle: "Women's Oversized Hooded Jacket",
@@ -170,4 +175,4 @@ Product.create!(
 
 
   puts "Done!"
-end
+# end

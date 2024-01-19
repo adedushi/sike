@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../../store/products";
-import { useSearchParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import './ProductIndex.css'
+import crocs from './crocs.jpg'
 
 const ProductIndex = () => {
     const dispatch = useDispatch();
@@ -37,15 +38,17 @@ const ProductIndex = () => {
 
         <section className="product-grid">
                 {products.map((product) => (
-                    <article key={product.id} className="product-item">
-                        <img src="../public/crocs.jpg" alt="Nike Air Force 1 '07"></img>
+                    <div key={product.id} className="product-item" >
+                        <Link to={`/products/${product.id}`} className="product-item-link"> 
+                        <img src={crocs} alt="Nike Air Force 1 '07"></img>
                         <h3>Best Seller</h3>
                         <p> {product.name} </p>
                         <p> {product.subtitle} </p>
                         <h3 > {USDollar.format(product.listPrice)} </h3>
                         <h3 > {USDollar.format(product.salePrice)} </h3>
                         <br />
-                    </article>
+                        </Link>
+                    </div>
                 ))}
             
         </section>

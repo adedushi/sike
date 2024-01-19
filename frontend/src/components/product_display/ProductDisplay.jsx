@@ -21,7 +21,8 @@ const ProductDisplay = () => {
     let product = useSelector(selectProduct(productId))
 
     if (error) {  
-        return <div>Error: {error.status} {error.statusText}</div>;
+        return <div>Error: {error.status} We can&apos;t find the page you are looking for. Sorry for the inconvenience.</div>;
+        // { error.statusText }
     }
 
     if (!product) {
@@ -33,7 +34,7 @@ const ProductDisplay = () => {
             <h1>{product.name}</h1>
             <h1>{product.subtitle}</h1>
             <h1>{product.listPrice}</h1>
-            <h1>{product.description}</h1>
+            {/* <img src={product.photosUrl} alt=""/> */}
         </>
     );
 }

@@ -1,9 +1,10 @@
 import './CampaignDisplay.css'
+import splash from './splash.jpeg'
 
 const CampaignDisplay = () => {
     return (
     <div className='main-campaign'>
-        <img src="../public/splash.png" alt="Main Campaign Banner" className="banner-image" />
+        <img src={splash} alt="Main Campaign Banner" className="banner-image" />
     </div>
     )
 }

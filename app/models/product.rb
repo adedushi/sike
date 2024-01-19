@@ -21,4 +21,5 @@ class Product < ApplicationRecord
 
      validates :article_number, presence: true, uniqueness: true
 
+     has_many_attached :photos
 end
