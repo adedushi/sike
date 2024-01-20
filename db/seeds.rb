@@ -18,6 +18,8 @@ require "open-uri"
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('products')
 
+  # image_urls = ["https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_640/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_640/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png"]
+
   puts "Creating users..."
   User.create!(
     email: 'michael@jordan.com', 
@@ -37,7 +39,7 @@ require "open-uri"
   end
 
   puts "Creating products..."
-  air_force = Product.create!(
+  Product.create!(
     name: "Nike Air Force 1 '07",
     subtitle: "Men's Shoes",
     description: "The radiance lives on in the Nike Air Force 1 ’07, the b-ball OG that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.",
@@ -48,10 +50,20 @@ require "open-uri"
     category: "Shoes",
     sub_category: "Lifestyle"
   )
-  air_force.photos.attach(
-    io: URI.open("https://sike-seeds.s3.amazonaws.com/air-jordan-1-retro-high-og-mens-shoes-JHpxkn.jpeg"), 
-    filename: "jordan1.jpeg"
-    )
+
+    # air_force.photos.attach(
+    # io: URI.open("https://sike-seeds.s3.amazonaws.com/air-jordan-1-retro-high-og-mens-shoes-JHpxkn.jpeg"), 
+    # filename: "jordan1.jpeg"
+    # )
+
+  # image_urls.each do |image, index|
+  #   air_force.photos.attach(
+  #   io: URI.open(image), 
+  #   filename: "photo1.index"
+  #   )
+  # end
+
+
   Product.create!(
     name: "Nike Sportswear Everything Wovens",
     subtitle: "Women's Oversized Hooded Jacket",
