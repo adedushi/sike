@@ -11,6 +11,11 @@ const ProductDisplay = () => {
     const { productId } = useParams();
     const dispatch = useDispatch();
     const [error, setError] = useState(null);
+    const [selectedSize, setSelectedSize] = useState("");
+
+    const sizes = ["W 5 / M 3.5", "W 5.5 / M 4", "W 6 / M 4.5", "W 6.5 / M 5", "W 7 / M 5.5", 
+    "W 7.5 / M 6", "W 8 / M 6.5", "W 8.5 / M 7", "W 9 / M 7.5", "W 9.5 / M 8", "W 10 / M 8.5", 
+    "W 10.5 / M 9", "W 11 / M 9.5", "W 11.5 / M 10", "W 12 / M 10.5"]
 
     useEffect(() => {
         dispatch(fetchProduct(productId)).catch((err) => {
@@ -32,6 +37,10 @@ const ProductDisplay = () => {
     if (!product) {
         return <div>Loading...</div>;
     }
+
+    const handleSizeChange = (event) => {
+        setSelectedSize(event.target.value);
+    };
 
     return (
     < div className="product-page">
@@ -64,12 +73,22 @@ const ProductDisplay = () => {
                     </div>
                     <div className="size-selection">
                         <h3>Select Size</h3>
-                        <div className="size-option">W 5 / M 3.5</div>
-                        <div className="size-option">W 5 / M 3.5</div>
-                        <div className="size-option">W 5 / M 3.5</div>
-                        <div className="size-option">W 5 / M 3.5</div>
-                        <div className="size-option">W 5 / M 3.5</div>
-                        <div className="size-option">W 5 / M 3.5</div>
+                        <div className="size-options">
+                            {sizes.map((size) => (
+                                <div key={size} className="size-option">
+                                    <input
+                                        type="radio"
+                                        id={size}
+                                        name="size"
+                                        value={size}
+                                        className="size-radio"
+                                        onChange={handleSizeChange}
+                                        checked={selectedSize === size}
+                                    /><label htmlFor={size}>{size}</label>
+                                </div>
+                            ))}
+                        </div>
+
                     </div>
                 </div>
             </div>
