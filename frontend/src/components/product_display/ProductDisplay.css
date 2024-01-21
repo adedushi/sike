@@ -102,19 +102,19 @@
 
 .size-radio+label {
     border: 1px solid #ccc;
-        margin: 3px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        background-color: #fff;
-        transition: border-color 0.3s;
-        border-radius: 4px;
-        min-width: 184.5px;
-        height: 48px;
-        box-sizing: border-box;
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+    border-radius: 4px;
+    min-width: 184.5px;
+    height: 48px;
+    box-sizing: border-box;
 }
 
 .size-radio:checked+label,

@@ -36,3 +36,44 @@
 .divider {
     color: #bbb;
 }
+
+.profile-button-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-button-container>button {
+    background: transparent;
+    border: none;
+    color: #333;
+    
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    border-radius: 6px;
+    padding: 24px 24px 24px 16px;
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.profile-dropdown li {
+    color: #757575;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.profile-dropdown li:hover {
+    background-color: #f2f2f2;
+}
+
+.profile-button-container:hover .profile-dropdown {
+    display: block;
+}
