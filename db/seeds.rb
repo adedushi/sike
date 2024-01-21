@@ -18,8 +18,6 @@ require "open-uri"
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('products')
 
-  # image_urls = ["https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_640/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_640/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png", "https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/af53d53d-561f-450a-a483-70a7ceee380f/dunk-low-womens-shoes-4W2Z5P.png"]
-
   puts "Creating users..."
   User.create!(
     email: 'michael@jordan.com', 
@@ -603,17 +601,6 @@ Product.create!(
   sub_category: "Basketball"
 )
 Product.create!(
-  name: "KD15",
-  subtitle: "Basketball Shoes",
-  description: "Clutch plays and impossible shots are all in a day's work for Kevin Durant. Give him the ball, and he makes the game look easy. The KD15 is stripped down to provide just what he wants: plenty of bounce, a secure fit and a broken-in feel. Less materials underfoot and throughout the upper help minimize distractions while optimizing energy return and all-around comfort—vital for players like KD who never stop moving.",
-  list_price: 150,
-  sale_price: 112.97,
-  article_number: "DC1975-500",
-  division: "Men",
-  category: "Shoes",
-  sub_category: "Basketball"
-)
-Product.create!(
   name: "LeBron NXXT Gen",
   subtitle: "Basketball Shoes",
   description: "Whether you’re a dunk contest-like leaper or a below-the-rim wonder roaming the baseline, feel faster, lower to the court and assured in the LeBron NXXT Gen. We specifically tailored it to meet the demands of today’s fast-paced game, so that you can stay ahead of the opposition with your speed and force in all directions.",
@@ -631,17 +618,6 @@ Product.create!(
   list_price: 170,
   sale_price: nil,
   article_number: "DJ9405-102",
-  division: "Men",
-  category: "Shoes",
-  sub_category: "Basketball"
-)
-Product.create!(
-  name: "Cosmic Unity 3",
-  subtitle: "Basketball Shoes",
-  description: "Better for your game, designed with sustainability in mind—two things you care about—the Cosmic Unity 3 has a secure, lightweight design for a low-to-the-ground feel. It gives you cloud-like cushioning for explosive speed and quick changes in direction, the difference-makers in a game that’s becoming more extraterrestrial.",
-  list_price: 170,
-  sale_price: nil,
-  article_number: "DV2757-005",
   division: "Men",
   category: "Shoes",
   sub_category: "Basketball"
@@ -1493,17 +1469,17 @@ Product.create!(
   category: "Shoes",
   sub_category: "Lifestyle"
 )
-# Product.create!(
-#   name: "Nike Court Royale 2",
-#   subtitle: "Women's Shoe",
-#   description: "A flash from the past, the Nike Court Royale 2 features the same design that has rocked the streets since the late '70s. Suede on the upper feels soft and is easy to wear, while the large retro Swoosh adds throwback appeal. To top it off, the modernized herringbone sole puts a modern twist on the classic look.",
-#   list_price: 65,
-#   sale_price: nil,
-#   article_number: "CZ0218-001",
-#   division: "Women",
-#   category: "Shoes",
-#   sub_category: "Lifestyle"
-# )
+Product.create!(
+  name: "Nike Court Royale 2",
+  subtitle: "Women's Shoe",
+  description: "A flash from the past, the Nike Court Royale 2 features the same design that has rocked the streets since the late '70s. Suede on the upper feels soft and is easy to wear, while the large retro Swoosh adds throwback appeal. To top it off, the modernized herringbone sole puts a modern twist on the classic look.",
+  list_price: 65,
+  sale_price: nil,
+  article_number: "CZ0218-001",
+  division: "Women",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
 Product.create!(
   name: "Nike Victori One",
   subtitle: "Women's Slides",
@@ -1789,6 +1765,17 @@ Product.create!(
   division: "Women",
   category: "Shoes",
   sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Cosmic Unity 3",
+  subtitle: "Basketball Shoes",
+  description: "Better for your game, designed with sustainability in mind—two things you care about—the Cosmic Unity 3 has a secure, lightweight design for a low-to-the-ground feel. It gives you cloud-like cushioning for explosive speed and quick changes in direction, the difference-makers in a game that’s becoming more extraterrestrial.",
+  list_price: 170,
+  sale_price: nil,
+  article_number: "DV2757-005",
+  division: "Women",
+  category: "Shoes",
+  sub_category: "Basketball"
 )
 Product.create!(
   name: "Sabrina 1 'Beyond The Game'",
@@ -2241,6 +2228,849 @@ Product.create!(
   category: "Clothing",
   sub_category: "Bottoms"
 )
+Product.create!(
+  name: "Nike Air Force 1 LE",
+  subtitle: "Big Kids' Shoes",
+  description: "This is what legends are made of. The Nike Air Force 1 LE brings back the ’82 hardwood icon into an everyday style in all-white or all-black. The durability, feel and Air are still there for those who love a classic.",
+  list_price: 90,
+  sale_price: nil,
+  article_number: "DH2920-111",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Air Jordan 1 Low SE",
+  subtitle: "Big Kids' Shoes",
+  description: "Where's that cool breeze coming from? Oh, it's you in these icy AJ1s! These season-ready kicks come with a bevy of wintery details: iced clear outsole, 'frozen' textured leather overlays, and that glitter-filled Swoosh inspired by a swirling snow globe. Shake up your winter look.",
+  list_price: 95,
+  sale_price: nil,
+  article_number: "FQ9112-100",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Air Force 1",
+  subtitle: "Big Kids' Shoes",
+  description: "Kick it in comfort in the Nike Air Force 1. Durable matte leather and ripstop textiles pair with reflective details for a sturdy construction that's ready for wherever playtime takes you. Plus, a translucent outsole and Nike Air cushioning give you the timeless style and comfort that continues to make the AF1 a slam dunk.",
+  list_price: 100,
+  sale_price: 85.97,
+  article_number: "FV3980-001",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Air Jordan 1 Mid SE",
+  subtitle: "Big Kids' Shoes",
+  description: "What's that cool breeze comin' in? Oh, it's you in these icy J's! This season-ready pair comes with a bevy of special details: an iced clear outsole, 'frozen' textured leather overlays, and that glitter-filled Swoosh inspired by the mesmerizing swirl of a snow globe. Shake up your winter look.",
+  list_price: 120,
+  sale_price: nil,
+  article_number: "FQ9117-400",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Air Jordan 1 Mid",
+  subtitle: "Big Kids' Shoes",
+  description: "This iteration of the AJ1 reimagines Mike's first signature model with a fresh mix of colors. Premium materials, soft cushioning and a padded ankle collar offer total support and celebrate the shoe that started it all.",
+  list_price: 110,
+  sale_price: nil,
+  article_number: "DQ8423-511",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Air Jordan 1 Low",
+  subtitle: "Big Kids' Shoes",
+  description: "An iconic look that lasts. This AJ1 pairs the classic design of the original with premium materials that will keep you going all day.",
+  list_price: 90,
+  sale_price: 76.97,
+  article_number: "553560-140",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Dunk Low",
+  subtitle: "Big Kids' Shoes",
+  description: "Show love to the ‘80s with the Nike Dunk Low. From the super durable build to the shoe’s classic shape and feel, we honor this hardwood icon that’ll fit easily into your kicks collection and is always ready to play.",
+  list_price: 90,
+  sale_price: 69.97,
+  article_number: "DH9765-104",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Court Legacy",
+  subtitle: "Big Kids' Shoes",
+  description: "The Nike Court Legacy serves up style rooted in tennis culture. They are durable and comfy with heritage stitching and a retro Swoosh. When you pull these on—it’s game, set, match.",
+  list_price: 55,
+  sale_price: 28.97,
+  article_number: "DA5380-119",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Air Force 1",
+  subtitle: "Big Kids' Shoes",
+  description: "The Nike AF1s are a legend. First on the basketball courts in the '80s. Now wearable everywhere from school to the playground. They've been an icon for decades—meaning a long time! Smooth durable leather lasts for many days of play. Fun colors bring an extra push to get you moving outside.",
+  list_price: 90,
+  sale_price: 68.97,
+  article_number: "DV7762-101",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Dunk Low",
+  subtitle: "Big Kids' Shoes",
+  description: "Designed for basketball but adopted by skaters, the Nike Dunk Low helped define sneaker culture. Now this mid-'80s icon is an easy score for your closet. With ankle padding and durable rubber traction, these are a slam dunk whether you're learning to skate or getting ready for school.",
+  list_price: 90,
+  sale_price: nil,
+  article_number: "FB9109-300",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Air Max Plus",
+  subtitle: "Big Kids' Shoes",
+  description: "Who says kids don't deserve big cushioning? Not us. Get a taste of our legendary Tuned Air technology with the Nike Air Max Plus. From the school yard to your backyard, these comfy kicks are ready to play with breathable mesh fabric up top and a durable rubber sole underfoot. Plus, wavy design lines and iconic plastic accents celebrate bold style.",
+  list_price: 145,
+  sale_price: nil,
+  article_number: "CD0609-024",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Dunk Low",
+  subtitle: "Big Kids' Shoes",
+  description: "Created for the hardwood but taken to the streets, this ‘80s basketball icon returns with smooth matte finished overlays and original flair. With its classic design, the Nike Dunk channels vintage style while its padded, low-cut collar and gum outsole lets you take your game anywhere—in comfort.",
+  list_price: 90,
+  sale_price: nil,
+  article_number: "FV0374-100",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Dunk Low",
+  subtitle: "Big Kids' Shoes",
+  description: "Whether you're a hooper, a skater or you just love kicks, the Nike Dunk Low has been a fave among athletes for decades. Durable synthetic leather gives you a classic '80s feel while the rubber sole offers grip and traction.",
+  list_price: 100,
+  sale_price: nil,
+  article_number: "FV0365-100",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Flex Runner 2",
+  subtitle: "Big Kids' Road Running Shoes",
+  description: "Running shoes made easy! The Nike Flex Runner 2 is for the kid on the go who loves to play all day—from gym class to a sprint down the block. They're lace-free, meaning super quick to slip on and off. Who’s ready to race?",
+  list_price: 52,
+  sale_price: nil,
+  article_number: "DJ6038-002",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Dunk Low",
+  subtitle: "Big Kids' Shoes",
+  description: "If you love old-school hoops, you'll love this Nike Dunk. Thoughtfully made with durable synthetic leather for a classic court feel, these kicks honor a hardwood icon with a design you can easily rock from class to the park and everywhere in between.",
+  list_price: 90,
+  sale_price: nil,
+  article_number: "FV0373-001",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike Dunk Low",
+  subtitle: "Big Kids' Shoes",
+  description: "The Nike Dunk Low is an easy score for your closet. This mid-‘80s hoops icon returns with super-durable construction and original colors. With ankle padding and rubber traction, this one is a slam dunk.",
+  list_price: 90,
+  sale_price: nil,
+  article_number: "CW1590-100",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Air Max 1",
+  subtitle: "Big Kids' Shoes",
+  description: "With its easygoing lines, heritage track look and of course, visible Air cushioning, the Nike Air Max 1 is the perfect finish to any outfit. The rich mixture of materials adds depth while making it a durable and lightweight shoe for everyday wear.",
+  list_price: 100,
+  sale_price: nil,
+  article_number: "DZ3307-106",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Lifestyle"
+)
+Product.create!(
+  name: "Nike G.T. Cut 3",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "Ready to zigzag across the court with ease? Start by lacing up the Nike G.T. Cut 3. Made for a new generation of players, its advanced traction helps give you the grip you need to shake, stop and cross up defenders as you fly to the hoop. Light and springy foam helps cushion every step so you can cut and create space in comfort. Plus, getting game ready is easy with the wide collar opening—just grab the loops to pull these on and lace 'em up. This is the future of hoops.",
+  list_price: 95,
+  sale_price: nil,
+  article_number: "FD7033-101",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Air Jordan Legacy 312 Low",
+  subtitle: "Big Kids' Shoes",
+  description: "The Air Jordan Legacy 312 celebrates MJ's legacy with this shout-out to Chicago's 312 area code. The design creates a modern mash-up of iconic Jordan elements.",
+  list_price: 100,
+  sale_price: nil,
+  article_number: "CD9054-146",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Nike Air More Uptempo",
+  subtitle: "Big Kids' Shoes",
+  description: "One thing stands out about the Nike Air More Uptempo. Can you guess what that might be? Need a hint? It's all about the A-I-R! These everyday shoes were in a league of their own in the '90s. Now, they're ready to help you blaze a new trail with the swag of a legend and the lasting comfort of Air cushioning.",
+  list_price: 140,
+  sale_price: nil,
+  article_number: "FJ2846-100",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Giannis Freak 4",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "Put up monster numbers. Feel like an MVP. And now, play like a champ with the Freak 4. Giannis’ 4th signature shoe comes packed with the finest of the Freak’s game. Made to feel ultra-comfy and fast on the court, plus details designed just for the All-Star, carry the swag of everything Giannis when it’s time to hoop.",
+  list_price: 105,
+  sale_price: 71.97,
+  article_number: "DQ0553-103",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Air Jordan XXXVII",
+  subtitle: "Big Kids' Shoes",
+  description: "You've got the hops and the speed—lace up in shoes that enhance what you bring to the court. The latest AJ is all about takeoffs and landings, with multiple Air units to get you off the ground and our signature Formula 23 foam to cushion your impact. Up top, you'll find layers of tough, reinforced leno-weave fabric that'll keep you contained—and leave your game uncompromised—no matter how fast you move.",
+  list_price: 140,
+  sale_price: 70.97,
+  article_number: "DD7421-100",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Luka 2 'The Pitch'",
+  subtitle: "Big Kids' Shoes",
+  description: "Luka is known for his basketball brilliance, but soccer holds a special place in his heart. 'The Pitch' is an homage to Luka’s time as a pro baller in Madrid and his childhood hero’s iconic cleats. Designed for game play, they’re built to help support your step-backs, side-steps and quick-stop action. Bright colors and swaths of animal print make sure you stand out on the court, showcasing your skills—and your style.",
+  list_price: 100,
+  sale_price: 77.97,
+  article_number: "FQ9045-800",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Nike Team Hustle D 11 SE",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "Meet the ultimate basketball and recess shoe. Whether you're heading to team practice or chasing friends on the playground, the Nike Team Hustle D 11 covers all of playtime. Our top priority with the 11th edition of this series was to make these super easy to take on and off. Elastic laces help give you a wide opening while a big strap secures your fit. Plus, the cushioning is more plush than previous editions to help you play your best.",
+  list_price: 65,
+  sale_price: 55.97,
+  article_number: "FN6676-300",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Nike Air Zoom Crossover",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "Our first basketball shoe inspired by ladies of the league is made for ALL young hoopers to dominate their game. The Nike Air Zoom Crossover, named after a favorite move, brings an extra bounce to your step with Zoom Air while you fly sky high on the court.",
+  list_price: 80,
+  sale_price: nil,
+  article_number: "DC5216-104",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Giannis Immortality 2",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "The Giannis Immortality 2 takes after one of basketball’s greats. Built to last wherever you play, you'll feel confident with every dribble—whether it’s game time or practice. Who’s ready to become the next immortal on the court?",
+  list_price: 77,
+  sale_price: nil,
+  article_number: "DQ1943-102",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Giannis Freak 5",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "Giannis' superpower abilities are on full display every time he steps on the court. Enter the Freak 5. Stacked with speed for quick first steps and stuffed with springy cushioning that can withstand the all-game grind, his signature shoe lets you feel like the Greek Freak. So go ahead and blow past your friends on your way to the hoop.",
+  list_price: 110,
+  sale_price: nil,
+  article_number: "DZ4486-004",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "LeBron Witness 7",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "When opponents face LeBron James, they know they're in trouble. Feel like one of the game's greats with lightweight support in all the right places so you can move confidently with every run and jump. A big Max Air unit brings the cushioning you need to fly around the court, while repping everything LeBron.",
+  list_price: 97,
+  sale_price: nil,
+  article_number: "DQ8650-005",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Giannis Freak 5",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "Giannis' superpower abilities are on full display every time he steps on the court. Enter the Freak 5. Stacked with speed for quick first steps and stuffed with springy cushioning that can withstand the all-game grind, his signature shoe lets you feel like the Greek Freak. So go ahead and blow past your friends on your way to the hoop.",
+  list_price: 110,
+  sale_price: 76.97,
+  article_number: "DZ4486-500",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Nike Air Zoom Crossover 2 SE",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "What's the key to great handles? Footwork. When your feet move fast, you move fast. Designed and refined for everyone with insights from female athletes, this iteration is lighter, bouncier and cushier than the first Crossover. Like little pillows hugging your ankles, the padded collars help give you the extra support and cushioning you need to run 1 more drill or make 1 more cut and dive toward the basket.",
+  list_price: 87,
+  sale_price: 73.97,
+  article_number: "FN6675-500",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Nike Team Hustle D 11",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "Ready for new basketball shoes? How about for gym class or just playing outside? Meet the Nike Team Hustle D 11. With this edition of our Team Hustle D series, our top priority is kicks that are super easy to take on and off. Elastic laces give you a wide opening while a big strap secures your fit. Plus, you get plush cushioning. The ultimate basketball and recess shoe is back and ready to play.",
+  list_price: 60,
+  sale_price: nil,
+  article_number: "DV8996-602",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Nike Air Zoom Crossover 2",
+  subtitle: "Big Kids' Basketball Shoes",
+  description: "This just in—the sky is no longer the limit! You are limitless and ready to take your game to the next level. Tested by female athletes (and ready for everyone), these mid-top basketball shoes have bouncy cushioning in all the right places. Plus, the sawtooth tread pattern gives you the grip you need to confuse your opponents with every crossover.",
+  list_price: 82,
+  sale_price: nil,
+  article_number: "FB2689-600",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Basketball"
+)
+Product.create!(
+  name: "Nike Air Zoom Pegasus 40",
+  subtitle: "Big Kids' Road Running Shoes",
+  description: "40 years. Generations of running. The Pegasus 40 reps the past and future of Nike running. Whether you're gearing up for a school track meet, track practice or fun runs (like your gym class mile), this shoe is for runners of all levels. They're breathable so your feet stay cool with every lap. Zoom Air and bouncy foam team up for the cushioning you need to feel comfortable with every stride. It's time to fly!",
+  list_price: 105,
+  sale_price: nil,
+  article_number: "DX2498-006",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Star Runner 4 SE",
+  subtitle: "Big Kids' Shoes",
+  description: "Get out the door fast with a little help from the Star Runner. Designed for easy on and off, an extended heel helps you stretch the opening out wide so you can pull these runners on in a flash. Soft cushioning in the midsole provides a comfortable, springy feel so playing a little longer is always an option. The tread grabs at pavement, grass and gravel to give extra grip while a rubber-wrapped toe toughens up the construction, making these Star Runners ready for the long haul.",
+  list_price: 60,
+  sale_price: 42.97,
+  article_number: "FJ1805-300",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike MD Valiant",
+  subtitle: "Big Kids' Shoes",
+  description: "These everyday kicks throw it back by mashing up details from ‘80s running shoes. Plus, did you know? The Nike MD Valiant is full of history. They're named after the car that Nike's co-founder sold shoes out of during the early days—the '64 Valiant.",
+  list_price: 65,
+  sale_price: 56.97,
+  article_number: "CN8558-111",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Run Flow",
+  subtitle: "Big Kids' Running Shoes",
+  description: "Are you a kid who likes to run the moment you get out of bed? Whether it's heading to school, recess or favorite afternoon activities, you know how much fun running is. The Nike Run Flow helps you do all that with supersoft and responsive cushioning underfoot. This lightweight and breathable shoe also has easy-to-use toggle lacing so you can get out the door fast because why does fun have to wait?",
+  list_price: 80,
+  sale_price: nil,
+  article_number: "DR0472-101",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Infinity Flow",
+  subtitle: "Big Kids' Running Shoes",
+  description: "What separates the Infinity Flow from the rest of the pack? For starters, we stacked it with soft and bouncy foam to help absorb impact and cushion your every stride. Plus, a breathable mesh upper helps keep your feet cool as you burn through each mile.",
+  list_price: 92,
+  sale_price: nil,
+  article_number: "FD6058-002",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Free Run 2",
+  subtitle: "Big Kids' Shoes",
+  description: "Comfy, flexible and super easy to wear—the Nike Free Run 2 transforms a running shoe into all-day play-ready shoes. The deep grooves in the sole are the signature of the Free’s “barefoot-like” feel. With plush details and soft foam underfoot, you can count on these versatile low-tops from class to playtime and everywhere in between.",
+  list_price: 80,
+  sale_price: 62.97,
+  article_number: "DD0163-101",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Air Zoom Arcadia 2",
+  subtitle: "Big Kids' Road Running Shoes",
+  description: "Race day is every day! Get those feel-good, starting line vibes when you pull on the Nike Air Zoom Arcadia 2. Jog, run or sprint with an extra push from our responsive Zoom Air cushioning. An improved fit up top makes sure it’s not too tight or loose while you go the extra mile.",
+  list_price: 77,
+  sale_price: nil,
+  article_number: "DM8491-102",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Free Run 2",
+  subtitle: "Big Kids' Shoes",
+  description: "Comfy, flexible and super easy to wear—the Nike Free Run 2 transforms a running shoe into all-day play-ready shoes. The deep grooves in the sole are the signature of the Free’s “barefoot-like” feel. With plush details and soft foam underfoot, you can count on these versatile low-tops from class to playtime and everywhere in between.",
+  list_price: 80,
+  sale_price: 56.97,
+  article_number: "DD0163-100",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Revolution 6",
+  subtitle: "Big Kids' Road Running Shoes",
+  description: "We prioritize comfort, especially for our growing athletes. Made with 20% recycled content by weight, you can take these lightweight, breathable running shoes from all-day play to anytime wear and even track practice. Lightweight, breathable and cushioned for growing feet, the race starts now.",
+  list_price: 65,
+  sale_price: 45.97,
+  article_number: "DD1096-608",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Omni Multi-Court",
+  subtitle: "Big Kids' Indoor Court Shoes",
+  description: "What’s Omni, you ask? It means universal, inclusive and all—like for all your indoor sport needs. Durable and lightweight, they help make moving fast feel easy. Choose their favorite indoor court activity—volleyball, basketball, tennis, handball, or gym class—and lace up!",
+  list_price: 62,
+  sale_price: nil,
+  article_number: "DM9027-001",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Tanjun EasyOn",
+  subtitle: "Big Kids' Shoes",
+  description: "Find your way to adventure fast with the Nike Tanjun EasyOn. The hands-free collapsible heel and extended tab let you slip them on and hit the road in seconds. A wide base, flex grooves and foam underfoot all work together so you can run, jump and play with confidence.",
+  list_price: 65,
+  sale_price: nil,
+  article_number: "DX9041-001",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Flex Runner 2",
+  subtitle: "Big Kids' Road Running Shoes",
+  description: "Running shoes made easy! The Nike Flex Runner 2 is for the kid on the go who loves to play all day—from gym class to a sprint down the block. They're lace-free, meaning super quick to slip on and off. Who’s ready to race?",
+  list_price: 52,
+  sale_price: nil,
+  article_number: "DJ6038-400",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Star Runner 4",
+  subtitle: "Big Kids' Road Running Shoes",
+  description: "Because ice-cream trucks, games of tag and races to the end of the street and back can only wait for so long, we made it easy for you to slip the Star Runner on and get going. Soft cushioning in the midsole provides a comfortable, springy feel so every skip, hop and stride you take is one closer to the finish line. The tread grabs at pavement, grass and gravel to give you extra grip while a rubber-wrapped toe toughens up the construction so you can go further in the same pair of Star Runners.",
+  list_price: 57,
+  sale_price: nil,
+  article_number: "DX7615-400",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Pegasus 40",
+  subtitle: "Big Kids' Road Running Shoes",
+  description: "The Pegasus 40 reps the past and future of Nike running. Whether you're gearing up for a school track meet or just running around the playground, these shoes will help get you there. Breathable on top and bouncy on bottom, the lightweight design flexes with your foot so you comfortably cut, corner and spring into action when it's time to play.",
+  list_price: 105,
+  sale_price: 89.97,
+  article_number: "FV3645-381",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Revolution 7",
+  subtitle: "Big Kids' Running Shoes",
+  description: "Flash, dash and blast into every day with the help of these Revolution Running Shoes that are made especially for fun. No, they're not loaded with sugar or fireworks, but they do come in awesome colors and designs that'll have you reaching for them every day of the year.",
+  list_price: 65,
+  sale_price: nil,
+  article_number: "FB7689-004",
+  division: "Kids",
+  category: "Shoes",
+  sub_category: "Running"
+)
+Product.create!(
+  name: "Nike Sportswear",
+  subtitle: "Big Kids' Cotton T-Shirt",
+  description: "The Nike Sportswear T-Shirt is made of cotton for all-day comfort.",
+  list_price: 20,
+  sale_price: nil,
+  article_number: "AR5252-126",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Jordan Sneaker School Jumpman Tee",
+  subtitle: "Big Kids' (Boys) Tee",
+  description: "Wear the historic 1988 photo that inspired the icnonic Jumpman logo, Michael Jordan flying through the air on the front of this soft poly jersey knit tee. It has a little extra weight for a little extra cozy, a regular fit and a tagless crewneck for a comfy feel. Pair this tee with your favorite Jordan bottoms and kicks for a complete head-to-toe look or your favorite jeans for a cool, casual look.",
+  list_price: 32,
+  sale_price: 24.97,
+  article_number: "95C421-023",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Jordan",
+  subtitle: "Big Kids' (Boys') Tank",
+  description: "The Jordan Tank is everything—smooth, breezy and comfy. With hoops style and a big DNA logo, it's hard to go wrong with this warm-weather style.",
+  list_price: 58,
+  sale_price: nil,
+  article_number: "95A773-023",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Nike Baseball",
+  subtitle: "Big Kids' (Boys') T-Shirt",
+  description: "For some of us, it's more than a game. Show everyone what it means to you in this classic cotton tee.",
+  list_price: 20,
+  sale_price: nil,
+  article_number: "B11377P387-DGH",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Jordan",
+  subtitle: "Big Kids' Air Jordan Time Out T-Shirt",
+  description: "Rep Jumpman style in the Air Jordan Time Out T-Shirt, featuring graphic logo prints on a classic tee.",
+  list_price: 28,
+  sale_price: nil,
+  article_number: "95C065-001",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Jordan Air Out Tee",
+  subtitle: "Big Kids T-Shirt",
+  description: "Get out and catch some air in this classic tee, made of smooth jersey knit fabric with a regular fit and a tagless ribbed crewneck for a comfortable feel that lasts all day everyday.",
+  list_price: 28,
+  sale_price: nil,
+  article_number: "95C815-EF9",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Nike Dri-FIT Trophy",
+  subtitle: "Big Kids' (Boys') Training Top",
+  description: "What do we love about this Nike active top? Everything! Sweat doesn’t stand a chance against it, meaning you can rock it with confidence when shooting hoops, going for a run or even when powering through homework after school. The possibilities are endless.",
+  list_price: 20,
+  sale_price: 16.97,
+  article_number: "DQ9020-010",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Nike Pro Dri-FIT",
+  subtitle: "Big Kids' (Boys') Long-Sleeve Top",
+  description: "From the court to the field or even the backyard, this top helps you feel like a champ. The long-sleeve can be worn alone or as an underlayer so you can go all out when it’s play time. This product is made with at least 75% recycled polyester fibers.",
+  list_price: 30,
+  sale_price: 16.97,
+  article_number: "DM8529-091",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Nike Sportswear Culture of Basketball",
+  subtitle: "Big Kids' T-Shirt",
+  description: "Here's the game plan for on and off the court: Try new things (take more shots), be nice (share the court) and have fun (cross up your friends). Do all three in the comfort of this soft cotton tee.",
+  list_price: 32,
+  sale_price: 27.97,
+  article_number: "FD3982-410",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Air Jordan 11 Vertical Neo Tee",
+  subtitle: "Big Kids T-Shirt",
+  description: "Complement your AJ 11's with this classic yet sleek tee, made of jersey knit fabric in a regular fit you can move and play freely in and the ribbed crewneck is tagless for a comfy feel.",
+  list_price: 28,
+  sale_price: nil,
+  article_number: "45C952-001",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Nike Sportswear",
+  subtitle: "Big Kids' T-Shirt",
+  description: "It's no secret that we love Pegasus (we named a shoe after this Greek myth, after all). Now, you can ride off into adventure with your own winged stallion with this relaxed cotton tee. Slightly dropped shoulders and a loose fit through the body make sure you have plenty of room to play.",
+  list_price: 38,
+  sale_price: 21.97,
+  article_number: "FJ6398-410",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Nike Pro Dri-FIT",
+  subtitle: "Big Kids' (Boys') Short-Sleeve Top",
+  description: "Game time! The Nike Pro Dri-FIT Top helps you feel like a champ. This classic-fit shirt can be worn alone or as an under-layer so you can go all out comfortably. This product is made with at least 75% recycled polyester fibers.",
+  list_price: 25,
+  sale_price: 16.97,
+  article_number: "DM8528-100",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Nike Sportswear",
+  subtitle: "Big Kids' (Girls') Cropped T-Shirt",
+  description: "Keep it comfy in the Nike Sportswear T-Shirt. This classic cotton tee in a shorter length is all about the casual vibes.",
+  list_price: 20,
+  sale_price: nil,
+  article_number: "DA6925-620",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Jordan 23 Flight",
+  subtitle: "Big Kids' Graphic T-Shirt",
+  description: "Keep it simple yet classic in this tee, which is made of soft jersey knit fabric, dropped shoulders create a relaxed, modern fit and a tagless neck provides comfy wear.",
+  list_price: 25,
+  sale_price: nil,
+  article_number: "45C990-001",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Jordan Anti-Gravity Machines Tee",
+  subtitle: "Big Kids T-Shirt",
+  description: "Complement your Air Jordans with this tee, which is made of jersey knit fabric in a classic fit, has a regular fit and the ribbed crewneck is tagless for a comfy feel.",
+  list_price: 32,
+  sale_price: nil,
+  article_number: "95C737-001",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Tops"
+)
+Product.create!(
+  name: "Nike Sportswear Favorites",
+  subtitle: "Big Kids' (Girls') Tie-Dye Leggings",
+  description: "Swirling tie-dye in blooms of spring colors on these leggings is a whole vibe. Run, jump and play with comfort and ease right into warmer days.",
+  list_price: 40,
+  sale_price: 27.97,
+  article_number: "DV0066-010",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Sportswear",
+  subtitle: "Big Kids' (Girls') Tracksuit",
+  description: "Elevate your game with this perfect Swoosh pairing. The zip-up jacket builds on vintage Nike style to give you a classic fit that hits at the top of the hips. The high-waisted pants give you the coverage you crave, plus flare at the bottom. Swoosh branded piping completes the set—wear them together or mix them in with your favorite Nike gear.",
+  list_price: 85,
+  sale_price: 72.97,
+  article_number: "FD2948-113",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Sportswear",
+  subtitle: "Big Kids' (Girls') Woven Pants",
+  description: "There's a special secret you'll love about these pants. Fold over the elastic waistband for the length and look you want, and then…ta-da! See the fun wave of Swoosh logos around the inner waistband. Wear these durable woven pants any day, and for the full look, pair with our matching track jacket.",
+  list_price: 50,
+  sale_price: 42.97,
+  article_number: "FB1269-450",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Sportswear Club Fleece",
+  subtitle: "Big Kids' Open-Hem Pants",
+  description: "Run like the wind in these brushed fleece, open hem cuffs. Smooth on the outside, brushed soft on the inside, this lightweight fleece is an easy layer when you want a little extra warmth. Enjoy them whether you're on the court or in the classroom counting down the minutes till you can go play again.",
+  list_price: 45,
+  sale_price: nil,
+  article_number: "FD3010-063",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike",
+  subtitle: "Big Kids' (Boys') Poly+ Training Pants",
+  description: "Don't know which pants to wear? The Nike Training Pants make that choice easy. These soft, everyday sweats will help you stay warm wherever you go. Psst, there’s also a secret zippered pocket on the back for small items.",
+  list_price: 40,
+  sale_price: nil,
+  article_number: "DM8546-010",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Air",
+  subtitle: "Big Kids' Pants",
+  description: "Look to these sweats to keep you in the race when chilly temps try to slow you down. Our midweight brushed fleece feels extra soft on the inside and smooth on the outside, helping you stay cozy while keeping its structured shape. A natural around your favorite sneakers, these comfy sweats help show your love for Nike Air and all things sport.",
+  list_price: 75,
+  sale_price: 56.97,
+  article_number: "FD3216-133",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Therma-FIT",
+  subtitle: "Big Kids' Winterized Pants",
+  description: "Thaw out your legs before practice or game day with these toasty winterized pants. Extra smooth on the outside and forever fuzzy on the inside, our thermal fabric is perfect for playing in the cold. That means you can stay out longer in lower temps—because the fun shouldn't end when cold weather arrives.",
+  list_price: 60,
+  sale_price: 35.97,
+  article_number: "FJ6048-325",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Jordan",
+  subtitle: "Big Kids' (Girls') Leggings",
+  description: "The Jordan Leggings are soft and stretch-tastic so you can move free and easy all day.",
+  list_price: 30,
+  sale_price: nil,
+  article_number: "45A438-023",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Sportswear Club Fleece",
+  subtitle: "Big Kids' Winterized Pants",
+  description: "Combat cold weather with the help of these seriously soft sweats. Plush fleece has a thick, wooly texture that's super fun to wear (and touch!), and the crinkle woven taping on the sides and thick, stretchy ribbing on the cuffs makes them even better. Now you're ready for anything.",
+  list_price: 55,
+  sale_price: 46.97,
+  article_number: "FJ6021-325",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Sportswear",
+  subtitle: "Big Kids' (Boys') Jersey Joggers",
+  description: "The Nike Sportswear Joggers are ready to chill. Jersey fabric feels soft and lightweight in a relaxed, comfy fit.",
+  list_price: 35,
+  sale_price: nil,
+  article_number: "DA0809-010",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Sportswear Icon Fleece EasyOn",
+  subtitle: "Big Kids' Loose Joggers",
+  description: "The Icon Fleece Joggers are ideal for everything from class to Saturday afternoon adventures. Our midweight brushed fleece feels extra soft on the inside and smooth on the outside, helping you stay cozy while keeping its structured shape. A roomy feel means you stay comfy from morning to night. Plus, our EasyOn pockets help keep your essentials secure—without a zipper!—while you move and play.",
+  list_price: 60,
+  sale_price: 51.97,
+  article_number: "FJ6028-276",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Therma",
+  subtitle: "Big Kids' (Boys') Training Pants",
+  description: "The Nike Therma Pants are more than just a regular pair of sweats. The super-cozy style locks in warmth when it’s time to play. Plus, they have a fit that just feels right.",
+  list_price: 42,
+  sale_price: 24.97,
+  article_number: "CU9082-084",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+Product.create!(
+  name: "Nike Sportswear Club Fleece",
+  subtitle: "Big Kids' Cargo Pants",
+  description: "Keep all your treasures close with these Club Fleece Cargo Pants. Smooth on the outside, brushed soft on the inside, this lightweight fleece is an easy layer when you want a little extra warmth. So go ahead, wear them year-round—that's what they're made for!",
+  list_price: 50,
+  sale_price: nil,
+  article_number: "FD3012-126",
+  division: "Kids",
+  category: "Clothing",
+  sub_category: "Bottoms"
+)
+
+# Product.first(1).each do |product|
+#   i = 1
+#   loop do
+#     begin
+#       photo_url = "https://sike-seeds.s3.amazonaws.com/#{product.article_number}/#{product.article_number}-#{i}.jpg"
+#       puts "Attaching image #{i} for product ##{product.id}"
+#       product.photos.attach(
+#         io: URI.open(photo_url),
+#         filename: "#{product.article_number}-#{i}.jpg"
+#       )
+#       i += 1
+#     rescue OpenURI::HTTPError => e
+#       puts "HTTP Error encountered: #{e.message}"
+#       break if e.message.include?('403 Forbidden')
+#     end
+#   end
+# end
 
   puts "Done!"
 # end

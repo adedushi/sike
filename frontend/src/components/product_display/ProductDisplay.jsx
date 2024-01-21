@@ -11,11 +11,14 @@ const ProductDisplay = () => {
     const { productId } = useParams();
     const dispatch = useDispatch();
     const [error, setError] = useState(null);
-    const [selectedSize, setSelectedSize] = useState("");
+    
+    const thumbnails = [af1_1, af1_2, af1_3, af1_4, af1_5, af1_6, af1_7, af1_8];
+    const [selectedImage, setSelectedImage] = useState(thumbnails[0]);
 
     const sizes = ["W 5 / M 3.5", "W 5.5 / M 4", "W 6 / M 4.5", "W 6.5 / M 5", "W 7 / M 5.5", 
     "W 7.5 / M 6", "W 8 / M 6.5", "W 8.5 / M 7", "W 9 / M 7.5", "W 9.5 / M 8", "W 10 / M 8.5", 
     "W 10.5 / M 9", "W 11 / M 9.5", "W 11.5 / M 10", "W 12 / M 10.5"]
+    const [selectedSize, setSelectedSize] = useState("");
 
     useEffect(() => {
         dispatch(fetchProduct(productId)).catch((err) => {
@@ -38,6 +41,10 @@ const ProductDisplay = () => {
         return <div>Loading...</div>;
     }
 
+    const handleImageChange = (event) => {
+        setSelectedImage(event.target.value);
+    };
+
     const handleSizeChange = (event) => {
         setSelectedSize(event.target.value);
     };
@@ -46,20 +53,26 @@ const ProductDisplay = () => {
     < div className="product-page">
         <div className="left-column">
             <div className="thumbnail-carousel">
-                <img src={af1_1} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_2} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_3} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_4} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_5} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_6} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_7} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_8} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_8} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_8} alt="Thumbnail Image" className="thumbnail" />
-                <img src={af1_8} alt="Thumbnail Image" className="thumbnail" />
+                {thumbnails.map((thumbnail, index) => (
+                    <label key={index} className="thumbnail-label">
+                        <input
+                            type="radio"
+                            name="thumbnail"
+                            value={thumbnail}
+                            onChange={handleImageChange}
+                            checked={selectedImage === thumbnail}
+                            className="thumbnail-radio"
+                        />
+                        <img
+                            src={thumbnail}
+                            alt={`Thumbnail ${index + 1}`}
+                            className={`thumbnail ${selectedImage === thumbnail ? 'selected' : ''}`}
+                        />
+                    </label>
+                ))}
             </div>
             <div className="main-image-container">
-                <img src={af1_1} alt="Main Product Image" className="main-image"/>
+                <img src={selectedImage} alt="Main Product" className="main-image" />
             </div>
         </div>
 

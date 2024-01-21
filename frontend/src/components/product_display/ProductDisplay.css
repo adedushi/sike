@@ -34,9 +34,22 @@
     margin-bottom: 10px;
     cursor: pointer;
     opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.thumbnail-label {
+    border: .1px solid transparent;
+}
+
+.thumbnail-radio {
+    display: none;
 }
 
 .thumbnail:hover {
+    opacity: 1;
+}
+
+.thumbnail.selected {
     opacity: 1;
 }
 

@@ -10,14 +10,13 @@ function ProfileButton({ user }) {
         e.preventDefault();
         dispatch(resetFormState());
         dispatch(sessionActions.logout());
-        
     };
 
     return (
         <div className="profile-button-container">
             <button aria-label="Profile menu">
-                Hi, {user.firstName[0].toLowerCase()}
                 <i className="fa-solid fa-angle-down"></i>
+                {/* replace i with profile image */}
             </button>
             <ul className="profile-dropdown">
                 <li>Orders</li>
