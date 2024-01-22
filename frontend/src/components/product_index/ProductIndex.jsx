@@ -4,6 +4,7 @@ import { fetchProducts } from "../../store/products";
 import { Link, useSearchParams } from "react-router-dom"
 import './ProductIndex.css'
 import crocs from './crocs.jpg'
+import { af1_1 } from "../product_display/product_images";
 
 const ProductIndex = () => {
     const dispatch = useDispatch();
@@ -30,7 +31,9 @@ const ProductIndex = () => {
     }
 
     return (
-    <div className="product-page">
+    <>
+    <div className="header-offset"></div>
+    <div className="products-page">
         <aside className="filter-sidebar">
             <h2>Lifestyle Shoes</h2>
             <h2>Division</h2>
@@ -40,12 +43,11 @@ const ProductIndex = () => {
                 {products.map((product) => (
                     <div key={product.id} className="product-item" >
                         <Link to={`/products/${product.id}`} className="product-item-link"> 
-                        <img src={crocs} alt="Nike Air Force 1 '07"></img>
-                        <h3>Best Seller</h3>
-                        <p> {product.name} </p>
+                        <img src={product.photosUrl ? product.photosUrl[0] : af1_1 } alt="Nike Air Force 1 '07" loading="lazy"></img>
+                        <h3> {product.name} </h3>
                         <p> {product.subtitle} </p>
                         <h3 > {USDollar.format(product.listPrice)} </h3>
-                        <h3 > {USDollar.format(product.salePrice)} </h3>
+                        <h3 > {product.salePrice ? USDollar.format(product.salePrice) : null } </h3>
                         <br />
                         </Link>
                     </div>
@@ -53,6 +55,7 @@ const ProductIndex = () => {
             
         </section>
     </div>
+    </>
     );
 }
 

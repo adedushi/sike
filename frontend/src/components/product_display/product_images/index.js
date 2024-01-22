@@ -1,4 +1,4 @@
-import af1_1 from './af1_1.png';
+import af1_1 from './af1_1.jpg';
 import af1_2 from './af1_2.png';
 import af1_3 from './af1_3.png';
 import af1_4 from './af1_4.png';

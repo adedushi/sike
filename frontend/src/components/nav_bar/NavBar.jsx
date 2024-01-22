@@ -22,7 +22,7 @@ const NavBar = () => {
                 <a href="#" className="nav-link active">New & Featured</a>
                 <Link to="products/?division=Men" className="nav-link">Men</Link>
                 <Link to="products/?division=Women" className="nav-link">Women</Link>
-                <a href="#" className="nav-link">Kids</a>
+                <Link to="products/?division=Kids" className="nav-link">Kids</Link>
                 <a href="#" className="nav-link">Sale</a>
             </nav>
             <div className="navbar-section-right">
