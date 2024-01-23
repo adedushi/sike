@@ -18,14 +18,29 @@
     font-weight: 500;
     letter-spacing: 0.007em;
     margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
+    margin-block-end: 0.2em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     display: block;
 }
 
+.product-subtitle{
+    padding-bottom: 4px;
+    display: inline-block;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.product-basic-info{
+    /* border: 1px solid red; */
+    padding-right: 8px;
+    display: block;
+}
+
 .product-basic-info h3,
-.product-description h3
+.product-description h3,
+.size-selection h3
  {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -111,8 +126,9 @@
 .product-info {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    max-width: fit-content;
+    /* align-items: start; */
+    /* max-width: fit-content; */
+    width: 383px;
 }
 
 .size-selection {
@@ -157,30 +173,30 @@
 }
 
 .add-to-bag-btn {
-    /* width: 100%; */
-    padding: 12px;
+    width: 100%;
+    padding: 18px 24px;
     background-color: #111;
     color: white;
-    margin-top: .7rem;
-    border-radius: 20px;
+    border: 1px solid #cacacb;
+    margin: 12px 0px 0px;
+    border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
-    border-style: none;
     letter-spacing: .5px;
+    height: 62px;
 }
 
 .favorite-btn {
-    /* width: 100%; */
-    padding: 12px;
+    width: 100%;
+    padding: 18px 24px;
     background-color: white;
-    border: 5px solid #cacacb;
-    /* color: black; */
-    margin-top: .7rem;
-    border-radius: 20px;
+    border: 1px solid #cacacb;
+    margin: 12px 0px 0px;
+    border-radius: 30px;
     font-size: 1rem;
     cursor: pointer;
-    border-style: none;
     letter-spacing: .5px;
+    height: 62px;
 }
 
 .favorite-btn:hover {
@@ -190,10 +206,6 @@
 
 .heart-icon {
     font-size: 24px;
-}
-
-.favorite-btn{
-    font-size: 14px;
 }
 
 .heart-icon {

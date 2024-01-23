@@ -1,19 +1,23 @@
-import af1_1 from './af1_1.jpg';
-import af1_2 from './af1_2.png';
-import af1_3 from './af1_3.png';
-import af1_4 from './af1_4.png';
-import af1_5 from './af1_5.png';
-import af1_6 from './af1_6.png';
-import af1_7 from './af1_7.png';
-import af1_8 from './af1_8.png';
+import cw2288_111_1 from './CW2288_111_1.jpg';
+import cw2288_111_2 from './CW2288_111_2.jpg';
+import cw2288_111_3 from './CW2288_111_3.jpg';
+import cw2288_111_4 from './CW2288_111_4.jpg';
+import cw2288_111_5 from './CW2288_111_5.jpg';
+import cw2288_111_6 from './CW2288_111_6.jpg';
+import cw2288_111_7 from './CW2288_111_7.jpg';
+import cw2288_111_8 from './CW2288_111_8.jpg';
+import cw2288_111_9 from './CW2288_111_9.jpg';
+import cw2288_111_10 from './CW2288_111_10.jpg';
 
 export {
-    af1_1,
-    af1_2,
-    af1_3,
-    af1_4,
-    af1_5,
-    af1_6,
-    af1_7,
-    af1_8
+cw2288_111_1,
+cw2288_111_2,
+cw2288_111_3,
+cw2288_111_4,
+cw2288_111_5,
+cw2288_111_6,
+cw2288_111_7,
+cw2288_111_8,
+cw2288_111_9,
+cw2288_111_10
 };

@@ -4,7 +4,7 @@ import jordan from './jordan.jpg'
 import './TopBar.css';
 import { resetFormState } from '../../store/form';
 
-function ProfileButton({ user }) {
+function ProfileButton() {
     const dispatch = useDispatch();
 
     const logout = (e) => {

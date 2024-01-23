@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../../store/products";
 import { Link, useSearchParams } from "react-router-dom"
 import './ProductIndex.css'
-import crocs from './crocs.jpg'
-import { af1_1 } from "../product_display/product_images";
+import { cw2288_111_1 } from "../product_display/product_images";
 
 const ProductIndex = () => {
     const dispatch = useDispatch();
@@ -43,7 +42,7 @@ const ProductIndex = () => {
                 {products.map((product) => (
                     <div key={product.id} className="product-item" >
                         <Link to={`/products/${product.id}`} className="product-item-link"> 
-                        <img src={product.photosUrl ? product.photosUrl[0] : af1_1 } alt="Nike Air Force 1 '07" loading="lazy"></img>
+                            <img src={product.photosUrl ? product.photosUrl[0] : cw2288_111_1 } alt={product.name}></img>
                         <h3> {product.name} </h3>
                         <p> {product.subtitle} </p>
                         <h3 > {USDollar.format(product.listPrice)} </h3>

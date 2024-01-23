@@ -3,18 +3,41 @@ import { fetchProduct } from "../../store/products"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './ProductDisplay.css'
-import {af1_1, af1_2, af1_3, af1_4, 
-    af1_5, af1_6, af1_7, af1_8} 
+import {cw2288_111_1, cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5, 
+    cw2288_111_6, cw2288_111_7, cw2288_111_8, cw2288_111_9, cw2288_111_10} 
     from './product_images'
 
 const ProductDisplay = () => {
     const { productId } = useParams();
     const dispatch = useDispatch();
     const [error, setError] = useState(null);
-    const [thumbnails, setThumbnails] = useState([af1_1, af1_2, af1_3, af1_4,
-        af1_5, af1_6, af1_7, af1_8]);
+    const [thumbnails, setThumbnails] = useState([cw2288_111_1, 
+        cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5, 
+        cw2288_111_6, cw2288_111_7, cw2288_111_8,cw2288_111_9,
+        cw2288_111_10])
     
     const [selectedImage, setSelectedImage] = useState(thumbnails[0]);
+
+    // const getSizes = (category, division) => {
+    //     if (category === "Clothing") {
+    //         return ["XS", "S", "M", "L", "XL"];
+    //     } else if (category === "Shoes") {
+    //         let sizes = [];
+    //         let startSize, endSize;
+    //         if (division === "Men") {
+    //             startSize = 6;
+    //             endSize = 14;
+    //         } else if (division === "Women") {
+    //             startSize = 5;
+    //             endSize = 12;
+    //         }
+
+    //         for (let i = startSize; i <= endSize; i += 0.5) {
+    //             sizes.push(i);
+    //         }
+    //         return sizes;
+    //     }
+    // };
 
     const sizes = ["W 5 / M 3.5", "W 5.5 / M 4", "W 6 / M 4.5", "W 6.5 / M 5", "W 7 / M 5.5", 
     "W 7.5 / M 6", "W 8 / M 6.5", "W 8.5 / M 7", "W 9 / M 7.5", "W 9.5 / M 8", "W 10 / M 8.5", 
@@ -79,6 +102,7 @@ const ProductDisplay = () => {
                                 value={thumbnail}
                                 checked={selectedImage === thumbnail}
                                 className="thumbnail-radio"
+                                readOnly
                             />
                             <img
                                 src={thumbnail}
@@ -117,14 +141,16 @@ const ProductDisplay = () => {
                                         /><label htmlFor={size}>{size}</label>
                                     </div>
                                 ))}
+                                <div className="product-button-container">
+                                    <button className="add-to-bag-btn">Add to Bag</button>
+                                    <button className="favorite-btn">Favorite
+                                        <span className="heart-icon">♡</span>
+                                    </button>
+                                </div>
                             </div>
+                            
                         </div>
-                        <div className="product-button-container">
-                            <button className="add-to-bag-btn">Add to Bag</button>
-                            <button className="favorite-btn">Favorite
-                                <span className="heart-icon">♡</span>
-                            </button>
-                        </div>
+
                         <div className="product-description">
                             <h3 className="product-description-text">{product.description}</h3>
                             <br/>

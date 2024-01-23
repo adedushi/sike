@@ -6,24 +6,22 @@ import search from './search.svg'
 import favorite from './favorite.svg'
 import cart from './cart.svg'
 
-import { Layout } from "../../App"
-
 const NavBar = () => {
     return (
         <>
         <TopBar />
         <div className="navbar">
             <div className="navbar-section-left">
-                <Link component={Layout} to='/'>
+                <Link to='/'>
                     <img src={logo} alt="Sike Logo" className="navbar-logo" />
                 </Link>
             </div>
             <nav className="navbar-section-center">
-                <a href="#" className="nav-link active">New & Featured</a>
+                <Link to="#" className="nav-link">New & Featured</Link>
                 <Link to="products/?division=Men" className="nav-link">Men</Link>
                 <Link to="products/?division=Women" className="nav-link">Women</Link>
                 <Link to="products/?division=Kids" className="nav-link">Kids</Link>
-                <a href="#" className="nav-link">Sale</a>
+                <Link to="#" className="nav-link">Sale</Link>
             </nav>
             <div className="navbar-section-right">
                 <div className="search-container">
