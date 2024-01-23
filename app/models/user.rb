@@ -14,7 +14,9 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :cart_items
   has_one_attached :photo
+  
 
   PASSWORD_FORMAT = /\A
     (?=.{8,})          # Must contain 8 or more characters

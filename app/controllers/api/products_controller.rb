@@ -1,10 +1,10 @@
 class Api::ProductsController < ApplicationController
+    
     def index
     @products = Product.all
     @products = Product.where(division: division) if division
     Rails.logger.debug params.inspect
     
-        
     render 'api/products/index'
     end
 

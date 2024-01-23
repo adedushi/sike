@@ -3054,23 +3054,47 @@ Product.create!(
   sub_category: "Bottoms"
 )
 
-# Product.all.each do |product|
-#   i = 1
-#   loop do
-#     begin
-#       photo_url = "https://sike-seeds.s3.amazonaws.com/#{product.article_number}/#{product.article_number}-#{i}.jpg"
-#       puts "Attaching image #{i} for product ##{product.id}"
-#       product.photos.attach(
-#         io: URI.open(photo_url),
-#         filename: "#{product.article_number}-#{i}.jpg"
-#       )
-#       i += 1
-#     rescue OpenURI::HTTPError => e
-#       puts "HTTP Error encountered: #{e.message}"
-#       break if e.message.include?('403 Forbidden')
-#     end
-#   end
-# end
+CartItem.create!(
+  product_id: 1,
+  size: "9.5",
+  quantity: 2,
+  user_id: 1,
+  checked_out: false
+)
+
+CartItem.create!(
+  product_id: 2,
+  size: "10.5",
+  quantity: 3,
+  user_id: 1,
+  checked_out: false
+)
+
+CartItem.create!(
+  product_id: 3,
+  size: "10.5",
+  quantity: 3,
+  user_id: 2,
+  checked_out: false
+)
+
+Product.first(2).each do |product|
+  i = 1
+  while i < 3 do
+    begin
+      photo_url = "https://sike-seeds.s3.amazonaws.com/#{product.article_number}/#{product.article_number}-#{i}.jpg"
+      puts "Attaching image #{i} for product ##{product.id}"
+      product.photos.attach(
+        io: URI.open(photo_url),
+        filename: "#{product.article_number}-#{i}.jpg"
+      )
+      i += 1
+    rescue OpenURI::HTTPError => e
+      puts "HTTP Error encountered: #{e.message}"
+      break if e.message.include?('403 Forbidden')
+    end
+  end
+end
 
   puts "Done!"
 # end
