@@ -10,7 +10,7 @@ const TopBar = () => {
     if (sessionUser) {
         sessionLinks = (
             <>
-            <p>Hi, {sessionUser.firstName}</p>
+            <div className="user-welcome">Hi, {sessionUser.firstName}</div>
             <ProfileButton user={sessionUser} />
             </>
         );

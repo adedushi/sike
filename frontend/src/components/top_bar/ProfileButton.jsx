@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import jordan from './jordan.jpg'
 import './TopBar.css';
 import { resetFormState } from '../../store/form';
 
@@ -14,9 +15,8 @@ function ProfileButton({ user }) {
 
     return (
         <div className="profile-button-container">
-            <button aria-label="Profile menu">
-                <i className="fa-solid fa-angle-down"></i>
-                {/* replace i with profile image */}
+            <button label="profile-menu">
+                <img src={jordan} alt="Profile Avatar" className="profile-avatar" />
             </button>
             <ul className="profile-dropdown">
                 <li>Orders</li>

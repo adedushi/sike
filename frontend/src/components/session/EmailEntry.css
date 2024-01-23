@@ -43,11 +43,12 @@ body {
     font-size: 1rem;
 }
 
-.button-container {
+.session-button-container {
     text-align: right;
 }
 
 .email-form .continue-btn, .email-form .submit-btn {
+    border-style: none;
     width: 25%;
     padding: 12px;
     background-color: #111;

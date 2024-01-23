@@ -11,13 +11,16 @@ const ProductDisplay = () => {
     const { productId } = useParams();
     const dispatch = useDispatch();
     const [error, setError] = useState(null);
+    const [thumbnails, setThumbnails] = useState([af1_1, af1_2, af1_3, af1_4,
+        af1_5, af1_6, af1_7, af1_8]);
     
-    const thumbnails = [af1_1, af1_2, af1_3, af1_4, af1_5, af1_6, af1_7, af1_8, af1_8, af1_8, af1_8, af1_8];
     const [selectedImage, setSelectedImage] = useState(thumbnails[0]);
 
     const sizes = ["W 5 / M 3.5", "W 5.5 / M 4", "W 6 / M 4.5", "W 6.5 / M 5", "W 7 / M 5.5", 
     "W 7.5 / M 6", "W 8 / M 6.5", "W 8.5 / M 7", "W 9 / M 7.5", "W 9.5 / M 8", "W 10 / M 8.5", 
     "W 10.5 / M 9", "W 11 / M 9.5", "W 11.5 / M 10", "W 12 / M 10.5"]
+
+
     const [selectedSize, setSelectedSize] = useState("");
 
     useEffect(() => {
@@ -31,6 +34,13 @@ const ProductDisplay = () => {
     }
 
     let product = useSelector(selectProduct(productId))
+
+    useEffect(() => {
+        if (product && product.photosUrl) {
+            setThumbnails(product.photosUrl);
+            setSelectedImage(thumbnails[0]);
+        }
+    }, [thumbnails, product]);
 
     if (error) {  
         return <div>Error: {error.status} We can&apos;t find the page you are looking for. Sorry for the inconvenience.</div>;
@@ -108,6 +118,12 @@ const ProductDisplay = () => {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                        <div className="product-button-container">
+                            <button className="add-to-bag-btn">Add to Bag</button>
+                            <button className="favorite-btn">Favorite
+                                <span className="heart-icon">♡</span>
+                            </button>
                         </div>
                         <div className="product-description">
                             <h3 className="product-description-text">{product.description}</h3>

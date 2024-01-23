@@ -44,10 +44,10 @@ const EmailEntry = () => {
                         onChange={(e) => setLocalEmail(e.target.value)}
                         required
                     />
-                    <div className="button-container">
+                    <div className="session-button-container">
                         <button type="submit" className="continue-btn">Continue</button>
                     </div>
-                    <div className="button-container">
+                    <div className="session-button-container">
                         <button className="submit-btn" onClick={handleDemoLogin}>Demo User</button>
                     </div>
             </form>

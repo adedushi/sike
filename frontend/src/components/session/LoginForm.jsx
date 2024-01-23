@@ -70,11 +70,11 @@ const LoginForm = () => {
                         required
                     />
                 </div>
-                <div className="button-container">
-                    <button type="submit" className="submit-btn">Sign In</button>
+                <div className="session-button-container">
+                    <button type="submit" className="login-btn">Sign In</button>
                 </div>
-                <div className="button-container">
-                    <button className="submit-btn" onClick={handleDemoLogin}>Demo User</button>
+                <div className="session-button-container">
+                    <button className="login-btn" onClick={handleDemoLogin}>Demo User</button>
                 </div>
             </form>
         </div>

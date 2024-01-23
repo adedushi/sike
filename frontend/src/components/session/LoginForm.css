@@ -66,12 +66,13 @@
     margin-bottom: .25rem;
 }
 
-.button-container {
+.session-button-container {
     text-align: right;
 }
 
-.submit-btn {
-    width: 40%;
+.login-btn {
+    border-style: none;
+    width: 25%;
     padding: 12px;
     background-color: #111;
     color: white;
@@ -81,8 +82,4 @@
     cursor: pointer;
     transition: background-color 0.3s;
     letter-spacing: .5px;
-}
-
-.submit-btn:hover {
-    background-color: #333;
 }

@@ -74,11 +74,11 @@
     margin-bottom: .25rem;
 }
 
-.button-container {
+.session-button-container {
     text-align: right;
 }
 
-.submit-btn {
+.signup-btn {
     width: 40%;
     padding: 12px;
     background-color: #111;
@@ -87,7 +87,7 @@
     border-radius: 20px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-style: none;
     letter-spacing: .5px;
 }
 

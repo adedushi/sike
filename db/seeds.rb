@@ -3054,23 +3054,23 @@ Product.create!(
   sub_category: "Bottoms"
 )
 
-Product.first(10).each do |product|
-  i = 1
-  while i < 5 do
-    begin
-      photo_url = "https://sike-seeds.s3.amazonaws.com/#{product.article_number}/#{product.article_number}-#{i}.jpg"
-      puts "Attaching image #{i} for product ##{product.id}"
-      product.photos.attach(
-        io: URI.open(photo_url),
-        filename: "#{product.article_number}-#{i}.jpg"
-      )
-      i += 1
-    rescue OpenURI::HTTPError => e
-      puts "HTTP Error encountered: #{e.message}"
-      break if e.message.include?('403 Forbidden')
-    end
-  end
-end
+# Product.all.each do |product|
+#   i = 1
+#   loop do
+#     begin
+#       photo_url = "https://sike-seeds.s3.amazonaws.com/#{product.article_number}/#{product.article_number}-#{i}.jpg"
+#       puts "Attaching image #{i} for product ##{product.id}"
+#       product.photos.attach(
+#         io: URI.open(photo_url),
+#         filename: "#{product.article_number}-#{i}.jpg"
+#       )
+#       i += 1
+#     rescue OpenURI::HTTPError => e
+#       puts "HTTP Error encountered: #{e.message}"
+#       break if e.message.include?('403 Forbidden')
+#     end
+#   end
+# end
 
   puts "Done!"
 # end

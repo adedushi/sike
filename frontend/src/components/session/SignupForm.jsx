@@ -107,11 +107,11 @@ function SignupForm() {
                         required
                     />
                 </div>
-                <div className="button-container">
-                    <button type="submit" className="submit-btn">Create Account</button>
+                <div className="session-button-container">
+                    <button type="submit" className="signup-btn">Create Account</button>
                 </div>
-                <div className="button-container">
-                    <button className="submit-btn" onClick={handleDemoLogin}>Demo User</button>
+                <div className="session-button-container">
+                    <button className="signup-btn" onClick={handleDemoLogin}>Demo User</button>
                 </div>
             </form>
         </div>
