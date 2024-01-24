@@ -23,7 +23,6 @@ export const fetchProduct = (productId) => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         dispatch(getProduct(data))
-        return response
     }
 }
 
@@ -33,7 +32,6 @@ export const fetchProducts = (filters) => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         dispatch(getProducts(data.products));
-        return response;
     }
 };
 

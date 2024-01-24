@@ -58,6 +58,7 @@ const ProductDisplay = () => {
 
     let product = useSelector(selectProduct(productId))
 
+
     useEffect(() => {
         if (product && product.photosUrl) {
             setThumbnails(product.photosUrl);
@@ -82,6 +83,11 @@ const ProductDisplay = () => {
     const handleSizeChange = (event) => {
         setSelectedSize(event.target.value);
     };
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        return;
+    }
 
         const USDollar = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -142,7 +148,7 @@ const ProductDisplay = () => {
                                     </div>
                                 ))}
                                 <div className="product-button-container">
-                                    <button className="add-to-bag-btn">Add to Bag</button>
+                                    <button className="add-to-bag-btn" onClick={handleSubmit}>Add to Bag</button>
                                     <button className="favorite-btn">Favorite
                                         <span className="heart-icon">♡</span>
                                     </button>

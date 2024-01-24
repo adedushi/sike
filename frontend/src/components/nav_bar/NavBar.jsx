@@ -5,14 +5,18 @@ import logo from './logo.svg'
 import search from './search.svg'
 import favorite from './favorite.svg'
 import cart from './cart.svg'
+import { useDispatch } from "react-redux"
+import { resetFormState } from "../../store/form"
 
 const NavBar = () => {
+    const dispatch = useDispatch();
+
     return (
         <>
         <TopBar />
         <div className="navbar">
             <div className="navbar-section-left">
-                <Link to='/'>
+                <Link to='/' onSubmit={dispatch(resetFormState())}>
                     <img src={logo} alt="Sike Logo" className="navbar-logo" />
                 </Link>
             </div>
@@ -29,7 +33,7 @@ const NavBar = () => {
                     <input type="text" placeholder="Search"/>
                 </div>
                 <Link to="#" className="favorite-icon"><img src={favorite} /></Link>
-                <a href="#" className="cart-icon"><img src={cart} /></a> 
+                <Link to='/cart' className="cart-icon"><img src={cart} /></Link>
                 {/* <span className="quantity" data-var="jewel">1</span> */}
             </div>
         </div>

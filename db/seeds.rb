@@ -11,10 +11,12 @@ require "open-uri"
 # ApplicationRecord.transaction do 
   puts "Destroying tables..."
   # Unnecessary if using `rails db:seed:replant`
+  CartItem.destroy_all
   User.destroy_all
   Product.destroy_all
 
   puts "Resetting primary keys..."
+  ApplicationRecord.connection.reset_pk_sequence!('cart_items')
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('products')
 
@@ -3054,6 +3056,8 @@ Product.create!(
   sub_category: "Bottoms"
 )
 
+puts "Creating cart items..."
+
 CartItem.create!(
   product_id: 1,
   size: "9.5",
@@ -3078,9 +3082,11 @@ CartItem.create!(
   checked_out: false
 )
 
-Product.first(2).each do |product|
+
+
+Product.first(3).each do |product|
   i = 1
-  while i < 3 do
+  while i < 5 do
     begin
       photo_url = "https://sike-seeds.s3.amazonaws.com/#{product.article_number}/#{product.article_number}-#{i}.jpg"
       puts "Attaching image #{i} for product ##{product.id}"

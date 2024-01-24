@@ -4,7 +4,6 @@ import { formType, storeEmail } from '../../store/form';
 import * as sessionActions from '../../store/session';
 import './EmailEntry.css'
 import { Link } from 'react-router-dom';
-import { Layout } from '../../App';
 
 const EmailEntry = () => {
     const dispatch = useDispatch();
@@ -33,7 +32,7 @@ const EmailEntry = () => {
         <>
         <div className="form-container">
             <header className="form-header">
-                    <Link component={Layout} to='/'><img src="./favicon.ico" alt="Sike Logo" className="logo" /></Link>
+                    <Link to='/'><img src="./favicon.ico" alt="Sike Logo" className="logo" /></Link>
                     <h1>Enter your email to join us or sign in.</h1>
             </header>
             <form className="email-form" onSubmit={submitEmail}>

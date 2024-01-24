@@ -3,7 +3,6 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import './LoginForm.css';
-import { Layout } from '../../App';
 import { formType, resetFormState } from '../../store/form';
 
 const LoginForm = () => {
@@ -48,7 +47,7 @@ const LoginForm = () => {
     return (
         <div className="login-container">
             <div className="login-header">
-                <Link component={Layout} to='/' onClick={handleLogoClick}>
+                <Link to='/' onClick={handleLogoClick}>
                     <img src="./favicon.ico" alt="Sike Logo" className="logo" />
                 </Link>
                 <h1>What&apos;s your password?</h1>

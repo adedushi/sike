@@ -4,7 +4,6 @@ import { Link, Navigate } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import './SignupForm.css';
 import { formType, resetFormState } from '../../store/form';
-import { Layout } from '../../App';
 
 
 function SignupForm() {
@@ -59,7 +58,7 @@ function SignupForm() {
     return (
         <div className="signup-container">
             <div className="signup-header">
-                <Link component={Layout} to='/' onClick={handleLogoClick}>
+                <Link to='/' onClick={handleLogoClick}>
                     <img src="./favicon.ico" alt="Sike Logo" className="logo" />
                 </Link>
                 <h1>Now let&apos;s make you a Sike Member.</h1>

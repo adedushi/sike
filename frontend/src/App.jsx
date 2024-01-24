@@ -7,6 +7,7 @@ import NavBar from './components/nav_bar';
 import ProductDisplay from './components/product_display/ProductDisplay';
 import ProductIndex from './components/product_index';
 import CampaignDisplay from './components/campaign_display';
+import Cart from './components/cart';
 
 
 export const Layout = () => {
@@ -36,18 +37,22 @@ const router = createBrowserRouter([
         element: <CampaignDisplay />
       },
       {
-        path: 'session',
-        element: <Session />
-      },
-      {
         path: '/products/:productId',
         element: <ProductDisplay />
       },
       {
         path: '/products/',
         element: <ProductIndex />
-      }
+      },
+      {
+        path: '/cart/',
+        element: <Cart />
+      },
     ]
+  },
+  {
+    path: 'session',
+    element: <Session />
   }
 ]);
 
