@@ -53,7 +53,6 @@ export const addItem = (item) => async dispatch => {
 
         dispatch(addCartItem(newItem));
     } catch (error) {
-        console.error('Error adding cart item:', error);
     }
 };
 
@@ -73,7 +72,6 @@ export const fetchCart = () => async dispatch => {
         const cartItems = await response.json();
         dispatch(getCartItems(cartItems));
     } catch (error) {
-        console.error('Error fetching cart items:', error);
     }
 };
 
@@ -94,7 +92,6 @@ export const updateCart = (itemId, updates) => async dispatch => {
         const updatedItemData = await response.json();
         dispatch(updateCartItem(updatedItemData));
     } catch (error) {
-        console.error('Error updating cart item:', error);
     }
 };
 
@@ -113,7 +110,6 @@ export const deleteItem = (itemId) => async dispatch => {
         }
         dispatch(deleteCartItem(itemId));
     } catch (error) {
-        console.error('Error deleting cart item:', error);
     }
 };
 
