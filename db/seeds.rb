@@ -3084,9 +3084,9 @@ CartItem.create!(
 
 
 
-Product.first(3).each do |product|
+Product.all.each do |product|
   i = 1
-  while i < 5 do
+  loop do
     begin
       photo_url = "https://sike-seeds.s3.amazonaws.com/#{product.article_number}/#{product.article_number}-#{i}.jpg"
       puts "Attaching image #{i} for product ##{product.id}"

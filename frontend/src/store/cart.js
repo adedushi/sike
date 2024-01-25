@@ -20,12 +20,13 @@ const addCartItem = (item) => {
     };
 };
 
-const updateCartItem = (item) => {
+const updateCartItem = (updatedItem) => {
     return {
         type: UPDATE_CART_ITEM,
-        payload: item
+        payload: updatedItem
     };
 };
+
 
 const deleteCartItem = (itemId) => {
     return {
@@ -33,8 +34,6 @@ const deleteCartItem = (itemId) => {
         payload: itemId
     };
 };
-
-
 
 
 export const addItem = (item) => async dispatch => {
@@ -50,8 +49,8 @@ export const addItem = (item) => async dispatch => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-
         const newItem = await response.json();
+
         dispatch(addCartItem(newItem));
     } catch (error) {
         console.error('Error adding cart item:', error);
@@ -78,30 +77,31 @@ export const fetchCart = () => async dispatch => {
     }
 };
 
-export const updateCart = (itemId, updatedData) => async dispatch => {
+export const updateCart = (itemId, updates) => async dispatch => {
     try {
         const response = await csrfFetch(`/api/cart_items/${itemId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(updatedData)
+            body: JSON.stringify(updates)
         });
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
 
-        const updatedItem = await response.json();
-        dispatch(updateCartItem(updatedItem));
+        const updatedItemData = await response.json();
+        dispatch(updateCartItem(updatedItemData));
     } catch (error) {
         console.error('Error updating cart item:', error);
     }
 };
 
+
 export const deleteItem = (itemId) => async dispatch => {
     try {
-        const response = await fetch(`/api/cart_items/${itemId}`, {
+        const response = await csrfFetch(`/api/cart_items/${itemId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -123,18 +123,17 @@ export const resetCart = () => dispatch => {
 
 
 const cartItemsReducer = (state = {}, action) => {
+    const newState = { ...state };
     switch (action.type) {
         case FETCH_CART_ITEMS:
             return {...action.payload};
         case ADD_CART_ITEM:
-            return { ...state, ...action.payload};
-        case UPDATE_CART_ITEM:
-            return { ...state, ...action.payload};
-        case DELETE_CART_ITEM: {
-            const newState = { ...state};
+            return {...state, ...action.payload}
+        case DELETE_CART_ITEM:
             delete newState[action.payload];
-            return newState
-        }
+            return newState;
+        case UPDATE_CART_ITEM: 
+            return {...newState, ...action.payload}
         case RESET_CART:
             return {};
         default:

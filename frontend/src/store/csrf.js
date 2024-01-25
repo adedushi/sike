@@ -13,7 +13,6 @@ export const csrfFetch = async(url, options = {}) => {
     options.method = options.method || 'GET';
     options.headers = options.headers || {};
 
-    //update for photos
     if (options.method.toUpperCase() !== 'GET') {
         options.headers['Content-Type'] =
             options.headers['Content-Type'] || 'application/json';

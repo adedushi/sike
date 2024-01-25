@@ -20,7 +20,7 @@ class Api::CartItemsController < ApplicationController
     end
 
     def update
-        @cart_item = current_user.cart_items.find(params[:id])
+        @cart_item = CartItem.all.find(params[:id])
 
         if @cart_item.update(cart_item_params)
             render :show
@@ -44,7 +44,7 @@ class Api::CartItemsController < ApplicationController
     private
 
     def cart_item_params
-        params.require(:cart_item).permit(:product_id, :size, :quantity, :user_id, :checked_out)
+        params.require(:cart_item).permit(:product_id, :size, :quantity, :user_id, :checked_out, :id)
     end
 end
 

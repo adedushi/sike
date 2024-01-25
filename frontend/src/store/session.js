@@ -23,7 +23,7 @@ export const restoreSession = () => async dispatch => {
     storeCSRFToken(response);
     const data = await response.json();
     dispatch(setUser(data.user));
-    if (data.ok) {
+    if (response.ok) {
         dispatch(fetchCart())
     }
     return response;
