@@ -37,27 +37,23 @@ const deleteCartItem = (itemId) => {
 
 
 export const addItem = (item) => async dispatch => {
-    try {
-        const response = await csrfFetch('/api/cart_items', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(item)
-        });
+    const response = await csrfFetch('/api/cart_items', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item)
+    });
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const newItem = await response.json();
-
-        dispatch(addCartItem(newItem));
-    } catch (error) {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
     }
+    const newItem = await response.json();
+
+    dispatch(addCartItem(newItem));
 };
 
 export const fetchCart = () => async dispatch => {
-    try {
         const response = await csrfFetch('/api/cart_items', {
             method: 'GET',
             headers: {
@@ -71,12 +67,9 @@ export const fetchCart = () => async dispatch => {
 
         const cartItems = await response.json();
         dispatch(getCartItems(cartItems));
-    } catch (error) {
-    }
 };
 
 export const updateCart = (itemId, updates) => async dispatch => {
-    try {
         const response = await csrfFetch(`/api/cart_items/${itemId}`, {
             method: 'PUT',
             headers: {
@@ -91,13 +84,10 @@ export const updateCart = (itemId, updates) => async dispatch => {
 
         const updatedItemData = await response.json();
         dispatch(updateCartItem(updatedItemData));
-    } catch (error) {
-    }
 };
 
 
 export const deleteItem = (itemId) => async dispatch => {
-    try {
         const response = await csrfFetch(`/api/cart_items/${itemId}`, {
             method: 'DELETE',
             headers: {
@@ -109,8 +99,6 @@ export const deleteItem = (itemId) => async dispatch => {
             throw new Error('Network response was not ok');
         }
         dispatch(deleteCartItem(itemId));
-    } catch (error) {
-    }
 };
 
 export const resetCart = () => dispatch => {
