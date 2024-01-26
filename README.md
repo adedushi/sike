@@ -2,7 +2,7 @@
 
 ### [LIVE LINK](https://sike-73tj.onrender.com/)
 
-Sike ('sīk) is a clone of [Nike.com](https://https://www.nike.com/) at the time of creation, with some creative and functional liberties. Nike, widely-known for its apparel and footwear, is the largest sportswear company in the world in terms of revenue. Nike users are able to browse, favorite, review, and check out products. I have always been curious about the makeup of e-commerce and Nike's website presented a good learning experience, as it is one of the most aesthetically pleasing.
+Sike ('sīk) is a clone of [Nike.com](https://https://www.nike.com/) at the time of creation, with some creative and functional liberties. Nike, widely known for its apparel and footwear, is the largest sportswear company in the world in terms of revenue. Nike users are able to browse, favorite, review, and check out products. I have always been curious about the makeup of e-commerce and Nike's website presented a good learning experience, as it is one of the most aesthetically pleasing.
 
 Technologies used:
 * Languages: Javascript, Ruby, HTML, and CSS
@@ -16,6 +16,8 @@ Technologies used:
 ## Authentication
 Users attempting to login or sign up are presented with a dynamic email entry form. After checking for the email's existence in the database, the page loads the correct form, with the email address retained:
 
+![gif of login/signup](assets/Session.gif) 
+
 ```rb
     def check_email
         email = params[:email].downcase
@@ -26,6 +28,9 @@ Users attempting to login or sign up are presented with a dynamic email entry fo
 
 ## Products
 Users are able to view a variety of footwear and clothing, currently filtered as either "Men", "Women" or "Kids". Product pages contain information directly from Nike's website with the help of a [python script](https://github.com/rl1987/trickster.dev-code/tree/main/2023-05-15-scraping-product-data-from-nike). Images were downloaded and organized using a separate custom python script: 
+
+![gif of login/signup](assets/Product_Page.png) 
+
 ```py
 def download_image(img_url, folder, img_suffix):
     try:
@@ -64,7 +69,7 @@ def scrape_and_download(url):
     driver.quit()
 ```
 
-This allowed thousands of pictures to get attached to the approparite products with one function:
+This allowed thousands of pictures to get attached to the appropriate products with one function:
 
 ```rb
 Product.all.each do |product|
