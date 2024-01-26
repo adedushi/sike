@@ -7,6 +7,7 @@ import {cw2288_111_1, cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5,
     cw2288_111_6, cw2288_111_7, cw2288_111_8, cw2288_111_9, cw2288_111_10} 
     from './product_images'
 import { addItem, updateCart } from "../../store/cart";
+import { sizes } from "./sizes";
 
 const ProductDisplay = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -20,10 +21,6 @@ const ProductDisplay = () => {
         cw2288_111_10])
     
     const [selectedImage, setSelectedImage] = useState(thumbnails[0]);
-
-    const sizes = ["W 5 / M 3.5", "W 5.5 / M 4", "W 6 / M 4.5", "W 6.5 / M 5", "W 7 / M 5.5", 
-    "W 7.5 / M 6", "W 8 / M 6.5", "W 8.5 / M 7", "W 9 / M 7.5", "W 9.5 / M 8", "W 10 / M 8.5", 
-    "W 10.5 / M 9", "W 11 / M 9.5", "W 11.5 / M 10", "W 12 / M 10.5"]
 
 
     const [selectedSize, setSelectedSize] = useState("");
