@@ -6,14 +6,14 @@ const GET_PRODUCTS = 'products/GET_PRODUCTS'
 const getProduct = (product) => {
     return {
         type: GET_PRODUCT,
-        product
+        payload: product
     };
 };
 
 const getProducts = (products) => {
     return {
         type: GET_PRODUCTS,
-        products
+        payload: products
     };
 };
 
@@ -38,9 +38,9 @@ export const fetchProducts = (filters) => async dispatch => {
 const productReducer = (state = {}, action) => {
     switch (action.type) {
         case GET_PRODUCT:
-            return {[action.product.id]: {...action.product}}
+            return {[action.payload.id]: {...action.payload}}
         case GET_PRODUCTS:
-            return action.products
+            return action.payload
         default:
             return state;
     }

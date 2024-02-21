@@ -7,7 +7,6 @@ import { cw2288_111_1 } from "../product_display/product_images";
 
 
 const Cart = () => {
-    console.log("this component is rendering");
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const cart = useSelector((state) => Object.values(state.cart));
@@ -28,8 +27,10 @@ const Cart = () => {
 
     const calculateSubtotal = (cart) => {
         let subtotal = 0;
+        
+
         cart.forEach(item => {
-            subtotal += parseFloat(item.listPrice) * parseInt(item.quantity);
+            subtotal += parseFloat(item.salePrice ? item.salePrice : item.listPrice ) * parseInt(item.quantity);
         });
         return subtotal.toFixed(2);
     };
@@ -71,7 +72,7 @@ const Cart = () => {
                                 <button onClick={() => handleDelete(item.id)} className="cart-item-delete">Delete Item</button>
                             </div>
                             <div className="cart-item-price">
-                                {USDollar.format(item.listPrice)}
+                                {USDollar.format((item.salePrice ? item.salePrice : item.listPrice) * item.quantity)}
                             </div>
                         </li>
                     )) : <p className="empty-cart">Empty cart</p>}
