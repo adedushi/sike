@@ -1,8 +1,16 @@
 .cart-container {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: Helvetica Neue, Arial, sans-serif;
+    font-size: 1em;
+    letter-spacing: .45px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 20px;
+}
+
+.cart-header, .summary-title {
+    line-height: 29px;
+    font-size: 1.5em;
+    font-weight: 400;
 }
 
 .cart-items {
@@ -11,47 +19,94 @@
 
 .cart-item {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
+    width: 717px;
+}
+
+.cart-item a {
+    text-decoration: none;
+    color: #111111;
 }
 
 .cart-item-image {
-    width: 154px;
-    height: 154px;
+    width: 164px;
+    height: 164px;
     margin-right: 20px;
 }
 
 .cart-item-details {
-    flex-grow: 1;
+    display: flex;
 }
 
-.cart-item-title {
-    font-size: 1.2em;
-    margin-bottom: 5px;
+.cart-item-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.cart-item-title, 
+.cart-item-subtotal
+{
+    font-size: 1em;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.cart-item-subtitle {
+    color: #707072;
+    font-size: 1em;
+    line-height: 24px;
+    font-weight: 400;
 }
 
 .cart-item-options {
-    font-size: 0.9em;
+    color: #707072;
+    font-size: 1em;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.cart-item-size > select,
+.cart-item-quantity > select{
+    color: #707072;
+    font-size: .85em;
+    line-height: 24px;
+    font-weight: 400;
 }
 
 .cart-item-select {
     margin-left: 5px;
+    border: none;
 }
 
-.cart-item-price {
-    font-size: 1.2em;
-    font-weight: bold;
-    padding-left: 20px;
+.cart-item-quantity {
+    margin-left: 5px;
 }
 
 .cart-summary {
+    font-weight: 500;
     width: 25%;
-    padding: 20px;
-    border: 1px solid #ccc;
 }
 
-.summary-title {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+.cart-item-information-spacer{
+    flex-grow: 1;
+}
+
+.cart-item-delete{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.empty-cart{
+    line-height: 28px;
+}
+
+.list-price--sale {
+    text-decoration: line-through;
+    color: gray;
+    margin-right: 1em;
 }

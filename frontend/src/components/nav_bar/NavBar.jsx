@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import TopBar from "../top_bar"
 import './NavBar.css'
 import logo from './logo.svg'
@@ -7,6 +7,8 @@ import favorite from './favorite.svg'
 import cart from './cart.svg'
 
 const NavBar = () => {
+    const location = useLocation();
+
     return (
         <>
         <TopBar />
@@ -33,13 +35,15 @@ const NavBar = () => {
                 {/* <span className="quantity" data-var="jewel">1</span> */}
             </div>
         </div>
-        <div className="offer-bar">
-            <span className="offer-text">Members: Free Shipping on Orders $50+</span>
-            <br/>
-            <Link to="session" className="sign-up-link">Sign Up</Link>
-        </div>
+            {!location.pathname.startsWith('/cart') && (
+                <div className="offer-bar">
+                    <span className="offer-text">Members: Free Shipping on Orders $50+</span>
+                    <br />
+                    <Link to="session" className="sign-up-link">Sign Up</Link>
+                </div>
+            )}
         </>
-    )
+    );
 }
 
 export default NavBar

@@ -43,11 +43,11 @@ const ProductIndex = () => {
                     <div key={product.id} className="product-item" >
                         <Link to={`/products/${product.id}`} className="product-item-link"> 
                             <img src={product.photosUrl ? product.photosUrl[0] : cw2288_111_1 } alt={product.name}></img>
-                        <h3> {product.name} </h3>
-                        <p> {product.subtitle} </p>
-                        <h3 > {USDollar.format(product.listPrice)} </h3>
-                        <h3 > {product.salePrice ? USDollar.format(product.salePrice) : null } </h3>
-                        <br />
+                            <h3> {product.name} </h3>
+                            <p> {product.subtitle} </p>
+                            <h3 > {USDollar.format(product.listPrice)} </h3>
+                            <h3 > {product.salePrice ? USDollar.format(product.salePrice) : null } </h3>
+                            <br />
                         </Link>
                     </div>
                 ))}

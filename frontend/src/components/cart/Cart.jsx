@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { deleteItem, updateCart } from '../../store/cart';
 import './Cart.css';
 import { sizes } from '../product_display/sizes';
 import { cw2288_111_1 } from "../product_display/product_images";
+import trash from './trash.svg'
 
 
 const Cart = () => {
@@ -45,42 +46,62 @@ const Cart = () => {
     return (
         <div className="cart-container">
             <div className="cart-items">
+                <h1 className="cart-header">Bag</h1>
                 <ul>
                     {cart.length ? cart.map((item) => (
                         <li key={item.id} className="cart-item">
-                            <img src={Array.isArray(item.photosUrl) ? item.photosUrl[0] : {cw2288_111_1}} alt={item.name} className="cart-item-image" />
                             <div className="cart-item-details">
-                                <h3 className="cart-item-title">{item.name}</h3>
-                                <div className="cart-item-options">
-                                    <span className="cart-item-size">
-                                        Size:
-                                        <select onChange={(e) => handleSizeChange(item.id, e.target.value)} value={item.size} className="cart-item-select">
-                                            {sizes.map((size, index) => (
-                                                <option key={index} value={size}>{size}</option>
-                                            ))}
-                                        </select>
-                                    </span>
-                                    <span className="cart-item-quantity">
-                                        Quantity:
-                                        <select onChange={(e) => handleQuantityChange(item.id, e.target.value)} value={item.quantity} className="cart-item-select">
-                                            {Array.from({ length: 10 }, (_, i) => i + 1).map((number, index) =>
-                                                <option key={index} value={number}>{number}</option>
-                                            )}
-                                        </select>
-                                    </span>
+                                <Link to={`/products/${item.productId}`} className="cart-item-link">
+                                    <img src={Array.isArray(item.photosUrl) ? item.photosUrl[0] : { cw2288_111_1 }} alt={item.name} className="cart-item-image" />
+                                </Link>
+                                <div className="cart-item-information">
+                                    <Link to={`/products/${item.productId}`} className="cart-item-link">
+                                        <h3 className="cart-item-title">{item.name}</h3>
+                                    </Link>
+                                    <h3 className="cart-item-subtitle">{item.subtitle}</h3>
+                                    <div className="cart-item-options">
+                                        <span className="cart-item-size">
+                                            Size
+                                            <select onChange={(e) => handleSizeChange(item.id, e.target.value)} value={item.size} className="cart-item-select">
+                                                {sizes.map((size, index) => (
+                                                    <option key={index} value={size}>{size}</option>
+                                                ))}
+                                            </select>
+                                        </span>
+                                        <span className="cart-item-quantity">
+                                            Quantity
+                                            <select onChange={(e) => handleQuantityChange(item.id, e.target.value)} value={item.quantity} className="cart-item-select">
+                                                {Array.from({ length: 10 }, (_, i) => i + 1).map((number, index) =>
+                                                    <option key={index} value={number}>{number}</option>
+                                                )}
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div className="cart-item-information-spacer"></div>
+                                    <button onClick={() => handleDelete(item.id)} className="cart-item-delete">
+                                        <img src={trash} alt="" />
+                                    </button>
                                 </div>
-                                <button onClick={() => handleDelete(item.id)} className="cart-item-delete">Delete Item</button>
                             </div>
                             <div className="cart-item-price">
-                                {USDollar.format((item.salePrice ? item.salePrice : item.listPrice) * item.quantity)}
+                                {item.salePrice ? (
+                                    <h3 className="cart-item-subtotal">
+                                        <span className="list-price--sale">
+                                            {USDollar.format(item.listPrice * item.quantity)}
+                                        </span>
+                                        {USDollar.format(item.salePrice * item.quantity)}
+                                    </h3>
+                                ) : (
+                                    <h3 className="cart-item-subtotal">{USDollar.format(item.listPrice * item.quantity)}</h3>
+                                )}
                             </div>
                         </li>
-                    )) : <p className="empty-cart">Empty cart</p>}
+                    )) : <p className="empty-cart">&nbsp; There are no items in your bag.</p>}
                 </ul>
             </div>
             <div className="cart-summary">
                 <h3 className="summary-title">Summary</h3>
-                <h3>{USDollar.format(calculateSubtotal(cart))}</h3>
+                <h3 className="summary-price" >{USDollar.format(calculateSubtotal(cart))}</h3>
             </div>
         </div>
 
