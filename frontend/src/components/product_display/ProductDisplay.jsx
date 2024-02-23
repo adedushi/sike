@@ -7,7 +7,7 @@ import {cw2288_111_1, cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5,
     cw2288_111_6, cw2288_111_7, cw2288_111_8, cw2288_111_9, cw2288_111_10} 
     from './product_images'
 import { addItem, updateCart } from "../../store/cart";
-import { sizes } from "./sizes";
+import { getSizes } from "./sizes";
 
 const ProductDisplay = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -35,14 +35,15 @@ const ProductDisplay = () => {
         return state.products[productId]
     }
 
-    let product = useSelector(selectProduct(productId))
+    const product = useSelector(selectProduct(productId))
+    const { name, category, division, subtitle, listPrice, description, articleNumber, photosUrl} = product;
 
     useEffect(() => {
-        if (product && product.photosUrl) {
-            setThumbnails(product.photosUrl);
+        if (product && photosUrl) {
+            setThumbnails(photosUrl);
             setSelectedImage(thumbnails[0]);
         }
-    }, [thumbnails, product]);
+    }, [thumbnails, photosUrl, product]);
 
     const handleImageChange = (event) => {
         setSelectedImage(event.target.src);
@@ -128,14 +129,14 @@ const ProductDisplay = () => {
                 <div className="right-column">
                     <div className="product-info">
                         <div className="product-basic-info">
-                            <h1 className="product-title">{product.name}</h1>
-                            <h3 className="product-subtitle">{product.subtitle}</h3>
-                            <h3 className="product-price">{USDollar.format(product.listPrice)}</h3>
+                            <h1 className="product-title">{name}</h1>
+                            <h3 className="product-subtitle">{subtitle}</h3>
+                            <h3 className="product-price">{USDollar.format(listPrice)}</h3>
                         </div>
                         <div className="size-selection">
                             <h3>Select Size</h3>
                             <div className="size-options">
-                                {sizes.map((size) => (
+                                {getSizes(category, division).map((size) => (
                                     <div key={size} className="size-option">
                                         <input
                                             type="radio"
@@ -159,9 +160,9 @@ const ProductDisplay = () => {
                         </div>
 
                         <div className="product-description">
-                            <h3 className="product-description-text">{product.description}</h3>
+                            <h3 className="product-description-text">{description}</h3>
                             <br/>
-                            <h3 className="product-style"> Style: {product.articleNumber}</h3>
+                            <h3 className="product-style"> Style: {articleNumber}</h3>
                         </div>
                     </div>
                 </div>

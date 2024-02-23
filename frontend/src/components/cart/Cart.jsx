@@ -2,10 +2,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { deleteItem, updateCart } from '../../store/cart';
 import './Cart.css';
-import { sizes } from '../product_display/sizes';
 import { cw2288_111_1 } from "../product_display/product_images";
 import trash from './trash.svg'
-
+import { getSizes } from "../product_display/sizes";
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -63,7 +62,7 @@ const Cart = () => {
                                         <span className="cart-item-size">
                                             Size
                                             <select onChange={(e) => handleSizeChange(item.id, e.target.value)} value={item.size} className="cart-item-select">
-                                                {sizes.map((size, index) => (
+                                                    { getSizes(item.category, item.division).map((size, index) => (
                                                     <option key={index} value={size}>{size}</option>
                                                 ))}
                                             </select>
