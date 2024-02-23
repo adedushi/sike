@@ -201,6 +201,7 @@
     cursor: pointer;
     letter-spacing: .5px;
     height: 60px;
+    display: none;
 }
 
 .favorite-btn:hover {

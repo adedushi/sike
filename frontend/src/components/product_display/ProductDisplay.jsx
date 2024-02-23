@@ -14,21 +14,23 @@ const ProductDisplay = () => {
     const cart = useSelector((state) => Object.values(state.cart))
     const { productId } = useParams();
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [thumbnails, setThumbnails] = useState([cw2288_111_1, 
         cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5, 
         cw2288_111_6, cw2288_111_7, cw2288_111_8,cw2288_111_9,
         cw2288_111_10])
-    
-    const [selectedImage, setSelectedImage] = useState(thumbnails[0]);
-
-
+    const [selectedImage, setSelectedImage] = useState();
     const [selectedSize, setSelectedSize] = useState("");
 
     useEffect(() => {
-        dispatch(fetchProduct(productId)).catch((err) => {
-            setError(err);
-        });
+        setIsLoading(true); 
+        dispatch(fetchProduct(productId))
+            .then(() => setIsLoading(false)) 
+            .catch((err) => {
+                setError(err);
+                setIsLoading(false);
+            });
     }, [productId, dispatch]);
 
     const selectProduct = (productId) => (state) => {
@@ -36,14 +38,13 @@ const ProductDisplay = () => {
     }
 
     const product = useSelector(selectProduct(productId))
-    const { name, category, division, subtitle, listPrice, description, articleNumber, photosUrl} = product;
 
     useEffect(() => {
-        if (product && photosUrl) {
-            setThumbnails(photosUrl);
-            setSelectedImage(thumbnails[0]);
+        if (product?.photosUrl?.length > 0) {
+            setThumbnails(product.photosUrl);
+            setSelectedImage(product.photosUrl[0]);
         }
-    }, [thumbnails, photosUrl, product]);
+    }, [product]);
 
     const handleImageChange = (event) => {
         setSelectedImage(event.target.src);
@@ -88,14 +89,16 @@ const ProductDisplay = () => {
         }
     );
 
+    if (isLoading || !product) {
+        return <div>Loading...</div>;
+    }
+
     if (error) {
         return <div>Error: {error.status} We can&apos;t find the page you are looking for. Sorry for the inconvenience.</div>;
         // { error.statusText }
     }
 
-    if (!product) {
-        return <div>Loading...</div>;
-    }
+    const { name, category, division, subtitle, listPrice, description, articleNumber } = product;
 
     return (
     <div className="display">

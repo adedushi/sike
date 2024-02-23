@@ -42,58 +42,77 @@ const Cart = () => {
     }
     );
 
+    const shippingDate = () => {
+        let currentDate = new Date();
+        let days = 5
+        while (days > 0) {
+            currentDate.setDate(currentDate.getDate() + 1);
+            const dayOfWeek = currentDate.getDay();
+            if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                days--;
+            }
+        }
+        return currentDate;
+    }
+
+    const formattedShippingDate = shippingDate().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+
     return (
         <div className="cart-container">
             <div className="cart-items">
                 <h1 className="cart-header">Bag</h1>
                 <ul>
                     {cart.length ? cart.map((item) => (
-                        <li key={item.id} className="cart-item">
-                            <div className="cart-item-details">
-                                <Link to={`/products/${item.productId}`} className="cart-item-link">
-                                    <img src={Array.isArray(item.photosUrl) ? item.photosUrl[0] : { cw2288_111_1 }} alt={item.name} className="cart-item-image" />
-                                </Link>
-                                <div className="cart-item-information">
+                        <li key={item.id} className="cart-item-with-shipping">
+                            <div className="cart-item">
+                                <div className="cart-item-details">
                                     <Link to={`/products/${item.productId}`} className="cart-item-link">
-                                        <h3 className="cart-item-title">{item.name}</h3>
+                                        <img src={Array.isArray(item.photosUrl) ? item.photosUrl[0] : { cw2288_111_1 }} alt={item.name} className="cart-item-image" />
                                     </Link>
-                                    <h3 className="cart-item-subtitle">{item.subtitle}</h3>
-                                    <div className="cart-item-options">
-                                        <span className="cart-item-size">
-                                            Size
-                                            <select onChange={(e) => handleSizeChange(item.id, e.target.value)} value={item.size} className="cart-item-select">
-                                                    { getSizes(item.category, item.division).map((size, index) => (
-                                                    <option key={index} value={size}>{size}</option>
-                                                ))}
-                                            </select>
-                                        </span>
-                                        <span className="cart-item-quantity">
-                                            Quantity
-                                            <select onChange={(e) => handleQuantityChange(item.id, e.target.value)} value={item.quantity} className="cart-item-select">
-                                                {Array.from({ length: 10 }, (_, i) => i + 1).map((number, index) =>
-                                                    <option key={index} value={number}>{number}</option>
-                                                )}
-                                            </select>
-                                        </span>
+                                    <div className="cart-item-information">
+                                        <Link to={`/products/${item.productId}`} className="cart-item-link">
+                                            <h3 className="cart-item-title">{item.name}</h3>
+                                        </Link>
+                                        <h3 className="cart-item-subtitle">{item.subtitle}</h3>
+                                        <div className="cart-item-options">
+                                            <span className="cart-item-size">
+                                                Size
+                                                <select onChange={(e) => handleSizeChange(item.id, e.target.value)} value={item.size} className="cart-item-select">
+                                                    {getSizes(item.category, item.division).map((size, index) => (
+                                                        <option key={index} value={size}>{size}</option>
+                                                    ))}
+                                                </select>
+                                            </span>
+                                            <span className="cart-item-quantity">
+                                                Quantity
+                                                <select onChange={(e) => handleQuantityChange(item.id, e.target.value)} value={item.quantity} className="cart-item-select">
+                                                    {Array.from({ length: 10 }, (_, i) => i + 1).map((number, index) =>
+                                                        <option key={index} value={number}>{number}</option>
+                                                    )}
+                                                </select>
+                                            </span>
+                                        </div>
+                                        <div className="cart-item-information-spacer"></div>
+                                        <button onClick={() => handleDelete(item.id)} className="cart-item-delete">
+                                            <img src={trash} alt="" />
+                                        </button>
                                     </div>
-                                    <div className="cart-item-information-spacer"></div>
-                                    <button onClick={() => handleDelete(item.id)} className="cart-item-delete">
-                                        <img src={trash} alt="" />
-                                    </button>
+                                </div> 
+                                <div className="cart-item-price">
+                                    {item.salePrice ? (
+                                        <h3 className="cart-item-subtotal">
+                                            <span className="list-price--sale">
+                                                {USDollar.format(item.listPrice * item.quantity)}
+                                            </span>
+                                            {USDollar.format(item.salePrice * item.quantity)}
+                                        </h3>
+                                    ) : (
+                                        <h3 className="cart-item-subtotal">{USDollar.format(item.listPrice * item.quantity)}</h3>
+                                    )}
                                 </div>
                             </div>
-                            <div className="cart-item-price">
-                                {item.salePrice ? (
-                                    <h3 className="cart-item-subtotal">
-                                        <span className="list-price--sale">
-                                            {USDollar.format(item.listPrice * item.quantity)}
-                                        </span>
-                                        {USDollar.format(item.salePrice * item.quantity)}
-                                    </h3>
-                                ) : (
-                                    <h3 className="cart-item-subtotal">{USDollar.format(item.listPrice * item.quantity)}</h3>
-                                )}
-                            </div>
+                            <h3 className="shipping-text">Shipping</h3>
+                            <h3 className="shipping-date">Arrives by {formattedShippingDate}</h3> 
                         </li>
                     )) : <p className="empty-cart">&nbsp; There are no items in your bag.</p>}
                 </ul>
