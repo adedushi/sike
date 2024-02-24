@@ -25,8 +25,10 @@
 }
 
 .signup-header p {
-    font-size: .875rem;
+    font-size: 1rem;
+    letter-spacing: .45px;
     margin-bottom: 1rem;
+    line-height: 24px;
 }    
 
 .edit-link {
@@ -38,7 +40,10 @@
 
 .signup-form .form-name {
     margin-bottom: 1rem;
-    
+}
+
+.form-name {
+    min-width: 100%;
 }
 
 .signup-form .form-name {
@@ -46,7 +51,7 @@
     gap: 10px;
 }
 
-.signup-form .form-name input,
+.form-input,
 .signup-form .form-password input,
 .signup-form .form-password select {
     letter-spacing: .3px;
@@ -58,20 +63,37 @@
     font-size: 1rem;
 }
 
+.input-error {
+    border: 1px solid rgb(211, 0, 4);
+    
+}
+
+.input-error::placeholder{
+    color: rgb(211, 0, 4);
+}
+
 .signup-form .form-text {
     display: block;
     font-size: .75rem;
     color: #777;
+    margin-left: .5rem;
     margin-top: .25rem;
     margin-bottom: .25rem;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 20px);
 }
 
 .signup-form .form-text-red {
     display: block;
     font-size: .75rem;
-    color: red;
+    color: rgb(211, 0, 4);
+    margin-left: .5rem;
     margin-top: .25rem;
-    margin-bottom: .25rem;
+    line-height: 16px;
 }
 
 .session-button-container {
@@ -91,6 +113,24 @@
     letter-spacing: .5px;
 }
 
-.submit-btn:hover {
-    background-color: #333;
+.signup-btn:hover {
+    background-color: rgb(93, 93, 95);
+}
+
+.validation-text-valid {
+    display: block;
+    font-size: .75rem;
+    color: rgb(35, 139, 33);
+    margin-top: .25rem;
+    margin-left: .5rem;
+    margin-bottom: .25rem;
+}
+
+.validation-text-invalid {
+    display: block;
+    font-size: .75rem;
+    color: rgb(211, 0, 4);
+    margin-top: .25rem;
+    margin-left: .5rem;
+    margin-bottom: .25rem;
 }

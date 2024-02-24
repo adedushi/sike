@@ -8,6 +8,8 @@ import {cw2288_111_1, cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5,
     from './product_images'
 import { addItem, updateCart } from "../../store/cart";
 import { getSizes } from "./sizes";
+import logo from '../nav_bar/logo.svg'
+
 
 const ProductDisplay = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -90,7 +92,11 @@ const ProductDisplay = () => {
     );
 
     if (isLoading || !product) {
-        return <div>Loading...</div>;
+        return (
+            <div className="loading-container">
+                <img src={logo} alt="loading-swoosh" className="loading-svg" />
+            </div>
+        )
     }
 
     if (error) {

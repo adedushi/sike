@@ -19,11 +19,11 @@ function ProfileButton() {
                 <img src={jordan} alt="Profile Avatar" className="profile-avatar" />
             </button>
             <ul className="profile-dropdown">
-                <li>Orders</li>
-                <li>Favorites</li>
-                <li>Inbox <span className="notification-dot"></span></li>
-                <li>Experiences</li>
-                <li>Account Settings</li>
+                {/* <li>Orders</li> */}
+                {/* <li>Favorites</li> */}
+                {/* <li>Inbox </li> */}
+                {/* <li>Experiences</li> */}
+                {/* <li>Account Settings</li> */}
                 <li onClick={logout}>Log Out</li>
             </ul>
         </div>

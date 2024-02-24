@@ -10,6 +10,7 @@ const LoginForm = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [password, setPassword] = useState("");
+    const [passwordTouched, setPasswordTouched] = useState(false);
     const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Navigate to="/" replace={true} />;
@@ -56,18 +57,25 @@ const LoginForm = () => {
                 </p>
             </div>
             <form className="login-form" onSubmit={handleSubmit}>
-                <div>
-                    {errors.map((error) => <li key={error}>{error}</li>)}
-                </div>
+                {errors.length > 0 && (
+                    <div role='alert' className="login-error-message">
+                        <div className="login-error-icon"></div>
+                        <div className="login-error-text">
+                            {errors.map((error) => <h3 key={error}>{error}</h3>)}
+                        </div>
+                    </div>
+                )}
                 <div className="form-password">
                     <input
                         type="password"
-                        placeholder="Password"
-                        autoComplete="new-password"
+                        placeholder="Password*"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        onBlur={() => setPasswordTouched(true)}
                         required
+                        className={`form-input ${password.trim() === "" && passwordTouched ? "input-error" : ""}`}
                     />
+                    {(!password && passwordTouched) ? <div className="form-text-red">Required</div> : null}
                 </div>
                 <div className="session-button-container">
                     <button type="submit" className="login-btn">Sign In</button>

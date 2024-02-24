@@ -1,23 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../../store/products";
 import { Link, useSearchParams } from "react-router-dom"
 import './ProductIndex.css'
 import { cw2288_111_1 } from "../product_display/product_images";
+import logo from '../nav_bar/logo.svg'
+
 
 const ProductIndex = () => {
     const dispatch = useDispatch();
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
     const [division] = useSearchParams();
     division.get("division")
     const products = useSelector((state) => Object.values(state.products))
 
     useEffect(() => {
+        setIsLoading(true);
         dispatch(fetchProducts(division))
+            .then(() => setIsLoading(false))
+            .catch(err => {
+                setError(err);
+                setIsLoading(false);
+            });
     },[dispatch, division])
 
-    // if (error) {
-    //     return <div>Error: {error.status} {error.statusText}</div>;
-    // }
+    if (error) {
+        return <div>Error: {error.status} We can&apos;t retreive any products. Sorry for the inconvenience.</div>;
+    }
 
     const USDollar = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -25,8 +35,12 @@ const ProductIndex = () => {
         minimumFractionDigits: 0
     });
 
-    if (!products) {
-        return <div>Loading...</div>;
+    if (isLoading) {
+        return (
+            <div className="loading-container">
+                <img src={logo} alt="loading-swoosh" className="loading-svg" />
+            </div>
+        )
     }
 
     return (

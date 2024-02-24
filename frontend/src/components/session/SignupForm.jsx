@@ -10,32 +10,22 @@ function SignupForm() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const { email } = useSelector(state => state.form)
-    const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [firstNameTouched, setFirstNameTouched] = useState(false);
+    const [lastNameTouched, setLastNameTouched] = useState(false);
+    const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [errors, setErrors] = useState([]);
+    const [passwordTouched, setPasswordTouched] = useState(false);
+    const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
 
     if (sessionUser) return <Navigate to="/" replace={true} />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
-            setErrors([]);
             return dispatch(sessionActions.signup({ email, password, firstName, lastName }))
-                .catch(async (res) => {
-                    let data;
-                    try {
-                        data = await res.clone().json();
-                    } catch {
-                        data = await res.text();
-                    }
-                    if (data?.errors) setErrors(data.errors);
-                    else if (data) setErrors([data]);
-                    else setErrors([res.statusText]);
-                });
         }
-        return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
     const handleDemoLogin = (e) => {
@@ -51,9 +41,44 @@ function SignupForm() {
         dispatch(resetFormState());
     };
 
-    const displayErrors = (errors) => {
-        return Array.isArray(errors[0]) ? (errors[0].map((error) => <li key={error} className="form-text-red">{error}</li>)) : ""
-    }
+    const getInputClassName = (fieldValue, fieldTouched) => {
+        return `form-input ${fieldValue.trim() === "" && fieldTouched ? "input-error" : ""}`;
+    };
+
+    const displayRequired = (fieldValue, fieldTouched) => {
+        if (!fieldValue && fieldTouched) {
+            return <div className="form-text-red">Required</div>;
+        }
+        return null;
+    };
+
+    const validatePasswordLength = (password) => {
+        return password.length >= 8;
+    };
+
+    const validatePasswordComplexity = (password) => {
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasLowercase = /[a-z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        return hasUppercase && hasLowercase && hasNumber;
+    };
+
+    const getPasswordValidationClass = (condition) => {
+        if (!passwordTouched) return "form-text";
+        return condition(password) ? "validation-text-valid" : "validation-text-invalid";
+    };
+
+    const passwordsMatch = () => {
+        return password && confirmPassword && password === confirmPassword;
+    };
+
+    const displayPasswordMatch = () => {
+        if (confirmPasswordTouched && !passwordsMatch()) {
+            return <div className="form-text-red">Passwords must match</div>;
+        }
+        return null;
+    };
+
 
     return (
         <div className="signup-container">
@@ -68,43 +93,63 @@ function SignupForm() {
             </div>
             <form className="signup-form" onSubmit={handleSubmit}>
                 <div>
-                    {displayErrors(errors)}
                 </div>
                 <div className="form-name">
-                    <input
-                        type="text"
-                        placeholder="First Name"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="text"
-                        placeholder="Last Name"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        required
-                    />
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            placeholder="First Name*"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            onBlur={() => setFirstNameTouched(true)}
+                            className={getInputClassName(firstName, firstNameTouched)}
+                            required
+                        />
+                        {displayRequired(firstName, firstNameTouched)}
+                    </div>
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            placeholder="Last Name*"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            onBlur={() => setLastNameTouched(true)}
+                            className={getInputClassName(lastName, lastNameTouched)}
+                            required
+                        />
+                        {displayRequired(lastName, lastNameTouched)}
+                    </div>
                 </div>
                 <div className="form-password">
                     <input
                         type="password"
-                        placeholder="Password"
-                        autoComplete="new-password"
+                        placeholder="Password*"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={(e) => {
+                            setPassword(e.target.value);
+                            setPasswordTouched(true);
+                        }}
+                        className={getInputClassName(password, passwordTouched)}
                         required
                     />
-                    <span className="form-text">Minimum of 8 characters</span>
-                    <span className="form-text">Uppercase, lowercase letters, and one number</span>
+                    <p className={getPasswordValidationClass(validatePasswordLength)}>
+                        Minimum of 8 characters
+                    </p>
+                    <p className={getPasswordValidationClass(validatePasswordComplexity)}>
+                        Uppercase, lowercase letters, and one number
+                    </p>
                     <input
                         type="password"
-                        placeholder="Confirm Password"
-                        autoComplete="new-password"
+                        placeholder="Confirm Password*"
                         value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        onChange={(e) => {
+                            setConfirmPassword(e.target.value);
+                            setConfirmPasswordTouched(true);
+                        }}
+                        className={getInputClassName(confirmPassword, confirmPasswordTouched)}
                         required
                     />
+                    {displayPasswordMatch()}
                 </div>
                 <div className="session-button-container">
                     <button type="submit" className="signup-btn">Create Account</button>

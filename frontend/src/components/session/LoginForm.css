@@ -22,11 +22,14 @@
     font-size: 1.75rem;
     margin-bottom: .5rem;
     font-weight: 400;
+    line-height: 32px;
 }
 
 .login-header p {
-    font-size: .875rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
+    line-height: 24px;
+    letter-spacing: .6px;
 }
 
 .edit-link {
@@ -80,6 +83,46 @@
     border-radius: 20px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
     letter-spacing: .5px;
+}
+
+.login-btn:hover{
+    background-color: rgb(93, 93, 95)
+}
+
+.form-text-red {
+    display: block;
+    font-size: .75rem;
+    color: rgb(211, 0, 4);
+    margin-left: .5rem;
+    margin-top: .25rem;
+    line-height: 16px;
+}
+
+.login-error-message {
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: rgb(17, 17, 17);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: medium;
+    line-height: 24px;
+    margin-bottom: 15px;
+    padding: 10px 16px;
+    width: 100%;
+}
+
+.login-error-icon {
+    background-image: url('./alert.svg');
+    width: 18px;
+    height: 18px;
+}
+
+.login-error-text > h3{
+    font-family: Helvetica Neue, Arial, sans-serif;
+    letter-spacing: .45px;
+    font-weight: 400;
+    font-size: 1em;
 }

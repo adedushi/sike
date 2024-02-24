@@ -57,10 +57,9 @@ body {
     border-radius: 20px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
     letter-spacing: .5px;
 }
 
 .email-form .continue-btn:hover, .email-form .submit-btn:hover {
-    background-color: #333;
+    background-color: rgb(93, 93, 95)
 }

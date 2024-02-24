@@ -3,7 +3,7 @@ import TopBar from "../top_bar"
 import './NavBar.css'
 import logo from './logo.svg'
 import search from './search.svg'
-import favorite from './favorite.svg'
+// import favorite from './favorite.svg'
 import cart from './cart.svg'
 
 const NavBar = () => {
@@ -30,7 +30,7 @@ const NavBar = () => {
                     <button className="search-btn"> <img src={search}/></button>
                     <input type="text" placeholder="Search"/>
                 </div>
-                <Link to="#" className="favorite-icon"><img src={favorite} /></Link>
+                {/* <Link to="#" className="favorite-icon"><img src={favorite} /></Link> */}
                 <Link to='/cart' className="cart-icon"><img src={cart} /></Link>
                 {/* <span className="quantity" data-var="jewel">1</span> */}
             </div>
