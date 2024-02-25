@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../../store/products";
 import { Link, useSearchParams } from "react-router-dom"
+import { createSelector } from 'reselect';
 import './ProductIndex.css'
 import { cw2288_111_1 } from "../product_display/product_images";
 import logo from '../nav_bar/logo.svg'
@@ -13,7 +14,10 @@ const ProductIndex = () => {
     const [error, setError] = useState(null);
     const [division] = useSearchParams();
     division.get("division")
-    const products = useSelector((state) => Object.values(state.products))
+
+    const productsSelector = state => state.products;
+    const selectProductsArray = createSelector(productsSelector, (products) => Object.values(products));
+    const products = useSelector(selectProductsArray);
 
     useEffect(() => {
         setIsLoading(true);

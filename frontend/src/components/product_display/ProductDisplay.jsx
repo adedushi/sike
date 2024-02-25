@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchProduct } from "../../store/products"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { createSelector } from 'reselect';
 import './ProductDisplay.css'
 import {cw2288_111_1, cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5, 
     cw2288_111_6, cw2288_111_7, cw2288_111_8, cw2288_111_9, cw2288_111_10} 
@@ -13,7 +14,11 @@ import logo from '../nav_bar/logo.svg'
 
 const ProductDisplay = () => {
     const sessionUser = useSelector(state => state.session.user);
-    const cart = useSelector((state) => Object.values(state.cart))
+
+    const cartSelector = state => state.cart;
+    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
+    const cart = useSelector(selectCartArray);
+
     const { productId } = useParams();
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);

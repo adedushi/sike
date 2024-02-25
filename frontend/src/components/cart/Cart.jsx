@@ -1,16 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { deleteItem, updateCart } from '../../store/cart';
+import { createSelector } from 'reselect';
 import './Cart.css';
-import { cw2288_111_1 } from "../product_display/product_images";
 import trash from './trash.svg'
 import { getSizes } from "../product_display/sizes";
 
 const Cart = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const cart = useSelector((state) => Object.values(state.cart));
 
+    const cartSelector = state => state.cart;
+    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
+    const cart = useSelector(selectCartArray);
+    
     if (!sessionUser) return <Navigate to="/session" replace={true} />;
 
     const handleSizeChange = (itemId, newSize) => {
@@ -67,7 +70,7 @@ const Cart = () => {
                             <div className="cart-item">
                                 <div className="cart-item-details">
                                     <Link to={`/products/${item.productId}`} className="cart-item-link">
-                                        <img src={Array.isArray(item.photosUrl) ? item.photosUrl[0] : { cw2288_111_1 }} alt={item.name} className="cart-item-image" />
+                                        <img src={Array.isArray(item.photosUrl) ? item.photosUrl[0] : null} alt={item.name} className="cart-item-image" />
                                     </Link>
                                     <div className="cart-item-information">
                                         <Link to={`/products/${item.productId}`} className="cart-item-link">
