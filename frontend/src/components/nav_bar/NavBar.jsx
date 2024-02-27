@@ -4,10 +4,22 @@ import './NavBar.css'
 import logo from './logo.svg'
 import search from './search.svg'
 // import favorite from './favorite.svg'
-import cart from './cart.svg'
+import bag from './bag.svg'
+import { createSelector } from "reselect"
+import { useSelector } from "react-redux"
+import MiniCart from "../mini_cart/MiniCart"
 
 const NavBar = () => {
     const location = useLocation();
+
+    const cartSelector = state => state.cart;
+    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
+    const cart = useSelector(selectCartArray);
+    const totalQuantity = cart.reduce((total, currentItem) => total + currentItem.quantity, 0);
+
+    const cartVisible = useSelector(state => state.ui.isCartVisible);
+
+    const product = useSelector(state => state.minicart.item);
 
     return (
         <>
@@ -31,17 +43,18 @@ const NavBar = () => {
                     <input type="text" placeholder="Search"/>
                 </div>
                 {/* <Link to="#" className="favorite-icon"><img src={favorite} /></Link> */}
-                <Link to='/cart' className="cart-icon"><img src={cart} /></Link>
+                <Link to='/cart' className="cart-icon"><img src={bag} /></Link>
                 {/* <span className="quantity" data-var="jewel">1</span> */}
             </div>
         </div>
-            {!location.pathname.startsWith('/cart') && (
-                <div className="offer-bar">
-                    <span className="offer-text">Members: Free Shipping on Orders $50+</span>
-                    <br />
-                    <Link to="session" className="sign-up-link">Sign Up</Link>
-                </div>
-            )}
+        {cartVisible && <MiniCart product={product} totalQuantity={totalQuantity} />}
+        {!location.pathname.startsWith('/cart') && (
+            <div className="offer-bar">
+                <span className="offer-text">Members: Free Shipping on Orders $50+</span>
+                <br />
+                <Link to="session" className="sign-up-link">Sign Up</Link>
+            </div>
+        )}
         </>
     );
 }

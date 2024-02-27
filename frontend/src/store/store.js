@@ -4,12 +4,16 @@ import sessionReducer from './session';
 import formReducer from './form';
 import productReducer from './products';
 import cartItemsReducer from './cart';
+import uiReducer from './ui';
+import miniCartReducer from './minicart';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     form: formReducer,
     products: productReducer, 
-    cart: cartItemsReducer
+    cart: cartItemsReducer,
+    minicart: miniCartReducer,
+    ui: uiReducer
 });
 
 let enhancer;

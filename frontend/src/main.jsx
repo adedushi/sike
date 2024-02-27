@@ -5,6 +5,7 @@ import App from './App';
 import './index.css';
 import configureStore from './store';
 import * as sessionActions from './store/session'
+import * as uiActions from './store/ui';
 import { csrfFetch, restoreCSRF } from './store/csrf';
 
 
@@ -15,6 +16,7 @@ if (import.meta.env.MODE !== 'production') {
   window.store = store;
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
+  window.uiActions = uiActions;
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(

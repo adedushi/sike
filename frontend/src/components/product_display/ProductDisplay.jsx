@@ -10,6 +10,8 @@ import {cw2288_111_1, cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5,
 import { addItem, updateCart } from "../../store/cart";
 import { getSizes } from "./sizes";
 import logo from '../nav_bar/logo.svg'
+import { editMiniCartItem } from "../../store/minicart";
+import { toggleCartVisibility } from "../../store/ui";
 
 
 const ProductDisplay = () => {
@@ -29,6 +31,7 @@ const ProductDisplay = () => {
         cw2288_111_10])
     const [selectedImage, setSelectedImage] = useState();
     const [selectedSize, setSelectedSize] = useState("");
+    const [sizeWarning, setSizeWarning] = useState(false);
 
     useEffect(() => {
         setIsLoading(true); 
@@ -58,33 +61,42 @@ const ProductDisplay = () => {
     };
 
     const handleSizeChange = (event) => {
+        if (sizeWarning) {
+            setSizeWarning(false);
+        }
         setSelectedSize(event.target.value);
     };
 
     const handleAddToCart = (event) => {
         event.preventDefault();
 
+        if (!selectedSize) {
+            setSizeWarning(true);
+        } else {
+            dispatch(editMiniCartItem({...product, size: selectedSize}))
+            dispatch(toggleCartVisibility(true))
+            setSizeWarning(false);
+            const existingCartItem = cart.find(
+                (item) => item.productId === parseInt(productId, 10) && item.size === selectedSize
+            );
 
-        const existingCartItem = cart.find(
-            (item) => item.productId === parseInt(productId, 10) && item.size === selectedSize
-        );
-
-        if (existingCartItem) {
-            const updatedItem = {
-                ...existingCartItem,
-                quantity: existingCartItem.quantity + 1
+            if (existingCartItem) {
+                const updatedItem = {
+                    ...existingCartItem,
+                    quantity: existingCartItem.quantity + 1
+                    };
+                return dispatch(updateCart(existingCartItem.id, updatedItem))
+            }
+            else {
+                const newItem = {
+                    user_id: sessionUser.id,
+                    product_id: parseInt(productId),
+                    quantity: 1,
+                    size: selectedSize,
+                    checkedOut: false,
                 };
-            return dispatch(updateCart(existingCartItem.id, updatedItem))
-        }
-        else {
-            const newItem = {
-                user_id: sessionUser.id,
-                product_id: parseInt(productId),
-                quantity: 1,
-                size: selectedSize,
-                checkedOut: false,
-            };
-            return dispatch(addItem(newItem));
+                return dispatch(addItem(newItem));
+            }
         }
     };
 
@@ -109,10 +121,11 @@ const ProductDisplay = () => {
         // { error.statusText }
     }
 
-    const { name, category, division, subtitle, listPrice, description, articleNumber } = product;
+    const { name, category, division, subtitle, listPrice, salePrice, description, articleNumber } = product;
 
     return (
     <div className="display">
+        {/* <MiniCart product={product} selectedSize={selectedSize} totalBagQuantity={totalBagQuantity} /> */}
         < div className="product-page">
             <div className="left-column">
                 <div className="thumbnail-carousel">
@@ -148,26 +161,27 @@ const ProductDisplay = () => {
                             <h3 className="product-price">{USDollar.format(listPrice)}</h3>
                         </div>
                         <div className="size-selection">
-                            <h3>Select Size</h3>
+                            <h3 className={sizeWarning ? 'select-sizes-warning-text' : ''}>Select Size</h3>
                             <div className="size-options">
-                                {getSizes(category, division).map((size) => (
-                                    <div key={size} className="size-option">
-                                        <input
-                                            type="radio"
-                                            id={size}
-                                            name="size"
-                                            value={size}
-                                            className="size-radio"
-                                            onChange={handleSizeChange}
-                                            checked={selectedSize === size}
-                                        /><label htmlFor={size}>{size}</label>
-                                    </div>
-                                ))}
+                                <div className={`sizes${sizeWarning ? '-warning' : ''}`}>
+                                    {getSizes(category, division).map((size) => (
+                                        <div key={size} className="size-option">
+                                            <input
+                                                type="radio"
+                                                id={size}
+                                                name="size"
+                                                value={size}
+                                                className="size-radio"
+                                                onChange={handleSizeChange}
+                                                checked={selectedSize === size}
+                                            /><label htmlFor={size}>{size}</label>
+                                        </div>
+                                    ))}
+                                </div>
+                                {sizeWarning && <p className="size-warning-text">Please select a size.</p>}
                                 <div className="product-button-container">
-                                    <button className="add-to-bag-btn" onClick={handleAddToCart}>Add to Bag</button>
-                                    <button className="favorite-btn">Favorite
-                                        <span className="heart-icon">♡</span>
-                                    </button>
+                                    <button className="add-to-bag-btn" onClick={handleAddToCart} >Add to Bag</button>
+                                    <button className="favorite-btn">Favorite<span className="heart-icon">♡</span></button>
                                 </div>
                             </div>
                             
