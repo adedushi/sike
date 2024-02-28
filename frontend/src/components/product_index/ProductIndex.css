@@ -3,6 +3,9 @@
     flex-wrap: nowrap;
     width: 100%;
     box-sizing: border-box;
+    font-family: Helvetica;
+    font-size: 1em;
+    letter-spacing: .45px;
 }
 
 .header-offset{
@@ -25,7 +28,6 @@
 }
 
 .product-item {
-    font-family: Helvetica, Arial, sans-serif;
     width: calc((100% - 30px) / 3);
     padding-left: 4px;
     padding-right: 4px;
@@ -48,19 +50,42 @@
     text-decoration: none;
 }
 
-.product-item h3 {
+.product-index-name {
     color: #111111;
-    font-size: .9rem;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
+    font-size: 1em;
+    font-weight: 500;
 }
 
-.product-item p {
+.product-index-subtitle {
+    color: #707072;
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.product-index-price{
+    color: #111111;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.product-index-price--sale{
+    text-decoration: line-through;
+    color: #707072;
+    margin-left: .5em;
+}
+
+.product-sale-percent {
+    color: #128a09;
+    font-size: em;
+    font-weight: 500;
+}
+
+/* .product-item p {
     font-size: 0.rem;
     font-weight: normal;
     color: #000;
     margin: 0.25rem 0;
-}
+} */
 
 /* .product-item p.price {
     font-size: 0.9rem;

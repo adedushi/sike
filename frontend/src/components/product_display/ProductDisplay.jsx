@@ -4,9 +4,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { createSelector } from 'reselect';
 import './ProductDisplay.css'
-import {cw2288_111_1, cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5, 
-    cw2288_111_6, cw2288_111_7, cw2288_111_8, cw2288_111_9, cw2288_111_10} 
-    from './product_images'
 import { addItem, updateCart } from "../../store/cart";
 import { getSizes } from "./sizes";
 import logo from '../nav_bar/logo.svg'
@@ -21,14 +18,13 @@ const ProductDisplay = () => {
     const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
     const cart = useSelector(selectCartArray);
 
+    const isCartVisible = useSelector(state => state.ui.isCartVisible)
+
     const { productId } = useParams();
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [thumbnails, setThumbnails] = useState([cw2288_111_1, 
-        cw2288_111_2, cw2288_111_3, cw2288_111_4, cw2288_111_5, 
-        cw2288_111_6, cw2288_111_7, cw2288_111_8,cw2288_111_9,
-        cw2288_111_10])
+    const [thumbnails, setThumbnails] = useState([])
     const [selectedImage, setSelectedImage] = useState();
     const [selectedSize, setSelectedSize] = useState("");
     const [sizeWarning, setSizeWarning] = useState(false);
@@ -76,6 +72,7 @@ const ProductDisplay = () => {
             dispatch(editMiniCartItem({...product, size: selectedSize}))
             dispatch(toggleCartVisibility(true))
             setSizeWarning(false);
+            setTimeout(() => dispatch(toggleCartVisibility(false)), 4000);
             const existingCartItem = cart.find(
                 (item) => item.productId === parseInt(productId, 10) && item.size === selectedSize
             );
@@ -85,7 +82,7 @@ const ProductDisplay = () => {
                     ...existingCartItem,
                     quantity: existingCartItem.quantity + 1
                     };
-                return dispatch(updateCart(existingCartItem.id, updatedItem))
+                dispatch(updateCart(existingCartItem.id, updatedItem))
             }
             else {
                 const newItem = {
@@ -95,11 +92,26 @@ const ProductDisplay = () => {
                     size: selectedSize,
                     checkedOut: false,
                 };
-                return dispatch(addItem(newItem));
+                dispatch(addItem(newItem));
             }
+            window.scrollTo({
+                top: 98,
+                behavior: 'smooth'
+            });
+
         }
     };
 
+    const closeMiniCart = (event) => {
+        event.preventDefault();
+        dispatch(toggleCartVisibility(false));
+    };
+
+    useEffect(() => {
+        return () => {
+            dispatch(toggleCartVisibility(false));
+        };
+    }, [dispatch]);
 
     const USDollar = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -124,8 +136,9 @@ const ProductDisplay = () => {
     const { name, category, division, subtitle, listPrice, salePrice, description, articleNumber } = product;
 
     return (
+    <>
+    <div className={isCartVisible ? "overlay" : ""} onClick={closeMiniCart}></div>
     <div className="display">
-        {/* <MiniCart product={product} selectedSize={selectedSize} totalBagQuantity={totalBagQuantity} /> */}
         < div className="product-page">
             <div className="left-column">
                 <div className="thumbnail-carousel">
@@ -158,7 +171,17 @@ const ProductDisplay = () => {
                         <div className="product-basic-info">
                             <h1 className="product-title">{name}</h1>
                             <h3 className="product-subtitle">{subtitle}</h3>
-                            <h3 className="product-price">{USDollar.format(listPrice)}</h3>
+                                {salePrice ? (
+                                    <h3 className="product-price">
+                                        {USDollar.format(salePrice)}
+                                        <span className="product-price--sale">
+                                            {USDollar.format(listPrice)}
+                                        </span>
+                                        <span className="product-sale-percent">{((1 - salePrice / listPrice) * 100).toFixed(0)}%  off</span>
+                                    </h3>
+                                ) : (
+                                    <h3 className="product-price">{USDollar.format(listPrice)}</h3>
+                                )}
                         </div>
                         <div className="size-selection">
                             <h3 className={sizeWarning ? 'select-sizes-warning-text' : ''}>Select Size</h3>
@@ -196,6 +219,7 @@ const ProductDisplay = () => {
                 </div>
         </div >
     </div>
+        </>
     );
 }
 

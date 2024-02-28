@@ -1,5 +1,5 @@
 import './CampaignDisplay.css'
-import splash from './splash.jpeg'
+import splash from './splash.jpg'
 
 const CampaignDisplay = () => {
     return (

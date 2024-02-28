@@ -52,8 +52,8 @@ const ProductIndex = () => {
     <div className="header-offset"></div>
     <div className="products-page">
         <aside className="filter-sidebar">
-            <h2>Lifestyle Shoes</h2>
-            <h2>Division</h2>
+            {/* <h2>Lifestyle Shoes</h2>
+            <h2>Division</h2> */}
         </aside>
 
         <section className="product-grid">
@@ -61,10 +61,21 @@ const ProductIndex = () => {
                     <div key={product.id} className="product-item" >
                         <Link to={`/products/${product.id}`} className="product-item-link"> 
                             <img src={product.photosUrl ? product.photosUrl[0] : cw2288_111_1 } alt={product.name}></img>
-                            <h3> {product.name} </h3>
-                            <p> {product.subtitle} </p>
-                            <h3 > {USDollar.format(product.listPrice)} </h3>
-                            <h3 > {product.salePrice ? USDollar.format(product.salePrice) : null } </h3>
+                            <h3 className="product-index-name"> {product.name} </h3>
+                            <h3 className="product-index-subtitle"> {product.subtitle} </h3>
+                            {product.salePrice ? (
+                                <>
+                                <h3 className="product-index-price">
+                                    {USDollar.format(product.salePrice)}
+                                        <span className="product-index-price--sale">
+                                        {USDollar.format(product.listPrice)}
+                                    </span>
+                                </h3>
+                                    <h3 className="product-sale-percent">{((1 - product.salePrice / product.listPrice) * 100).toFixed(0)}% off</h3>
+                                </>
+                            ) : (
+                                <h3 className="product-index-price">{USDollar.format(product.listPrice)}</h3>
+                            )}
                             <br />
                         </Link>
                     </div>

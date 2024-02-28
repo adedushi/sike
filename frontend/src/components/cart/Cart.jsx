@@ -1,21 +1,48 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { deleteItem, updateCart } from '../../store/cart';
+import { deleteItem, fetchCart, updateCart } from '../../store/cart';
 import { createSelector } from 'reselect';
 import './Cart.css';
 import trash from './trash.svg'
 import { getSizes } from "../product_display/sizes";
+import { useEffect, useState } from "react";
+import logo from '../nav_bar/logo.svg'
+
 
 const Cart = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        setIsLoading(true);
+        dispatch(fetchCart())
+            .then(() => setIsLoading(false))
+            .catch(err => {
+                setError(err);
+                setIsLoading(false);
+            });
+    }, [dispatch])
 
     const cartSelector = state => state.cart;
     const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
     const cart = useSelector(selectCartArray);
-    
+
     if (!sessionUser) return <Navigate to="/session" replace={true} />;
 
+    if (error) {
+        return <div>Error: {error.status} We can&apos;t retreive your cart. Sorry for the inconvenience.</div>;
+    }
+
+    if (isLoading) {
+        return (
+            <div className="loading-container">
+                <img src={logo} alt="loading-swoosh" className="loading-svg" />
+            </div>
+        )
+    }
+    
     const handleSizeChange = (itemId, newSize) => {
         dispatch(updateCart(itemId, { size: newSize }));
     };

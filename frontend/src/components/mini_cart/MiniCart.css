@@ -1,0 +1,116 @@
+.mini-cart-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mini-cart {
+    position: absolute;
+    z-index: 10000;
+    border: none;
+    width: 380px;
+    height: 300;
+    padding: 24px;
+    background-color: white;
+}
+
+.mini-cart-checkmark {
+    height: 16px;
+    width: 16px;
+    border-radius: 500px;
+    border: .1px solid green;
+    margin-right: 10px;
+}
+
+.mini-cart-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.mini-cart-close {
+    border: none;
+    background: none;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
+.mini-cart-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mini-cart-thumbnail {
+    width: 88px;
+    height: 88px;
+    margin-right: 16px;
+}
+
+.mini-cart-added-text{
+    font-family: Helvetica Neue, Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.mini-cart-product {
+    display: flex;
+    flex-direction: row;
+}
+
+.mini-cart-product-details h3{
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: .45px;
+    font-size: .95em;
+}
+
+.mini-cart-product-details{
+    line-height: 1.75;
+}
+
+.mini-cart-product-subtitle,
+.mini-cart-product-size{
+    color: #707072;
+}
+
+.mini-cart-product-price{
+    color: #111111;
+}
+
+.mini-cart-product-price--sale {
+    text-decoration: line-through;
+    color: #707072;
+    margin-left: 15px;
+}
+
+.mini-cart-view-bag {
+    width: 100%;
+    padding: 18px 24px;
+    background-color: white;
+    border: 1px solid #cacacb;
+    margin: 2px 0px 0px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    letter-spacing: .5px;
+    height: 60px;
+    /* align-self: center; */
+}
+
+.mini-cart-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.mini-cart-buttons a {
+    width: 100%;
+}
+
+.mini-cart-view-bag:hover {
+    color: black;
+    border-color: black;
+}

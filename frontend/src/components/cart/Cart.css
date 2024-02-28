@@ -116,6 +116,6 @@
 
 .list-price--sale {
     text-decoration: line-through;
-    color: gray;
+    color: #707072;
     margin-right: 1em;
 }
