@@ -8,6 +8,8 @@ import ProductDisplay from './components/product_display/ProductDisplay';
 import ProductIndex from './components/product_index';
 import CampaignDisplay from './components/campaign_display';
 import Cart from './components/cart';
+import CheckoutSuccess from './components/checkout_success/CheckoutSuccess';
+import Footer from './components/footer/Footer';
 
 
 export const Layout = () => {
@@ -21,10 +23,11 @@ export const Layout = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="layout">
       <NavBar />
       {isLoaded && <Outlet />}
-    </>
+      <Footer />
+    </div>
   );
 }
 
@@ -48,6 +51,10 @@ const router = createBrowserRouter([
         path: '/cart/',
         element: <Cart />
       },
+      {
+        path: '/checkout-success',
+        element: <CheckoutSuccess />
+      }
     ]
   },
   {

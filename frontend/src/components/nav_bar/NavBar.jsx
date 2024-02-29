@@ -13,7 +13,7 @@ const NavBar = () => {
     const location = useLocation();
 
     const cartSelector = state => state.cart;
-    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
+    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart).filter(item => item.checkedOut === false));
     const cart = useSelector(selectCartArray);
     const totalQuantity = cart.reduce((total, currentItem) => total + currentItem.quantity, 0);
 
@@ -47,14 +47,19 @@ const NavBar = () => {
                     <input type="text" placeholder="Search"/>
                 </div>
                 {/* <Link to="#" className="favorite-icon"><img src={favorite} /></Link> */}
-                <Link to='/cart' className="cart-icon"><img src={bag} /></Link>
-                {/* <span className="quantity" data-var="jewel">1</span> */}
+                <Link to='/cart' className="cart-icon">
+                    <img src={bag} />
+                    {totalQuantity > 9 ? 
+                            <span className="cart-quantity-high">9+</span> : 
+                            <span className="cart-quantity-low">{totalQuantity}</span>
+                    }
+                </Link>
             </div>
         </div>
             {(isCartVisible && product) && <MiniCart product={product} totalQuantity={totalQuantity} />}
         {!location.pathname.startsWith('/cart') && (
             <div className="offer-bar">
-                <span className="offer-text">MEMBERS: FREE SHIPPING ON ORDERS $50+</span>
+                <span className="offer-text">Members: Free Shipping on Orders $50+</span>
                     {!sessionUser && (
                         <Link to="session" className="sign-up-link">Sign Up</Link>
                     )}

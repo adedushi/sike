@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
-import { deleteItem, fetchCart, updateCart } from '../../store/cart';
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { checkoutCart, deleteItem, fetchCart, updateCart } from '../../store/cart';
 import { createSelector } from 'reselect';
 import './Cart.css';
 import trash from './trash.svg'
@@ -11,6 +11,7 @@ import logo from '../nav_bar/logo.svg'
 
 const Cart = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -26,7 +27,7 @@ const Cart = () => {
     }, [dispatch])
 
     const cartSelector = state => state.cart;
-    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
+    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart).filter(item => item.checkedOut === false));
     const cart = useSelector(selectCartArray);
 
     if (!sessionUser) return <Navigate to="/session" replace={true} />;
@@ -55,6 +56,13 @@ const Cart = () => {
         dispatch(deleteItem(itemId));
     };
 
+    const handleCheckout = () => {
+        dispatch(checkoutCart())
+        .then(() => {
+            navigate('/checkout-success');
+        })
+    };
+
     const calculateSubtotal = (cart) => {
         let subtotal = 0;
         
@@ -64,6 +72,27 @@ const Cart = () => {
         });
         return subtotal.toFixed(2);
     };
+
+    const calculateShippingCost = (subtotal) => {
+        if (subtotal >= 50 || cart.length === 0) {
+            return 'Free';
+        } else {
+            return '$7.00';
+        }
+    };
+
+    const calculateTotal = (cart) => {
+        const subtotal = parseFloat(calculateSubtotal(cart));
+        const shippingCost = calculateShippingCost(subtotal);
+        let total = subtotal;
+
+        if (shippingCost !== 'Free') {
+            total += 7;
+        }
+
+        return USDollar.format(total);
+    };
+
 
     const USDollar = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -144,15 +173,30 @@ const Cart = () => {
                             <h3 className="shipping-text">Shipping</h3>
                             <h3 className="shipping-date">Arrives by {formattedShippingDate}</h3> 
                         </li>
-                    )) : <p className="empty-cart">&nbsp; There are no items in your bag.</p>}
+                    )) : <p className="empty-cart">There are no items in your bag.</p>}
                 </ul>
             </div>
             <div className="cart-summary">
-                <h3 className="summary-title">Summary</h3>
-                <h3 className="summary-price" >{USDollar.format(calculateSubtotal(cart))}</h3>
+                <h1 className="cart-summary-title">Summary</h1>
+                <div className="cart-summary-costs">
+                    <div className="cart-summary-subtotal">
+                        <span>Subtotal</span> <span>{USDollar.format(calculateSubtotal(cart))}</span>
+                    </div>
+                    <div className="cart-summary-shipping">
+                        <span>Estimated Shipping & Handling</span> <span>{calculateShippingCost(parseFloat(calculateSubtotal(cart)))}</span>
+                    </div>
+                    <div className="cart-summary-tax">
+                        <span>Estimated Tax</span> <span>—</span>
+                    </div>
+                </div>
+                <div className="cart-summary-total">
+                    <span>Total</span ><span className="cart-summary-price" >{calculateTotal(cart)}</span>
+                </div>
+                <div className="cart-checkout-container">
+                    <button className="cart-checkout-btn" onClick={handleCheckout}>Checkout</button>
+                </div>
             </div>
         </div>
-
     )
 }
 

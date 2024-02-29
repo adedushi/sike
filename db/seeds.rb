@@ -1395,45 +1395,12 @@ Product.create!(
   sub_category: "Lifestyle"
 )
 Product.create!(
-  name: "Nike Dunk Low Unlocked By You",
-  subtitle: "Custom Shoes",
-  description: "Cheetah and tiger and croc—oh my! It's time to design the Dunk of your dreams. The left and right shoes can be customized independently (excluding character personalization), so let your imagination go wild. Velvet cheetah and tiger prints in a '90s-inspired color palette mix with a textural croc suede for the ultimate maximalist look. Don't forget your shoelery for the finishing touch.",
-  list_price: 160,
-  sale_price: nil,
-  article_number: "FJ2253-901",
-  division: "Women",
-  category: "Shoes",
-  sub_category: "Lifestyle"
-)
-Product.create!(
   name: "Nike Blazer Low '77 Jumbo",
   subtitle: "Women's Shoes",
   description: "They say, 'Don't fix what works.' We say, 'Perfect it.' This streetwear superstar gets revamped with jumbo-sized details. Harnessing the old-school look you love, the Nike Blazer Low '77 Jumbo features an oversized Swoosh design, extra-wide laces and thicker stitching.",
   list_price: 100,
   sale_price: nil,
   article_number: "DQ1470-002",
-  division: "Women",
-  category: "Shoes",
-  sub_category: "Lifestyle"
-)
-Product.create!(
-  name: "Nike Air Max 1 '87 By You",
-  subtitle: "Custom Shoes",
-  description: "The classic Air Max gets refreshed with a premium look for you, by you. Choose between nubuck leather, smooth leather and a polished croc that reveals another color with wear. Then, line your shoe with traditional mesh or go luxe with velvet. Add a jeweled or classic Swoosh logo and choose between gold or silver shoelery that doubles as a bracelet. And don't forget to add some color to your Nike Air unit, midsole and outsole.",
-  list_price: 180,
-  sale_price: nil,
-  article_number: "FJ8893-900",
-  division: "Women",
-  category: "Shoes",
-  sub_category: "Lifestyle"
-)
-Product.create!(
-  name: "Nike Air Max 95 Unlocked By You",
-  subtitle: "Custom Women's Shoes",
-  description: "Inspire the streets with your Air Max 95. The customizable design (with a coveted woven upper) lets you bring your own aesthetic to the legendary look by selecting your fave colors and choice materials. Add a personalized message that lets you tell a piece of your story. Boost the energy with colored Air units or by making your design monochromatic. Then, add the cherry to the bottom and ramp up the comfort by selecting an ultra-cushy sockliner.",
-  list_price: 215,
-  sale_price: nil,
-  article_number: "DX5388-900",
   division: "Women",
   category: "Shoes",
   sub_category: "Lifestyle"
@@ -1593,17 +1560,6 @@ Product.create!(
   sub_category: "Lifestyle"
 )
 Product.create!(
-  name: "Nike Phoenix Waffle By You",
-  subtitle: "Custom Women's Shoes",
-  description: "All-day comfort meets all-day style. Taking cues from original Blue Ribbon Sports designs and incorporating the technological advances of today, the Phoenix Waffle rises from the ashes for a design unique to you. Start by choosing between 3 materials for the upper. Or maybe a combination of materials—because, why not? Then play into the heritage style with bold color blocking or go full-on monochromatic. It's time to add your personal spin to a classic BRS look.",
-  list_price: 120,
-  sale_price: nil,
-  article_number: "FQ8789-900",
-  division: "Women",
-  category: "Shoes",
-  sub_category: "Lifestyle"
-)
-Product.create!(
   name: "Air Jordan 1 Elevate High SE",
   subtitle: "Women's Shoes",
   description: "It might not be banned on court anymore, but the Air Jordan 1 continues to break new ground. Inspired by one of the original '85 colorways, this edition's lifted silhouette celebrates how gracefully the icon has aged over time. Think of it like the AJ1's cool younger cousin—a little taller, a little bolder, but unmistakably part of the same legendary family tree.",
@@ -1703,17 +1659,6 @@ Product.create!(
   sub_category: "Lifestyle"
 )
 Product.create!(
-  name: "Nike Air Huarache Craft By You",
-  subtitle: "Custom Women's Shoes",
-  description: "We love a DIY craft...Huarache Craft that is. Whether you're feeling totally neon or just want a few pops of color, you can customize your Huarache from heel cage to toe tip. Synthetic suede and cushioned collar add a touch of luxury. Raw edges and recycled materials (like threads in the upper and foam in the inner sleeve) are a visual reminder of your creative spirit.",
-  list_price: 160,
-  sale_price: nil,
-  article_number: "FB2391-900",
-  division: "Women",
-  category: "Shoes",
-  sub_category: "Lifestyle"
-)
-Product.create!(
   name: "Nike Icon Classic",
   subtitle: "Women's Sandals",
   description: "Lifted. Classic hoops detailing. Strappy but easy to wear. Check all the boxes in the Nike Icon Classic. Its big, bold midsole wows with comfort. The outsole pattern delivers iconic Air Force 1 vibes, while the multiple hook-and-loop straps add a fearless look. Get ready to shine with this new voice in sandal style.",
@@ -1736,34 +1681,12 @@ Product.create!(
   sub_category: "Lifestyle"
 )
 Product.create!(
-  name: "Nike Blazer Low '77 By You",
-  subtitle: "Custom Women's Shoes",
-  description: "Praised for its classic simplicity and comfort, the original hoops look is now yours to customize. From a variety of materials, including a floral graphic on canvas, to fun-loving summertime colors, it lets you leave your mark. Then dive into the details: laces and a personalized inscription are just some of the options for tailoring your look.",
-  list_price: 115,
-  sale_price: nil,
-  article_number: "DZ2653-900",
-  division: "Women",
-  category: "Shoes",
-  sub_category: "Lifestyle"
-)
-Product.create!(
   name: "Nike Blazer Mid Premium",
   subtitle: "Women's Shoes",
   description: "Styled for the ‘70s. Loved in the ‘80s. Classic in the ‘90s. Ready for the future. The Nike Blazer Mid gives you a timeless design that’s easy to wear. The era-echoing leather upper and bold branding make it look like you’ve just pulled them from the history books. Go ahead—perfect your outfit.",
   list_price: 125,
   sale_price: 85.97,
   article_number: "DQ7572-300",
-  division: "Women",
-  category: "Shoes",
-  sub_category: "Lifestyle"
-)
-Product.create!(
-  name: "Nike Air Huarache By You",
-  subtitle: "Custom Women's Shoes",
-  description: "Have you hugged your foot today? Don't stop there. Bring your feel-good vibes to the world with a customizable twist on the ridiculously comfortable icon. Choose soft, supple suede for a throwback vibe, or give it a timeless finish with crisp leather. Select from an array of varsity-inspired colors for a classic look. Then, top it off with a piece of your story on the tongue patch. Whatever you choose, it's gonna feel good and look great. Your personalized Air Huarache—it's bragging rights for your feet. We recommend sizing up one half-size from your usual size for the best fit.",
-  list_price: 130,
-  sale_price: nil,
-  article_number: "FD9782-900",
   division: "Women",
   category: "Shoes",
   sub_category: "Lifestyle"

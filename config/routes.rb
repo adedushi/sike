@@ -15,6 +15,11 @@ Rails.application.routes.draw do
       end
       resources :products, only: [:show, :index]
       resource :session, only: [:create, :show, :destroy]
+      resources :cart_items, only: [] do
+        collection do
+          patch 'checkout', to: 'cart_items#checkout'
+        end
+      end
       resources :cart_items, only: [:index, :show, :create, :update, :destroy]
   end
   

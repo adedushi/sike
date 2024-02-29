@@ -1,0 +1,32 @@
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #111111;
+    margin-top: 20px;
+    min-height: 80px;
+    padding: 40px 40px 10px 40px;
+    
+}
+
+.footer-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-text h3,
+.footer-text a,
+.footer-text span{
+    font-family: Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 13.6px;
+    letter-spacing: .9px;
+    color: #ffffff;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+.footer-website:hover {
+    color: rgb(93, 93, 95)
+}

@@ -5,6 +5,8 @@ const ADD_CART_ITEM = 'cart/ADD_CART_ITEM';
 const UPDATE_CART_ITEM = 'cart/UPDATE_CART_ITEM';
 const DELETE_CART_ITEM = 'cart/DELETE_CART_ITEM';
 const RESET_CART = 'cart/RESET_CART';
+const CHECKOUT_CART_ITEMS = 'cart/CHECKOUT_CART_ITEMS';
+
 
 const getCartItems = (items) => {
     return {
@@ -35,6 +37,12 @@ const deleteCartItem = (itemId) => {
     };
 };
 
+const checkoutCartItems = () => {
+    return {
+        type: CHECKOUT_CART_ITEMS,
+    };
+};
+
 
 export const addItem = (item) => async dispatch => {
     const response = await csrfFetch('/api/cart_items', {
@@ -54,56 +62,71 @@ export const addItem = (item) => async dispatch => {
 };
 
 export const fetchCart = () => async dispatch => {
-        const response = await csrfFetch('/api/cart_items', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+    const response = await csrfFetch('/api/cart_items', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
         }
+    });
 
-        const cartItems = await response.json();
-        dispatch(getCartItems(cartItems));
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+
+    const cartItems = await response.json();
+    dispatch(getCartItems(cartItems));
 };
 
 export const updateCart = (itemId, updates) => async dispatch => {
-        const response = await csrfFetch(`/api/cart_items/${itemId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(updates)
-        });
+    const response = await csrfFetch(`/api/cart_items/${itemId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updates)
+    });
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
 
-        const updatedItemData = await response.json();
-        console.log(updatedItemData);
-        dispatch(updateCartItem(updatedItemData));
+    const updatedItemData = await response.json();
+    console.log(updatedItemData);
+    dispatch(updateCartItem(updatedItemData));
 };
 
 
 export const deleteItem = (itemId) => async dispatch => {
-        const response = await csrfFetch(`/api/cart_items/${itemId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+    const response = await csrfFetch(`/api/cart_items/${itemId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
         }
-        dispatch(deleteCartItem(itemId));
+    });
+
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    dispatch(deleteCartItem(itemId));
 };
 
 export const resetCart = () => dispatch => {
     dispatch({ type: RESET_CART })
+};
+
+export const checkoutCart = () => async dispatch => {
+    const response = await csrfFetch('/api/cart_items/checkout', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+
+    dispatch(checkoutCartItems());
 };
 
 
@@ -121,6 +144,12 @@ const cartItemsReducer = (state = {}, action) => {
             return {...newState, ...action.payload}
         case RESET_CART:
             return {};
+        case CHECKOUT_CART_ITEMS: {
+            const updatedItems = Object.fromEntries(
+                Object.entries(state).map(([key, item]) => [key, { ...item, checkedOut: true }])
+            );
+            return updatedItems;
+        }
         default:
             return state;
     }

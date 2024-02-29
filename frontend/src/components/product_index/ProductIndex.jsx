@@ -4,7 +4,6 @@ import { fetchProducts } from "../../store/products";
 import { Link, useSearchParams } from "react-router-dom"
 import { createSelector } from 'reselect';
 import './ProductIndex.css'
-import { cw2288_111_1 } from "../product_display/product_images";
 import logo from '../nav_bar/logo.svg'
 
 
@@ -52,15 +51,13 @@ const ProductIndex = () => {
     <div className="header-offset"></div>
     <div className="products-page">
         <aside className="filter-sidebar">
-            {/* <h2>Lifestyle Shoes</h2>
-            <h2>Division</h2> */}
         </aside>
 
         <section className="product-grid">
                 {products.map((product) => (
                     <div key={product.id} className="product-item" >
                         <Link to={`/products/${product.id}`} className="product-item-link"> 
-                            <img src={product.photosUrl ? product.photosUrl[0] : cw2288_111_1 } alt={product.name}></img>
+                            <img src={product.photosUrl ? product.photosUrl[0] : null } alt={product.name}></img>
                             <h3 className="product-index-name"> {product.name} </h3>
                             <h3 className="product-index-subtitle"> {product.subtitle} </h3>
                             {product.salePrice ? (

@@ -3,7 +3,7 @@ class Api::CartItemsController < ApplicationController
     before_action :require_logged_in
 
     def index
-        @cart_items = current_user.cart_items
+        @cart_items = current_user.cart_items.where(checked_out: false)
     end
 
     def show
@@ -39,7 +39,13 @@ class Api::CartItemsController < ApplicationController
         end
     end
 
-
+    def checkout
+        if current_user.cart_items.where(checked_out: false).update_all(checked_out: true)
+            render json: { message: 'Checkout successful' }, status: :ok
+        else
+            render json: { errors: ['Checkout failed'] }, status: :unprocessable_entity
+        end
+    end
 
     private
 

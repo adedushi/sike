@@ -1,7 +1,8 @@
 .display {
     display: flex;
     justify-content: center;
-    max-height: 668.75px;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .product-page {
@@ -80,9 +81,6 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     gap: 8px;
-    &::-webkit-scrollbar {
-        display: none;
-    }
 }
 
 .thumbnail {
@@ -134,7 +132,6 @@
 .size-options {
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .sizes{
@@ -229,6 +226,10 @@
     height: 60px;
 }
 
+.add-to-bag-btn:hover{
+    background-color: rgb(93, 93, 95)
+}
+
 .favorite-btn {
     width: 100%;
     padding: 18px 24px;
@@ -253,7 +254,6 @@
 }
 
 .heart-icon {
-    /* font-family: "Open-Sans"; */
     font-size: 14px;
 }
 

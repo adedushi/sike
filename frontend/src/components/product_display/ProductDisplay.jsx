@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProduct } from "../../store/products"
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { createSelector } from 'reselect';
 import './ProductDisplay.css'
 import { addItem, updateCart } from "../../store/cart";
@@ -15,13 +15,14 @@ const ProductDisplay = () => {
     const sessionUser = useSelector(state => state.session.user);
 
     const cartSelector = state => state.cart;
-    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
+    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart).filter(item => item.checkedOut === false));
     const cart = useSelector(selectCartArray);
 
     const isCartVisible = useSelector(state => state.ui.isCartVisible)
 
     const { productId } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [thumbnails, setThumbnails] = useState([])
@@ -65,6 +66,10 @@ const ProductDisplay = () => {
 
     const handleAddToCart = (event) => {
         event.preventDefault();
+
+        if (!sessionUser) {
+            navigate('/session');
+        }
 
         if (!selectedSize) {
             setSizeWarning(true);
