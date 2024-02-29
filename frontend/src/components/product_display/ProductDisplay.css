@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
     flex-grow: 1;
 }
 
@@ -70,6 +71,8 @@
     margin-top: 40px;
     padding-left: 48px;
     margin-left: 8px;
+    top: 0;
+    height: 100vh;
 }
 
 .thumbnail-carousel {
@@ -127,6 +130,10 @@
     flex-direction: column;
     align-items: start;
     padding: 20px;
+    flex-grow: 1;
+    /* height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none; */
 }
 
 .size-options {

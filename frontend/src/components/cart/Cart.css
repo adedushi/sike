@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     padding: 20px;
+    height: 100%;
 }
 
 .cart-header, .cart-summary-title {
@@ -15,7 +16,6 @@
 
 .cart-items {
     max-width: 717.33px;
-    max-height: 360px;
     width: 65%;
 }
 
