@@ -53,6 +53,10 @@ const ProductDisplay = () => {
         }
     }, [product]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const handleImageChange = (event) => {
         setSelectedImage(event.target.src);
     };

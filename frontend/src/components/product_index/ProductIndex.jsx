@@ -21,24 +21,22 @@ const ProductIndex = () => {
     const pagination = useSelector(state => state.products.pagination)
 
     useEffect(() => {
-        const divisionValue = divisionParam === 'null' ? null : divisionParam;
-        if (divisionValue !== fetchParams.division) {
+        if (divisionParam !== fetchParams.division) {
             dispatch(clearProducts());
-            setFetchParams({ division: divisionValue, page: 1 });
+            setFetchParams({ division: divisionParam, page: 1 });
+        } else if (divisionParam) { 
+            setIsLoading(true);
+            const filters = { division: fetchParams.division };
+
+            dispatch(fetchProducts(filters, fetchParams.page))
+                .then(() => setIsLoading(false))
+                .catch(err => {
+                    setError(err);
+                    setIsLoading(false);
+                });
         }
-    }, [divisionParam, dispatch, fetchParams.division]);
+    }, [divisionParam, fetchParams, dispatch]); 
 
-    useEffect(() => {
-        setIsLoading(true);
-        const filters = fetchParams.division ? { division: fetchParams.division } : {};
-
-        dispatch(fetchProducts(filters, fetchParams.page))
-            .then(() => setIsLoading(false))
-            .catch(err => {
-                setError(err);
-                setIsLoading(false);
-            });
-    }, [dispatch, fetchParams]);
 
     useEffect(() => {
         const observer = new IntersectionObserver( (entries) => {

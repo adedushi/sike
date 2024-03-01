@@ -34,7 +34,7 @@ const NavBar = () => {
                 <div className="navbar-spacer"></div>
             </div>
             <nav className="navbar-section-center">
-                <Link to="products/" className="nav-link">New & Featured</Link>
+                <Link to="products/?division=All" className="nav-link">New & Featured</Link>
                 <Link to="products/?division=Men" className="nav-link">Men</Link>
                 <Link to="products/?division=Women" className="nav-link">Women</Link>
                 <Link to="products/?division=Kids" className="nav-link">Kids</Link>

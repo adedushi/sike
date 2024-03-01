@@ -5,7 +5,7 @@ export const toggleCartVisibility = (boolean) => ({
     payload: boolean
 });
 
-const initialState = { isCartVisible: true };
+const initialState = { isCartVisible: false };
 
 const uiReducer = (state = initialState, action) => {
     switch (action.type) {
