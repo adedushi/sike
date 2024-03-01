@@ -139,6 +139,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
+    pagy (7.0.7)
     pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -204,6 +205,7 @@ DEPENDENCIES
   byebug
   faker
   jbuilder
+  pagy
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)

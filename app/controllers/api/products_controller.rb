@@ -1,11 +1,12 @@
 class Api::ProductsController < ApplicationController
+    include Pagy::Backend
     
     def index
-    @products = Product.all
-    @products = Product.where(division: division) if division
-    Rails.logger.debug params.inspect
-    
-    render 'api/products/index'
+        @products_scope = params[:division].present? ? Product.where(division: params[:division]) : Product.all
+
+        @pagy, @products = pagy(@products_scope.order(:id), items: 24)
+
+        render 'api/products/index'
     end
 
     def show
@@ -16,15 +17,5 @@ class Api::ProductsController < ApplicationController
             render json: { errors: ['Product Not Found'] }, status: 404
         end
     end
-
-    private
-
-    def product_params
-        params.require(:product).permit(:divison)
-    end
-
-    def division
-        params[:division]
-    end
-
+    
 end

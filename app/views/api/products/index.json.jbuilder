@@ -7,3 +7,10 @@ json.products do
         end
     end
 end
+
+json.pagy do
+  json.total_pages @pagy.pages
+  json.total_items @pagy.count
+  json.items_per_page @pagy.vars[:items]
+  json.page @pagy.page
+end
