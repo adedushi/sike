@@ -16,11 +16,12 @@
 #  updated_at     :datetime         not null
 #
 class Product < ApplicationRecord
+     has_many :cart_items
+     has_many :order_items
+     has_many_attached :photos
+
      validates :name, :subtitle, :description, :list_price, 
      :division, :category, :sub_category, presence: true
 
      validates :article_number, presence: true, uniqueness: true
-
-     has_many :cart_items
-     has_many_attached :photos
 end

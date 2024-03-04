@@ -16,6 +16,10 @@ class User < ApplicationRecord
 
   has_many :cart_items
   has_one_attached :photo
+  has_many :orders
+  has_many :order_items, 
+    through: :orders, 
+    source: :order_items
   
 
   PASSWORD_FORMAT = /\A

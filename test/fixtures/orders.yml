@@ -1,0 +1,24 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id         :bigint           not null, primary key
+#  user_id    :bigint           not null
+#  subtotal   :float            not null
+#  shipping   :float            not null
+#  total      :float            not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  user: one
+  subtotal: 1.5
+  shipping: 1.5
+  total: 1.5
+
+two:
+  user: two
+  subtotal: 1.5
+  shipping: 1.5
+  total: 1.5
