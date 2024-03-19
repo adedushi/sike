@@ -13,7 +13,7 @@ Rails.application.routes.draw do
           get 'check_email', to: 'users#check_email'
         end
       end
-      resources :products, only: [:show, :index]
+      resources :products, only: [:index, :show]
       resource :session, only: [:create, :show, :destroy]
       resources :cart_items, only: [] do
         collection do
@@ -21,6 +21,10 @@ Rails.application.routes.draw do
         end
       end
       resources :cart_items, only: [:index, :show, :create, :update, :destroy]
+      resources :orders, only: [:index, :show, :create] do
+        resources :order_items, only: [:index, :create]
+      end
+      resources :order_items, only: [:index]
   end
   
   get '*path', to: "static_pages#frontend_index"
