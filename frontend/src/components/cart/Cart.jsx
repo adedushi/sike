@@ -7,6 +7,7 @@ import trash from './trash.svg'
 import { getSizes } from "../product_display/sizes";
 import { useEffect, useState } from "react";
 import logo from '../nav_bar/logo.svg'
+import { createOrder } from "../../store/orders";
 
 
 const Cart = () => {
@@ -57,6 +58,25 @@ const Cart = () => {
     };
 
     const handleCheckout = () => {
+        const orderItemsAttributes = Object.values(cart).map(item => ({
+            product_id: item.productId,
+            size: item.size,
+            quantity: item.quantity,
+            price: item.salePrice ? item.salePrice : item.listPrice
+        }));
+
+        const subtotal = orderItemsAttributes.reduce((acc, item) => acc + item.price * item.quantity, 0)
+        const shipping = subtotal >= 50 ? 0 : 7
+        const total = subtotal + shipping
+
+        const order = {
+            user_id: sessionUser.id,
+            subtotal: subtotal.toFixed(2),
+            shipping: shipping.toFixed(2),
+            total: total.toFixed(2),
+            order_items_attributes: orderItemsAttributes
+        }
+        dispatch(createOrder(order))
         dispatch(checkoutCart())
         .then(() => {
             navigate('/checkout-success');
@@ -64,13 +84,7 @@ const Cart = () => {
     };
 
     const calculateSubtotal = (cart) => {
-        let subtotal = 0;
-        
-
-        cart.forEach(item => {
-            subtotal += parseFloat(item.salePrice ? item.salePrice : item.listPrice ) * parseInt(item.quantity);
-        });
-        return subtotal.toFixed(2);
+        return cart.reduce((acc, item) => acc + (item.salePrice ? item.salePrice : item.listPrice) * item.quantity, 0).toFixed(2);
     };
 
     const calculateShippingCost = (subtotal) => {

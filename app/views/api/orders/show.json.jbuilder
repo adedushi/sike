@@ -1,5 +1,5 @@
 json.order do
-    json.extract! @order, :id, :subtotal, :total, :created_at
+    json.extract! @order, :id, :subtotal, :shipping, :total, :created_at
     json.order_items do
         @order.order_items.each do |order_item|
             json.set! order_item.id do
