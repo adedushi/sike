@@ -3,7 +3,7 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
     background-color: #111111;
-    margin-top: 20px;
+    /* margin-top: 10px; */
     min-height: 80px;
     padding: 40px 40px 10px 40px;
 }

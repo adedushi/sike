@@ -91,7 +91,6 @@ export const updateCart = (itemId, updates) => async dispatch => {
     }
 
     const updatedItemData = await response.json();
-    console.log(updatedItemData);
     dispatch(updateCartItem(updatedItemData));
 };
 

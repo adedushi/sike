@@ -3,6 +3,7 @@ import * as sessionActions from '../../store/session';
 import jordan from './jordan.jpg'
 import './TopBar.css';
 import { resetFormState } from '../../store/form';
+import { Link } from 'react-router-dom';
 
 function ProfileButton() {
     const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function ProfileButton() {
                 <img src={jordan} alt="Profile Avatar" className="profile-avatar" />
             </button>
             <ul className="profile-dropdown">
-                {/* <li>Orders</li> */}
+                <Link to={`/orders/`} ><li>Orders</li></Link>
                 {/* <li>Favorites</li> */}
                 {/* <li>Inbox </li> */}
                 {/* <li>Experiences</li> */}

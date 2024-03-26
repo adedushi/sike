@@ -7,7 +7,7 @@ import trash from './trash.svg'
 import { getSizes } from "../product_display/sizes";
 import { useEffect, useState } from "react";
 import logo from '../nav_bar/logo.svg'
-import { createOrder } from "../../store/orders";
+import { createOrder } from "../../store/orderItems";
 
 
 const Cart = () => {

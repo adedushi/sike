@@ -10,6 +10,7 @@ import CampaignDisplay from './components/campaign_display';
 import Cart from './components/cart';
 import CheckoutSuccess from './components/checkout_success/CheckoutSuccess';
 import Footer from './components/footer/Footer';
+import OrderItem from './components/order';
 
 
 export const Layout = () => {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: '/checkout-success',
         element: <CheckoutSuccess />
+      },
+      {
+        path: '/orders',
+        element: <OrderItem />
       }
     ]
   },
