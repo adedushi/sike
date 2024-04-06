@@ -28,7 +28,7 @@ const Cart = () => {
     }, [dispatch])
 
     const cartSelector = state => state.cart;
-    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart).filter(item => item.checkedOut === false));
+    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
     const cart = useSelector(selectCartArray);
 
     if (!sessionUser) return <Navigate to="/session" replace={true} />;

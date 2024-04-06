@@ -3,7 +3,7 @@ class Api::CartItemsController < ApplicationController
     before_action :require_logged_in
 
     def index
-        @cart_items = current_user.cart_items.where(checked_out: false)
+        @cart_items = current_user.cart_items
     end
 
     def show
@@ -50,7 +50,7 @@ class Api::CartItemsController < ApplicationController
     private
 
     def cart_item_params
-        params.require(:cart_item).permit(:product_id, :size, :quantity, :user_id, :checked_out, :id)
+        params.require(:cart_item).permit(:product_id, :size, :quantity, :user_id, :id)
     end
 end
 

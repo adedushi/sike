@@ -2,14 +2,13 @@
 #
 # Table name: cart_items
 #
-#  id          :bigint           not null, primary key
-#  product_id  :bigint           not null
-#  size        :string           not null
-#  quantity    :integer          not null
-#  user_id     :bigint           not null
-#  checked_out :boolean          default(FALSE), not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :bigint           not null, primary key
+#  product_id :bigint           not null
+#  size       :string           not null
+#  quantity   :integer          not null
+#  user_id    :bigint           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 require "test_helper"
 

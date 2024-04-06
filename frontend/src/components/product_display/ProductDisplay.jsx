@@ -15,7 +15,7 @@ const ProductDisplay = () => {
     const sessionUser = useSelector(state => state.session.user);
 
     const cartSelector = state => state.cart;
-    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart).filter(item => item.checkedOut === false));
+    const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
     const cart = useSelector(selectCartArray);
 
     const isCartVisible = useSelector(state => state.ui.isCartVisible)
@@ -98,8 +98,7 @@ const ProductDisplay = () => {
                     user_id: sessionUser.id,
                     product_id: parseInt(productId),
                     quantity: 1,
-                    size: selectedSize,
-                    checkedOut: false,
+                    size: selectedSize
                 };
                 dispatch(addItem(newItem));
             }

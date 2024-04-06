@@ -2842,7 +2842,6 @@ CartItem.create!(
   size: "9.5",
   quantity: 2,
   user_id: 1,
-  checked_out: false
 )
 
 CartItem.create!(
@@ -2850,7 +2849,6 @@ CartItem.create!(
   size: "10.5",
   quantity: 3,
   user_id: 1,
-  checked_out: false
 )
 
 CartItem.create!(
@@ -2858,7 +2856,6 @@ CartItem.create!(
   size: "10.5",
   quantity: 3,
   user_id: 2,
-  checked_out: false
 )
 
 
