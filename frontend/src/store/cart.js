@@ -5,8 +5,6 @@ const ADD_CART_ITEM = 'cart/ADD_CART_ITEM';
 const UPDATE_CART_ITEM = 'cart/UPDATE_CART_ITEM';
 const DELETE_CART_ITEM = 'cart/DELETE_CART_ITEM';
 const RESET_CART = 'cart/RESET_CART';
-const CHECKOUT_CART_ITEMS = 'cart/CHECKOUT_CART_ITEMS';
-
 
 const getCartItems = (items) => {
     return {
@@ -39,7 +37,7 @@ const deleteCartItem = (itemId) => {
 
 const checkoutCartItems = () => {
     return {
-        type: CHECKOUT_CART_ITEMS,
+        type: RESET_CART,
     };
 };
 
@@ -143,12 +141,6 @@ const cartItemsReducer = (state = {}, action) => {
             return {...newState, ...action.payload}
         case RESET_CART:
             return {};
-        case CHECKOUT_CART_ITEMS: {
-            const updatedItems = Object.fromEntries(
-                Object.entries(state).map(([key, item]) => [key, { ...item, checkedOut: true }])
-            );
-            return updatedItems;
-        }
         default:
             return state;
     }

@@ -40,7 +40,7 @@ class Api::CartItemsController < ApplicationController
     end
 
     def checkout
-        if current_user.cart_items.where(checked_out: false).update_all(checked_out: true)
+        if current_user.cart_items.destroy_all
             render json: { message: 'Checkout successful' }, status: :ok
         else
             render json: { errors: ['Checkout failed'] }, status: :unprocessable_entity
