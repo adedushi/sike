@@ -1,0 +1,34 @@
+.order-items-container {
+    font-family: Helvetica Neue, Arial, sans-serif;
+    font-size: 1em;
+    letter-spacing: .45px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height: 100%;
+}
+
+
+.order-item-image {
+    width: 208px;
+    height: 208px;
+    padding-right: 32px;
+}
+
+.order-items-header {
+    line-height: 29px;
+    font-size: 1.5em;
+    font-weight: 400;
+}
+
+.order-item {
+    display: flex;
+    justify-content: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.order-item a {
+    text-decoration: none;
+    color: #111111;
+}

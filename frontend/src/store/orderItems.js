@@ -39,7 +39,6 @@ export const fetchOrderItems = () => async dispatch => {
     if (response.ok) {
         const items = await response.json();
         dispatch(getOrderItems(items))
-
     }
 }
 

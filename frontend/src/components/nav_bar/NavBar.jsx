@@ -15,7 +15,6 @@ const NavBar = () => {
     const cartSelector = state => state.cart;
     const selectCartArray = createSelector(cartSelector, (cart) => Object.values(cart));
     const cart = useSelector(selectCartArray);
-    console.log(cart);
     const totalQuantity = cart.reduce((total, currentItem) => total + currentItem.quantity, 0);
 
     const isCartVisible = useSelector(state => state.ui.isCartVisible);

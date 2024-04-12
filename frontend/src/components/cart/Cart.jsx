@@ -128,7 +128,7 @@ const Cart = () => {
         return currentDate;
     }
 
-    const formattedShippingDate = shippingDate().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    const formattedDeliveryDate = shippingDate().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
     return (
         <div className="cart-container">
@@ -185,7 +185,7 @@ const Cart = () => {
                                 </div>
                             </div>
                             <h3 className="shipping-text">Shipping</h3>
-                            <h3 className="shipping-date">Arrives by {formattedShippingDate}</h3> 
+                            <h3 className="shipping-date">Arrives by {formattedDeliveryDate}</h3> 
                         </li>
                     )) : <p className="empty-cart">There are no items in your bag.</p>}
                 </ul>
