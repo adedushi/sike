@@ -23,7 +23,12 @@ const OrderItem = () => {
     }, [dispatch])
 
     const orderItemsSelector = state => state.orderItems;
-    const selectOrderItemsArray = createSelector(orderItemsSelector, (orderItems) => Object.values(orderItems))
+    const selectOrderItemsArray = createSelector(orderItemsSelector, (orderItems) => {
+        const itemsArray = Object.values(orderItems);
+        itemsArray.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        return itemsArray;
+    })
+
     const orderItems = useSelector(selectOrderItemsArray)
 
     if (!sessionUser) return <Navigate to="/session" replace={true} />;
