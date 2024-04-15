@@ -63,11 +63,17 @@ const OrderItem = () => {
         const deliveryDate = shippingDate(orderDate)
         const currentDate = new Date()
         
-        const formattedDeliveryDate = deliveryDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })
+        const formattedDeliveryDate = deliveryDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 
         return currentDate > deliveryDate ? 
-        <h3>Delivered</h3> : 
-        <> <h3>Shipped</h3> <h3>Arrives by {formattedDeliveryDate}</h3> </>
+        
+        <div className='order-item-status-delivered'>
+            <h3>Delivered</h3> 
+        </div> : 
+        <div className='order-item-status-shipped'> 
+            <h3>Shipped</h3> 
+            <h3>Arrives by {formattedDeliveryDate}</h3> 
+        </div>
         
     }
 
@@ -86,11 +92,13 @@ const OrderItem = () => {
                             {deliveryStatus(item.createdAt)}
                                 <h3 className="order-item-title">{item.name}</h3>
                             </Link>
-                            <h3>{item.subtitle}</h3>
-                            <h3>Size {item.size}</h3>
-                            <h3>Style {item.articleNumber}</h3>
-                            {item.quantity > 1 ? 
-                            <h3>Quantity {item.quantity}</h3> : null}
+                            <div className='order-item-information'>
+                                <h3>{item.subtitle}</h3>
+                                <h3>Size {item.size}</h3>
+                                <h3>Style {item.articleNumber}</h3>
+                                {item.quantity > 1 ? 
+                                <h3>Quantity {item.quantity}</h3> : null}
+                            </div>
                         </div>
                     </div>
                 )) : null}

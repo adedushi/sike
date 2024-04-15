@@ -6,6 +6,7 @@
     justify-content: center;
     padding: 20px;
     height: 100%;
+    color: #111111;
 }
 
 
@@ -24,11 +25,52 @@
 .order-item {
     display: flex;
     justify-content: flex-start;
-    padding: 16px 0;
+    padding: 48px 0;
     border-bottom: 1px solid #ccc;
+    min-width: 58vw;
 }
 
 .order-item a {
     text-decoration: none;
     color: #111111;
+}
+
+.order-item a:hover {
+    color: rgb(102, 102, 102);
+}
+
+.order-item-details {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    max-height: 168px;
+}
+
+.order-item-status-shipped > h3 {
+    font-size: .95em;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(16, 112, 6);
+}
+
+.order-item-status-delivered > h3 {
+    font-size: .95em;
+    line-height: 24px;
+    font-weight: 500;
+    color: rgb(102, 102, 102);
+}
+
+.order-item-title {
+    font-size: .95em;
+    line-height: 24px;
+    font-weight: 500;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.order-item-information > h3{
+    color: #707072;
+    font-size: .95em;
+    line-height: 28px;
+    font-weight: 400;
 }
