@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import './CheckoutSuccess.css';
+import { Link } from 'react-router-dom';
 
 const CheckoutSuccess = () => {
     const sessionUser = useSelector(state => state.session.user);
@@ -11,8 +12,7 @@ const CheckoutSuccess = () => {
                 <h1>WE&apos;RE ON IT! </h1>
             </div>
             <div className='checkout-bottom-message'>
-                <h3>Your order&apos;s in. We&apos;re working to get it packed up and out </h3>
-                <h3>-the door expect a dispatch confirmation email soon.</h3>
+                <h3>Your order&apos;s in. We&apos;re working to get it packed up and out the door. Visit your <Link to="/orders/">orders</Link> page for more details. </h3>
             </div>
         </div>
     );

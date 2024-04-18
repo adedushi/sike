@@ -9,6 +9,10 @@
     color: #111111;
 }
 
+.order-items {
+    width: 58vw;
+    min-height: 58vh;
+}
 
 .order-item-image {
     width: 208px;
@@ -27,7 +31,6 @@
     justify-content: flex-start;
     padding: 48px 0;
     border-bottom: 1px solid #ccc;
-    min-width: 58vw;
 }
 
 .order-item a {
@@ -72,5 +75,12 @@
     color: #707072;
     font-size: .95em;
     line-height: 28px;
+    font-weight: 400;
+}
+
+.order-items-empty {
+    margin-top: 36px;
+    line-height: 29px;
+    font-size: 1.25em;
     font-weight: 400;
 }

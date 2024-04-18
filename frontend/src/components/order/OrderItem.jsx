@@ -101,7 +101,7 @@ const OrderItem = () => {
                             </div>
                         </div>
                     </div>
-                )) : null}
+                )) : <h1 className = "order-items-empty">No Orders Found</h1>}
             </div>
         </div>
     )
