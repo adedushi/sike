@@ -103,7 +103,6 @@ function SignupForm() {
                             onChange={(e) => setFirstName(e.target.value)}
                             onBlur={() => setFirstNameTouched(true)}
                             className={getInputClassName(firstName, firstNameTouched)}
-                            required
                         />
                         {displayRequired(firstName, firstNameTouched)}
                     </div>
@@ -115,7 +114,6 @@ function SignupForm() {
                             onChange={(e) => setLastName(e.target.value)}
                             onBlur={() => setLastNameTouched(true)}
                             className={getInputClassName(lastName, lastNameTouched)}
-                            required
                         />
                         {displayRequired(lastName, lastNameTouched)}
                     </div>
@@ -130,7 +128,6 @@ function SignupForm() {
                             setPasswordTouched(true);
                         }}
                         className={getInputClassName(password, passwordTouched)}
-                        required
                     />
                     <p className={getPasswordValidationClass(validatePasswordLength)}>
                         Minimum of 8 characters
@@ -147,7 +144,6 @@ function SignupForm() {
                             setConfirmPasswordTouched(true);
                         }}
                         className={getInputClassName(confirmPassword, confirmPasswordTouched)}
-                        required
                     />
                     {displayPasswordMatch()}
                 </div>

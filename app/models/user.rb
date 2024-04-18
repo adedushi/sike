@@ -41,6 +41,8 @@ class User < ApplicationRecord
     length: { in: 3..100 }, 
     format: { with: URI::MailTo::EMAIL_REGEXP, message: "is invalid" } #update this verification
 
+  validates :first_name, :last_name, presence: true
+
   validates :session_token, presence: true, uniqueness: true
 
   def ensure_session_token

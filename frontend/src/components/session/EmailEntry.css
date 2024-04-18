@@ -33,16 +33,6 @@ body {
     font-weight: 400;
 }
 
-.email-form input {
-    letter-spacing: .3px;
-    width: calc(100% - 20px);
-    height: 34px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
 .session-button-container {
     text-align: right;
 }

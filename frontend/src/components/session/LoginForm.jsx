@@ -72,7 +72,6 @@ const LoginForm = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         onBlur={() => setPasswordTouched(true)}
-                        required
                         className={`form-input ${password.trim() === "" && passwordTouched ? "input-error" : ""}`}
                     />
                     {(!password && passwordTouched) ? <div className="form-text-red">Required</div> : null}

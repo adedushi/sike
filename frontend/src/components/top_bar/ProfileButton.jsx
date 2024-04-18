@@ -21,11 +21,8 @@ function ProfileButton() {
             </button>
             <ul className="profile-dropdown">
                 <Link to={`/orders/`} ><li>Orders</li></Link>
-                {/* <li>Favorites</li> */}
-                {/* <li>Inbox </li> */}
-                {/* <li>Experiences</li> */}
-                {/* <li>Account Settings</li> */}
                 <li onClick={logout}>Log Out</li>
+                {/* <li>Favorites</li> */}
             </ul>
         </div>
     );
