@@ -70,16 +70,16 @@ const ProductIndex = () => {
         minimumFractionDigits: 0
     });
 
-    if (isLoading) {
-        return (
-            <div className="loading-container">
-                <img src={logo} alt="loading-swoosh" className="loading-svg" />
-            </div>
-        )
-    }
+    // if (isLoading) {
+    //     return (
+    //         <div className="loading-container">
+    //             <img src={logo} alt="loading-swoosh" className="loading-svg" />
+    //         </div>
+    //     )
+    // }
 
 return (
-        <>
+    <>
             <div className="header-offset"></div>
             <div className="products-page">
                 <aside className="filter-sidebar">
@@ -109,7 +109,10 @@ return (
                             </Link>
                         </div>
                     ))}
-                <div ref={observerRef} className="loading-indicator"></div>
+                    {isLoading && <div className="loading-container">
+                        <img src={logo} alt="loading-swoosh" className="loading-svg" />
+                    </div>}
+                    <div ref={observerRef} className="loading-indicator"></div>
                 </section>
             </div>
         </>
