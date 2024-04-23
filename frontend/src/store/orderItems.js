@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
-const GET_ORDER_ITEMS = 'orders/GET_ORDER_ITEMS'
-const ADD_ORDER = 'orders/ADD_ORDER';
+const GET_ORDER_ITEMS = 'order_items/GET_ORDER_ITEMS'
+const ADD_ORDER = 'order_items/ADD_ORDER';
 
 const addOrder = (order) => {
     return {
