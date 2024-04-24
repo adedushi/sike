@@ -10,14 +10,21 @@ const getOrder = (order) => {
 }
 
 export const fetchOrder = (orderId) => async dispatch => {
-    const response = await csrfFetch(`api/orders/${orderId}`)
+    const response = await csrfFetch(`/api/orders/${orderId}`)
     if (response.ok) {
         const order = await response.json();
         dispatch(getOrder(order))
     }
 }
 
-const ordersReducer = (state = {}, action) => {
+const initialState = {
+    subtotal: 0,
+    shipping: 0,
+    total: 0,
+    orderItems: {}
+}
+
+const ordersReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ORDER:
             return {...action.payload}

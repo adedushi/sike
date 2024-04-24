@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
     cart: cartItemsReducer,
     minicart: miniCartReducer,
     orderItems: orderItemsReducer,
-    orders: ordersReducer,
+    order: ordersReducer,
     ui: uiReducer
 });
 

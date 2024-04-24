@@ -11,6 +11,7 @@ import Cart from './components/cart';
 import CheckoutSuccess from './components/checkout_success/CheckoutSuccess';
 import Footer from './components/footer/Footer';
 import OrderItem from './components/order';
+import Order from './components/order/Order';
 
 
 export const Layout = () => {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: '/orders',
         element: <OrderItem />
+      },
+      {
+        path: '/orders/:orderId',
+        element: <Order />
       }
     ]
   },
