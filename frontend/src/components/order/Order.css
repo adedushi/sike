@@ -52,7 +52,7 @@
 .orders-order-item {
     display: flex;
     justify-content: flex-start;
-    padding: 48px 0;
+    padding: 24px 0;
     border-bottom: 1px solid #ccc;
 }
 
@@ -89,11 +89,12 @@
 
 .orders-cost {
     border-bottom: 1px solid #ccc;
-    padding-top: 48px;
+    padding-top: 24px;
     padding-bottom: 24px;
 }
 
-.orders-line-item {
+.orders-line-item, 
+.orders-overview>h3 {
     color: #707072;
     font-size: .95em;
     line-height: 22px;
@@ -106,3 +107,6 @@
     justify-content: space-between;
 }
 
+.orders-overview {
+    padding-top: 24px;
+}

@@ -24,10 +24,11 @@ const Order = () => {
             });
     }, [dispatch, orderId])
 
-    const { subtotal, shipping, total } = useSelector(state => ({
+    const { subtotal, shipping, total, createdAt } = useSelector(state => ({
         subtotal: state.order.subtotal,
         shipping: state.order.shipping,
-        total: state.order.total
+        total: state.order.total,
+        createdAt: state.order.createdAt
     }));
 
 
@@ -58,6 +59,12 @@ const Order = () => {
     }
     );
 
+    const orderDate = (createdDate) => {
+        const orderDate = new Date(createdDate)
+        const formattedOrderDate = orderDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        return formattedOrderDate
+    }
+
     return (
         <div className='orders-container'>
             <div className='orders-information'>
@@ -65,6 +72,10 @@ const Order = () => {
                     <Link className="orders-header"to={'/orders'} >
                         <h1 >Orders</h1>
                     </Link>
+                    <div className='orders-overview'>
+                        <h3>Purchased Online - {orderDate(createdAt)}</h3>
+                        <h3>Order #{orderId} - {USDollar.format(total)}</h3>
+                    </div>
                     <div className='orders-order-items'>
                         {orderItems.length ? orderItems.map((item) => (
                             <div key={item.id} className='orders-order-item'>
