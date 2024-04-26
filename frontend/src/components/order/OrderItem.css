@@ -33,12 +33,12 @@
     border-bottom: 1px solid #ccc;
 }
 
-.order-item a {
+.order-item-link {
     text-decoration: none;
     color: #111111;
 }
 
-.order-item a:hover {
+.order-item-link:hover {
     color: rgb(102, 102, 102);
 }
 
@@ -47,6 +47,7 @@
     flex-direction:column;
     justify-content: space-between;
     max-height: 168px;
+    width: 100%;
 }
 
 .order-item-status-shipped > h3 {
@@ -83,4 +84,34 @@
     line-height: 29px;
     font-size: 1.25em;
     font-weight: 400;
+}
+
+.order-item-top-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-order-button {
+    padding: 6px 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 30px;
+    width: 151px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Helvetica Neue, Arial, sans-serif;
+    font-size: .95em;
+    line-height: 24px;
+    font-weight: 500;
+    color: #111111;
+    background-color: white;
+    border: 1px solid #ccc;
+    text-decoration: none;
+}
+
+.view-order-button:hover {
+    border-color: black;
 }

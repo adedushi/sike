@@ -84,14 +84,23 @@ const OrderItem = () => {
                 <h1 className="order-items-header">Orders</h1>
                 {orderItems.length ? orderItems.map((item) => (
                     <div key={item.id} className='order-item'>
-                        <Link to={`/products/${item.productId}`} className="order-item-link">
-                            <img src={Array.isArray(item.photosUrl) ? item.photosUrl[0] : null} alt={item.name} className="order-item-image" />
-                        </Link>
-                        <div className="order-item-details">
+                        <div className="order-item-link-container">
                             <Link to={`/products/${item.productId}`} className="order-item-link">
-                            {deliveryStatus(item.createdAt)}
-                                <h3 className="order-item-title">{item.name}</h3>
+                                <img src={Array.isArray(item.photosUrl) ? item.photosUrl[0] : null} alt={item.name} className="order-item-image" />
                             </Link>
+                        </div>
+                        <div className="order-item-details">
+                            <div className='order-item-top-line'>
+                                {deliveryStatus(item.createdAt)}
+                                <Link to={`/orders/${item.orderId}`} className="view-order-button">
+                                    View Order
+                                </Link>
+                            </div>
+                            <div className="order-item-link-container">
+                                <Link to={`/products/${item.productId}`} className="order-item-link">
+                                    <h3 className="order-item-title">{item.name}</h3>
+                                </Link>
+                            </div>
                             <div className='order-item-information'>
                                 <h3>{item.subtitle}</h3>
                                 <h3>Size {item.size}</h3>
