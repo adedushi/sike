@@ -2,10 +2,18 @@ class Api::ProductsController < ApplicationController
     include Pagy::Backend
     
     def index
+        @products_scope = Product.all
+
         if params[:division].present? && params[:division] != 'All'
             @products_scope = Product.where(division: params[:division])
-        else
-            @products_scope = Product.all
+        end
+
+        if params[:category].present?
+            @products_scope = @products_scope.where(category: params[:category])
+        end
+
+        if params[:sub_category].present?
+            @products_scope = @products_scope.where(sub_category: params[:sub_category])
         end
 
         @pagy, @products = pagy(@products_scope.order(:id), items: 24)
