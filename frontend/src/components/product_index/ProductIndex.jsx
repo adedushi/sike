@@ -12,7 +12,9 @@ const ProductIndex = () => {
     const [error, setError] = useState(null);
     const [searchParams] = useSearchParams();
     const divisionParam = searchParams.get("division");
-    const [fetchParams, setFetchParams] = useState({ division: null, page: 1 });
+    const categoryParam = searchParams.get("category");
+    const subCategoryParam = searchParams.get("sub_category");
+    const [fetchParams, setFetchParams] = useState({ division: null, category: null, sub_category: null, page: 1});
     const observerRef = useRef(null);
 
     const productsSelector = state => state.products.products;
@@ -21,12 +23,23 @@ const ProductIndex = () => {
     const pagination = useSelector(state => state.products.pagination)
 
     useEffect(() => {
-        if (divisionParam !== fetchParams.division) {
+        if (divisionParam !== fetchParams.division ||
+            categoryParam !== fetchParams.category ||
+            subCategoryParam !== fetchParams.sub_category) {
             dispatch(clearProducts());
-            setFetchParams({ division: divisionParam, page: 1 });
-        } else if (divisionParam) { 
+            setFetchParams({
+                division: divisionParam,
+                category: categoryParam,
+                sub_category: subCategoryParam,
+                page: 1
+            });
+        } else if (divisionParam || categoryParam || subCategoryParam) {
             setIsLoading(true);
-            const filters = { division: fetchParams.division };
+            const filters = {
+                division: fetchParams.division,
+                category: fetchParams.category,
+                sub_category: fetchParams.sub_category
+            };
 
             dispatch(fetchProducts(filters, fetchParams.page))
                 .then(() => setIsLoading(false))
@@ -35,7 +48,7 @@ const ProductIndex = () => {
                     setIsLoading(false);
                 });
         }
-    }, [divisionParam, fetchParams, dispatch]); 
+    }, [divisionParam, categoryParam, subCategoryParam, fetchParams, dispatch]);
 
 
     useEffect(() => {
@@ -69,14 +82,6 @@ const ProductIndex = () => {
         currency: 'USD',
         minimumFractionDigits: 0
     });
-
-    // if (isLoading) {
-    //     return (
-    //         <div className="loading-container">
-    //             <img src={logo} alt="loading-swoosh" className="loading-svg" />
-    //         </div>
-    //     )
-    // }
 
 return (
     <>

@@ -128,7 +128,7 @@ const ProductDisplay = () => {
         }
     );
 
-    if (isLoading || !product) {
+    if (isLoading) {
         return (
             <div className="loading-container">
                 <img src={logo} alt="loading-swoosh" className="loading-svg" />
@@ -136,9 +136,8 @@ const ProductDisplay = () => {
         )
     }
 
-    if (error) {
-        return <div>Error: {error.status} We can&apos;t find the page you are looking for. Sorry for the inconvenience.</div>;
-        // { error.statusText }
+    if (error || !product) {
+        return <div>We can&apos;t find the page you are looking for. Sorry for the inconvenience.</div>;
     }
 
     const { name, category, division, subtitle, listPrice, salePrice, description, articleNumber } = product;

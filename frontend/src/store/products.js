@@ -42,7 +42,14 @@ export const fetchProduct = (productId) => async dispatch => {
 }
 
 export const fetchProducts = (filters, page = 1) => async dispatch => {
-    const filterParams = new URLSearchParams(filters);
+    const filterParams = new URLSearchParams();
+
+    Object.entries(filters).forEach(([key, value]) => {
+        if (value !== null) {
+            filterParams.append(key, value);
+        }
+    });
+
     filterParams.append('page', page);
     const response = await csrfFetch(`/api/products?${filterParams}`);
     if (response.ok) {
