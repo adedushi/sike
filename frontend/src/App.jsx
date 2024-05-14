@@ -27,7 +27,9 @@ export const Layout = () => {
   return (
     <div className="layout">
       <NavBar />
-      {isLoaded && <Outlet />}
+      <div className="main-content">
+        {isLoaded && <Outlet />}
+      </div>
       <Footer />
     </div>
   );

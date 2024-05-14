@@ -1,10 +1,13 @@
 .banner-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    height: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    /* padding-bottom: 80px; */
+    max-height: 100vh;
+    object-fit: cover;
+}
+
+.main-campaign {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
