@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Outlet, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Outlet, createBrowserRouter, RouterProvider, useLocation } from 'react-router-dom';
 import * as sessionActions from './store/session';
 import Session from './components/session/Session';
 import NavBar from './components/nav_bar';
@@ -12,17 +12,23 @@ import CheckoutSuccess from './components/checkout_success/CheckoutSuccess';
 import Footer from './components/footer/Footer';
 import OrderItem from './components/order';
 import Order from './components/order/Order';
+import { initGA, logPageView } from './analytics';
 
 
 export const Layout = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(sessionActions.restoreSession()).then(() => {
       setIsLoaded(true)
     });
   }, [dispatch]);
+
+  useEffect(() => {
+    logPageView()
+  }, [location]);
 
   return (
     <div className="layout">
@@ -76,6 +82,13 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  useEffect(() => {
+    const gaMeasurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    if (gaMeasurementId && import.meta.env.MODE === 'production') {
+      initGA(gaMeasurementId)
+    }
+  }, []);
+
   return <RouterProvider router={router} />;
 };
 
