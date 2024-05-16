@@ -3,6 +3,10 @@ class Api::ProductsController < ApplicationController
     
     def index
         @products_scope = Product.all
+        
+        if params[:query].present?
+            @products_scope = @products_scope.search_by_full_text(params[:query])
+        end
 
         if params[:division].present? && params[:division] != 'All'
             @products_scope = Product.where(division: params[:division])
