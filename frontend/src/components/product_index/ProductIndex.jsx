@@ -14,7 +14,8 @@ const ProductIndex = () => {
     const divisionParam = searchParams.get("division");
     const categoryParam = searchParams.get("category");
     const subCategoryParam = searchParams.get("sub_category");
-    const [fetchParams, setFetchParams] = useState({ division: null, category: null, sub_category: null, page: 1});
+    const queryParam = searchParams.get("query");  
+    const [fetchParams, setFetchParams] = useState({ division: null, category: null, sub_category: null, query: null, page: 1 });
     const observerRef = useRef(null);
 
     const productsSelector = state => state.products.products;
@@ -23,22 +24,27 @@ const ProductIndex = () => {
     const pagination = useSelector(state => state.products.pagination)
 
     useEffect(() => {
-        if (divisionParam !== fetchParams.division ||
+        if (
+            divisionParam !== fetchParams.division ||
             categoryParam !== fetchParams.category ||
-            subCategoryParam !== fetchParams.sub_category) {
+            subCategoryParam !== fetchParams.sub_category ||
+            queryParam !== fetchParams.query
+        ) {
             dispatch(clearProducts());
             setFetchParams({
                 division: divisionParam,
                 category: categoryParam,
                 sub_category: subCategoryParam,
+                query: queryParam,
                 page: 1
             });
-        } else if (divisionParam || categoryParam || subCategoryParam) {
+        } else if (divisionParam || categoryParam || subCategoryParam || queryParam) {
             setIsLoading(true);
             const filters = {
                 division: fetchParams.division,
                 category: fetchParams.category,
-                sub_category: fetchParams.sub_category
+                sub_category: fetchParams.sub_category,
+                query: fetchParams.query
             };
 
             dispatch(fetchProducts(filters, fetchParams.page))
@@ -48,15 +54,14 @@ const ProductIndex = () => {
                     setIsLoading(false);
                 });
         }
-    }, [divisionParam, categoryParam, subCategoryParam, fetchParams, dispatch]);
-
+    }, [divisionParam, categoryParam, subCategoryParam, queryParam, fetchParams, dispatch]);
 
     useEffect(() => {
         const observer = new IntersectionObserver( (entries) => {
-                if (entries[0].isIntersecting && fetchParams.page < pagination.totalPages) {
-                    setFetchParams(prevParams => ({ ...prevParams, page: prevParams.page + 1 }));
-                }
-            },
+            if (entries[0].isIntersecting && fetchParams.page < pagination.totalPages) {
+                setFetchParams(prevParams => ({ ...prevParams, page: prevParams.page + 1 }));
+            }
+        },
             { threshold: 0.1 }
         );
 
@@ -74,7 +79,7 @@ const ProductIndex = () => {
 
 
     if (error) {
-        return <div>Error: {error.status} We can&apos;t retreive any products. Sorry for the inconvenience.</div>;
+        return <div>Error: {error.status} We can&apos;t retrieve any products. Sorry for the inconvenience.</div>;
     }
 
     const USDollar = new Intl.NumberFormat('en-US', {
@@ -83,14 +88,25 @@ const ProductIndex = () => {
         minimumFractionDigits: 0
     });
 
-return (
-    <>
+    return (
+        <>
             <div className="header-offset"></div>
+            {queryParam && products.length > 0 && (
+                <div className="search-header">
+                    Search results for <br/> 
+                    {queryParam} ({products.length})
+                </div>
+            )}
             <div className="products-page">
                 <aside className="filter-sidebar">
                 </aside>
 
                 <section className="product-grid">
+                    {!isLoading && products.length === 0 && (
+                        <div className="no-results-message">
+                            We could not find anything for &quot;{queryParam}&quot;.
+                        </div>
+                    )}
                     {products.length > 0 && products.map((product) => (
                         <div key={product.id} className="product-item" >
                             <Link to={`/products/${product.id}`} className="product-item-link">

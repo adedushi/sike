@@ -21,10 +21,12 @@ const getProducts = (products) => {
 };
 
 
-const updatePagination = (pagination) => ({
+const updatePagination = (pagination) => {
+    return {
     type: UPDATE_PAGINATION,
     payload: pagination,
-});
+    };
+};
 
 export const clearProducts = () => {
     return {
