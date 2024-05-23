@@ -8,6 +8,7 @@ import uiReducer from './ui';
 import miniCartReducer from './minicart';
 import orderItemsReducer from './orderItems';
 import ordersReducer from './orders';
+import searchResultsReducer from './searchResults';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     minicart: miniCartReducer,
     orderItems: orderItemsReducer,
     order: ordersReducer,
+    searchResults: searchResultsReducer,
     ui: uiReducer
 });
 
