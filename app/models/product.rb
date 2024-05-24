@@ -38,6 +38,10 @@ class Product < ApplicationRecord
                [:sub_category, 'C']
           ],
           using: {
-               tsearch: { prefix: true }
+               tsearch: { 
+                    prefix: true,
+                    dictionary: 'english',
+                    normalization: 2
+               }
           }
 end
