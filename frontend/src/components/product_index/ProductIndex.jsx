@@ -94,7 +94,7 @@ const ProductIndex = () => {
             {queryParam && products.length > 0 && (
                 <div className="search-header">
                     Search results for <br/> 
-                    {queryParam} ({products.length})
+                    {queryParam} ({pagination.totalItems})
                 </div>
             )}
             <div className="products-page">

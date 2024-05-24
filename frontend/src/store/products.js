@@ -59,6 +59,7 @@ export const fetchProducts = (filters, page = 1) => async dispatch => {
         dispatch(getProducts(data.products));
         dispatch(updatePagination({
             page: data.pagy.page,
+            totalItems: data.pagy.totalItems,
             totalPages: data.pagy.totalPages
         }));
     }
