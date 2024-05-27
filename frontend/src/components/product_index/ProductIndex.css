@@ -6,10 +6,24 @@
     font-family: Helvetica;
     font-size: 1em;
     letter-spacing: .45px;
+    min-height: 95vh;
 }
 
-.header-offset{
-    height: 30px;
+.header-offset {
+    height: 60px;
+    width: 260px;
+}
+
+.search-header {
+    margin-top: 20px;
+    margin-left: 20px;
+    line-height: 24px;
+    letter-spacing: .45px;
+    font-size: 1em;
+}
+
+.search-results {
+    font-size: 1.4em;
 }
 
 .filter-sidebar {
@@ -75,6 +89,14 @@
 
 .product-sale-percent {
     color: #128a09;
-    font-size: em;
     font-weight: 500;
+}
+
+
+.no-results-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5em;
 }

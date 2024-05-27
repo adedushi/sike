@@ -90,13 +90,14 @@ const ProductIndex = () => {
 
     return (
         <>
-            <div className="header-offset"></div>
+            <div className="header-offset">
             {queryParam && products.length > 0 && (
                 <div className="search-header">
                     Search results for <br/> 
-                    {queryParam} ({pagination.totalItems})
+                    <span className="search-results">{queryParam} ({pagination.totalItems})</span>
                 </div>
             )}
+            </div>
             <div className="products-page">
                 <aside className="filter-sidebar">
                 </aside>
