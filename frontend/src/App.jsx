@@ -13,6 +13,7 @@ import Footer from './components/footer/Footer';
 import OrderItem from './components/order';
 import Order from './components/order/Order';
 import { initGA, logPageView } from './analytics';
+import HomePage from './components/home_page/HomePage';
 
 
 export const Layout = () => {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <CampaignDisplay />
+        element: <HomePage />
       },
       {
         path: '/products/:productId',
