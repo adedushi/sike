@@ -77,6 +77,12 @@ const ProductIndex = () => {
         };
     }, [isLoading, fetchParams]);
 
+    useEffect(() => {
+        return () => {
+            dispatch(clearProducts());
+        };
+    }, [dispatch]);
+
 
     if (error) {
         return <div>Error: {error.status} We can&apos;t retrieve any products. Sorry for the inconvenience.</div>;

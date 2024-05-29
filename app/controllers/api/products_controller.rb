@@ -20,7 +20,9 @@ class Api::ProductsController < ApplicationController
             @products_scope = @products_scope.where(sub_category: params[:sub_category])
         end
 
-        @pagy, @products = pagy(@products_scope.order(:id), items: 24)
+        items_per_page = params[:limit]
+
+        @pagy, @products = pagy(@products_scope.order(:id), items: items_per_page)
 
         render 'api/products/index'
     end
