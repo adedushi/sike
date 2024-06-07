@@ -9,37 +9,29 @@
 require "open-uri"
 
 # ApplicationRecord.transaction do 
-  puts "Destroying tables..."
-  # Unnecessary if using `rails db:seed:replant`
-  CartItem.destroy_all
-  User.destroy_all
-  Product.destroy_all
+puts "Destroying tables..."
+OrderItem.destroy_all
+Order.destroy_all
+CartItem.destroy_all
+User.destroy_all
+Product.destroy_all
 
-  puts "Resetting primary keys..."
-  ApplicationRecord.connection.reset_pk_sequence!('cart_items')
-  ApplicationRecord.connection.reset_pk_sequence!('users')
-  ApplicationRecord.connection.reset_pk_sequence!('products')
+puts "Resetting primary keys..."
+ApplicationRecord.connection.reset_pk_sequence!('order_items')
+ApplicationRecord.connection.reset_pk_sequence!('orders')
+ApplicationRecord.connection.reset_pk_sequence!('cart_items')
+ApplicationRecord.connection.reset_pk_sequence!('users')
+ApplicationRecord.connection.reset_pk_sequence!('products')
 
-  puts "Creating users..."
-  User.create!(
-    email: 'michael@jordan.com', 
-    password: 'Jordan23',
-    first_name: 'Michael',
-    last_name: 'Jordan'
+puts "Creating users..."
+User.create!(
+  email: 'michael@jordan.com', 
+  password: 'Jordan23',
+  first_name: 'Michael',
+  last_name: 'Jordan'
+)
 
-  )
-
-  # 10.times do 
-  #   User.create!({
-  #     email: Faker::Internet.unique.email,
-  #     password: 'passwordA1',
-  #     first_name: Faker::Name.first_name,
-  #     last_name: Faker::Name.last_name
-  #   }) 
-  # end
-
-  puts "Creating products..."
-
+puts "Creating products..."
 Product.create!(
   name: "Air Jordan 3 'Fear'",
   subtitle: "Men's Shoes",
@@ -2845,31 +2837,6 @@ Product.create!(
   category: "Shoes",
   sub_category: "Running"
 )
-
-puts "Creating cart items..."
-
-CartItem.create!(
-  product_id: 1,
-  size: "9.5",
-  quantity: 2,
-  user_id: 1,
-)
-
-CartItem.create!(
-  product_id: 2,
-  size: "10.5",
-  quantity: 3,
-  user_id: 1,
-)
-
-# CartItem.create!(
-#   product_id: 3,
-#   size: "10.5",
-#   quantity: 3,
-#   user_id: 2,
-# )
-
-
 
 Product.all.each do |product|
   i = 1
