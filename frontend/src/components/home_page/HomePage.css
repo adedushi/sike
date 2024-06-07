@@ -1,3 +1,48 @@
-.homepage-spacer {
-    height: 100px;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+
+.campaign-message {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /* width: 30%; */
+    max-width: 410px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.campaign-text-large {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: -4px;
+    padding-bottom: 20px;
+}
+
+.campaign-text-small {
+    font-family: Helvetica, sans-serif;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000;
+    line-height: 24px;
+}
+
+.shop-btn {
+    border-style: none;
+    width: 19%;
+    padding: 8px;
+    background-color: #111;
+    color: white;
+    margin-top: 0.7rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.shop-btn:hover {
+    background-color: rgb(93, 93, 95);
 }

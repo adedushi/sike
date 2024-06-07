@@ -16,7 +16,7 @@ const ProductCarousel = () => {
     const products = useSelector(selectProductsArray);
 
     useEffect(() => {
-        dispatch(fetchProducts({}, 1, 10))
+        dispatch(fetchProducts({sub_category: 'Running'}, 1, 10))
     }, [dispatch])
 
     return (
@@ -26,8 +26,10 @@ const ProductCarousel = () => {
             navigation
             loop={true}
             breakpoints={{
-                1600: { slidesPerView: 8 },
-                0: { slidesPerView: 5}
+                2300: { slidesPerView: 8 },
+                1600: { slidesPerView: 6 },
+                1450: { slidesPerView: 5 },
+                0: { slidesPerView: 4}
             }}
         >
             {products.map(product => (
