@@ -1,6 +1,6 @@
 # Welcome to Sike
 
-### [LIVE LINK](https://sike-73tj.onrender.com/)
+### [LIVE LINK](https://www.sikenotnike.com/)
 
 Sike ('sīk) is a clone of [Nike.com](https://https://www.nike.com/) at the time of creation, with some creative and functional liberties. Nike, widely known for its apparel and footwear, is the largest sportswear company in the world in terms of revenue. Nike users are able to browse, favorite, review, and check out products. I have always been curious about the makeup of e-commerce and Nike's website presented a good learning experience, as it is one of the most aesthetically pleasing.
 
